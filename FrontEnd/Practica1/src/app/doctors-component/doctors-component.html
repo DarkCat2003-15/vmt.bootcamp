@@ -1,0 +1,41 @@
+<section class="section">
+  <h2>Doctores</h2>
+
+  <div class="buttons">
+    <button type="button" class="primary" (click)="addDoctor()">+ Agregar doctor</button>
+    <button type="button" class="secondary" (click)="editFirstDoctor()">Editar primero</button>
+    <button type="button" class="secondary" (click)="loadDoctors()">Actualizar</button>
+  </div>
+
+  <input
+    type="text"
+    class="search"
+    placeholder="Buscar doctor por nombre"
+    [value]="search()"
+    (input)="search.set($any($event.target).value)"
+  />
+
+  @if (loading()) {
+    <p>Cargando doctores...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="card-grid">
+      @for (doctor of filteredDoctors(); track doctor.id) {
+        <article class="card">
+          <h3>{{ doctor.name }}</h3>
+          <p><strong>Apellido:</strong> {{ doctor.lastName }}</p>
+          <p><strong>Género:</strong> {{ doctor.gender }}</p>
+          <p><strong>Dirección:</strong> {{ doctor.address }}</p>
+          <button type="button" class="delete" (click)="deleteDoctor(doctor.id)">Eliminar</button>
+        </article>
+      } @empty {
+        <p>No hay doctores para mostrar.</p>
+      }
+    </div>
+  }
+</section>

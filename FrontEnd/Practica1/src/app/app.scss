@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  color: #1f2a44;
+}
+
+p {
+  margin: 0 0 20px;
+  color: #4b5563;
+}

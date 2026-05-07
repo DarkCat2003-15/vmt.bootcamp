@@ -1,0 +1,41 @@
+<section class="section">
+  <h2>Pacientes</h2>
+
+  <div class="buttons">
+    <button type="button" class="primary" (click)="addPatient()">+ Agregar paciente</button>
+    <button type="button" class="secondary" (click)="editFirstPatient()">Editar primero</button>
+    <button type="button" class="secondary" (click)="loadPatients()">Actualizar</button>
+  </div>
+
+  <input
+    type="text"
+    class="search"
+    placeholder="Buscar paciente por nombre"
+    [value]="search()"
+    (input)="search.set($any($event.target).value)"
+  />
+
+  @if (loading()) {
+    <p>Cargando pacientes...</p>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="card-grid">
+      @for (patient of filteredPatients(); track patient.id) {
+        <article class="card">
+          <img [src]="patient.avatar" [alt]="patient.name" />
+          <h3>{{ patient.name }}</h3>
+          <p><strong>Edad:</strong> {{ patient.age }}</p>
+          <p><strong>Teléfono:</strong> {{ patient.phone }}</p>
+          <button type="button" class="delete" (click)="deletePatient(patient.id)">Eliminar</button>
+        </article>
+      } @empty {
+        <p>No hay pacientes para mostrar.</p>
+      }
+    </div>
+  }
+</section>
