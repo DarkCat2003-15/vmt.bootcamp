@@ -1,0 +1,48 @@
+<header class="page-heading">
+  <div>
+    <p>Catalogo</p>
+    <h1>Autores</h1>
+  </div>
+  <button mat-flat-button color="primary" type="button" (click)="openAuthorDialog()">
+    <mat-icon aria-hidden="true">add</mat-icon>
+    Nuevo autor
+  </button>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando autores">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else {
+  <section class="resource-grid" aria-label="Lista de autores">
+    @for (author of authors(); track author.id) {
+      <mat-card class="resource-card" appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar aria-hidden="true">person</mat-icon>
+          <mat-card-title>{{ author.name }}</mat-card-title>
+          <mat-card-subtitle>{{ author.country }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <span>Telefono: {{ author.phoneNumber }}</span>
+          <span>ID: {{ author.id }}</span>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <a mat-icon-button color="primary" [routerLink]="['/authors', author.id]" matTooltip="Ver detalle">
+            <mat-icon aria-hidden="true">visibility</mat-icon>
+          </a>
+          <button mat-icon-button color="primary" type="button" (click)="openAuthorDialog(author)" matTooltip="Editar">
+            <mat-icon aria-hidden="true">edit</mat-icon>
+          </button>
+          <button mat-icon-button class="danger-action" type="button" (click)="deleteAuthor(author)" matTooltip="Eliminar">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+}

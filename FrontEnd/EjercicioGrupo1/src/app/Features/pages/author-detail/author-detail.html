@@ -1,0 +1,51 @@
+<header class="page-heading">
+  <div>
+    <p>Detalle</p>
+    <h1>Autor</h1>
+  </div>
+  <a mat-stroked-button routerLink="/authors">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Volver
+  </a>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando detalle del autor">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else if (author(); as selectedAuthor) {
+  <mat-card class="detail-card" appearance="outlined">
+    <mat-card-header>
+      <mat-icon mat-card-avatar aria-hidden="true">person</mat-icon>
+      <mat-card-title>{{ selectedAuthor.name }}</mat-card-title>
+      <mat-card-subtitle>{{ selectedAuthor.country }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="detail-grid">
+      <div class="detail-row">
+        <span>ID</span>
+        <strong>{{ selectedAuthor.id }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Nombre</span>
+        <strong>{{ selectedAuthor.name }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Pais</span>
+        <strong>{{ selectedAuthor.country }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Telefono</span>
+        <strong>{{ selectedAuthor.phoneNumber }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Creado</span>
+        <strong>{{ selectedAuthor.createdAt | date: 'medium' }}</strong>
+      </div>
+    </mat-card-content>
+  </mat-card>
+}

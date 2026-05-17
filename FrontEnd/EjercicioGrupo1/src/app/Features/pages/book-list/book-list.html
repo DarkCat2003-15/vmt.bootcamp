@@ -1,0 +1,48 @@
+<header class="page-heading">
+  <div>
+    <p>Catalogo</p>
+    <h1>Libros</h1>
+  </div>
+  <button mat-flat-button color="primary" type="button" (click)="openBookDialog()">
+    <mat-icon aria-hidden="true">add</mat-icon>
+    Nuevo libro
+  </button>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando libros">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else {
+  <section class="resource-grid" aria-label="Lista de libros">
+    @for (book of books(); track book.id) {
+      <mat-card class="resource-card" appearance="outlined">
+        <mat-card-header>
+          <mat-icon mat-card-avatar aria-hidden="true">auto_stories</mat-icon>
+          <mat-card-title>{{ book.name }}</mat-card-title>
+          <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <span>Publicado: {{ book.publishedAt }}</span>
+          <span>ID: {{ book.id }}</span>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <a mat-icon-button color="primary" [routerLink]="['/books', book.id]" matTooltip="Ver detalle">
+            <mat-icon aria-hidden="true">visibility</mat-icon>
+          </a>
+          <button mat-icon-button color="primary" type="button" (click)="openBookDialog(book)" matTooltip="Editar">
+            <mat-icon aria-hidden="true">edit</mat-icon>
+          </button>
+          <button mat-icon-button class="danger-action" type="button" (click)="deleteBook(book)" matTooltip="Eliminar">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+}

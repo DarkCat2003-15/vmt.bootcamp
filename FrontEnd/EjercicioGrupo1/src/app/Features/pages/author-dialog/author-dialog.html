@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>
+  <mat-icon aria-hidden="true">person</mat-icon>
+  {{ author ? 'Editar autor' : 'Nuevo autor' }}
+</h2>
+
+<mat-dialog-content>
+  <form class="dialog-form" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+      @if (form.controls.name.hasError('required')) {
+        <mat-error>El nombre es requerido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pais</mat-label>
+      <input matInput formControlName="country" />
+      @if (form.controls.country.hasError('required')) {
+        <mat-error>El pais es requerido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Telefono</mat-label>
+      <input matInput formControlName="phoneNumber" />
+      @if (form.controls.phoneNumber.hasError('required')) {
+        <mat-error>El telefono es requerido.</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="close()" [disabled]="loading()">Cancelar</button>
+  <button mat-flat-button color="primary" type="button" (click)="save()" [disabled]="loading()">
+    @if (loading()) {
+      <mat-spinner diameter="18" />
+    } @else {
+      Guardar
+    }
+  </button>
+</mat-dialog-actions>

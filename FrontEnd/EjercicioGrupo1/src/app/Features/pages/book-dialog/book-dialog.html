@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>
+  <mat-icon aria-hidden="true">auto_stories</mat-icon>
+  {{ book ? 'Editar libro' : 'Nuevo libro' }}
+</h2>
+
+<mat-dialog-content>
+  <form class="dialog-form" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" />
+      @if (form.controls.name.hasError('required')) {
+        <mat-error>El nombre es requerido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Autor</mat-label>
+      <input matInput formControlName="author" />
+      @if (form.controls.author.hasError('required')) {
+        <mat-error>El autor es requerido.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Publicado</mat-label>
+      <input matInput formControlName="publishedAt" />
+      @if (form.controls.publishedAt.hasError('required')) {
+        <mat-error>La fecha o mes es requerido.</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="close()" [disabled]="loading()">Cancelar</button>
+  <button mat-flat-button color="primary" type="button" (click)="save()" [disabled]="loading()">
+    @if (loading()) {
+      <mat-spinner diameter="18" />
+    } @else {
+      Guardar
+    }
+  </button>
+</mat-dialog-actions>

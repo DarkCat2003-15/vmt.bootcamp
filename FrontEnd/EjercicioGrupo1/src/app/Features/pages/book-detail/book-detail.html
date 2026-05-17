@@ -1,0 +1,51 @@
+<header class="page-heading">
+  <div>
+    <p>Detalle</p>
+    <h1>Libro</h1>
+  </div>
+  <a mat-stroked-button routerLink="/books">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Volver
+  </a>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando detalle del libro">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else if (book(); as selectedBook) {
+  <mat-card class="detail-card" appearance="outlined">
+    <mat-card-header>
+      <mat-icon mat-card-avatar aria-hidden="true">auto_stories</mat-icon>
+      <mat-card-title>{{ selectedBook.name }}</mat-card-title>
+      <mat-card-subtitle>{{ selectedBook.author }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="detail-grid">
+      <div class="detail-row">
+        <span>ID</span>
+        <strong>{{ selectedBook.id }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Libro</span>
+        <strong>{{ selectedBook.name }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Autor</span>
+        <strong>{{ selectedBook.author }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Publicado</span>
+        <strong>{{ selectedBook.publishedAt }}</strong>
+      </div>
+      <div class="detail-row">
+        <span>Creado</span>
+        <strong>{{ selectedBook.createdAt | date: 'medium' }}</strong>
+      </div>
+    </mat-card-content>
+  </mat-card>
+}

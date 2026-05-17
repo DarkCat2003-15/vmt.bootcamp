@@ -1,0 +1,16 @@
+.app-nav {
+  display: flex;
+  gap: 8px;
+  padding: 12px max(16px, calc((100vw - 1120px) / 2));
+  background: #ffffff;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+a {
+  border-radius: 8px;
+}
+
+.active-link {
+  background: #d1e9ff;
+  color: #175cd3;
+}
