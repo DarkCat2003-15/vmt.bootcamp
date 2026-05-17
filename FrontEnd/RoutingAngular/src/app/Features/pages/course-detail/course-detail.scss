@@ -1,0 +1,57 @@
+.detail-layout {
+  display: grid;
+  place-items: start center;
+}
+
+.course-detail-card {
+  width: min(100%, 720px);
+  border-color: rgba(20, 184, 166, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 18px 44px rgba(30, 41, 59, 0.1);
+}
+
+.course-detail-card mat-card-header {
+  align-items: center;
+  padding: 24px 24px 8px;
+}
+
+.course-detail-card mat-card-title {
+  color: #172554;
+  font-size: clamp(24px, 4vw, 32px);
+}
+
+.course-avatar {
+  display: grid;
+  place-items: center;
+  background: rgba(20, 184, 166, 0.14);
+  color: #0f766e;
+}
+
+.course-detail-card mat-card-content {
+  padding-top: 14px;
+}
+
+.description {
+  margin: 18px 0 8px;
+  color: #334155;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.course-detail-card mat-card-actions {
+  padding: 8px 24px 24px;
+}
+
+.loading-state,
+.empty-state {
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+}
+
+.empty-state {
+  gap: 10px;
+  color: #64748b;
+  text-align: center;
+}

@@ -1,0 +1,12 @@
+<nav class="app-nav" aria-label="Navegacion principal">
+  @for (link of links; track link.path) {
+    <a
+      class="nav-link"
+      [routerLink]="link.path"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      {{ link.label }}
+    </a>
+  }
+</nav>

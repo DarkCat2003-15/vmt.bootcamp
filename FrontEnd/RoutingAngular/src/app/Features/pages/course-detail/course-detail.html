@@ -1,0 +1,51 @@
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando detalle del curso">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (course(); as currentCourse) {
+  <article class="detail-layout">
+    <mat-card class="course-detail-card" appearance="outlined">
+      <mat-card-header>
+        <div mat-card-avatar class="course-avatar">
+          <mat-icon aria-hidden="true">auto_stories</mat-icon>
+        </div>
+        <mat-card-title>{{ currentCourse.name }}</mat-card-title>
+        <mat-card-subtitle>{{ currentCourse.instructor }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-chip-set aria-label="Nivel del curso">
+          <mat-chip color="primary" highlighted>{{ currentCourse.level }}</mat-chip>
+        </mat-chip-set>
+
+        <p class="description">{{ currentCourse.description }}</p>
+
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>badge</mat-icon>
+            <span matListItemTitle>ID</span>
+            <span matListItemLine>{{ currentCourse.id }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>event</mat-icon>
+            <span matListItemTitle>Fecha de creacion</span>
+            <span matListItemLine>{{ currentCourse.createdAt | date: 'medium' }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-flat-button color="primary" type="button" (click)="goBack()">
+          <mat-icon aria-hidden="true">arrow_back</mat-icon>
+          Volver
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </article>
+} @else {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+    <button mat-button type="button" (click)="goBack()">Volver a cursos</button>
+  </section>
+}

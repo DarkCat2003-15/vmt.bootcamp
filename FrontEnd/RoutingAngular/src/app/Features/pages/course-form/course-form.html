@@ -1,0 +1,54 @@
+<form class="entity-form" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre del curso</mat-label>
+    <input matInput formControlName="name" />
+    @if (form.controls.name.hasError('required') && form.controls.name.touched) {
+      <mat-error>El nombre es obligatorio.</mat-error>
+    } @else if (form.controls.name.hasError('minlength') && form.controls.name.touched) {
+      <mat-error>Ingresa al menos 3 caracteres.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Instructor</mat-label>
+    <input matInput formControlName="instructor" />
+    @if (form.controls.instructor.hasError('required') && form.controls.instructor.touched) {
+      <mat-error>El instructor es obligatorio.</mat-error>
+    } @else if (form.controls.instructor.hasError('minlength') && form.controls.instructor.touched) {
+      <mat-error>Ingresa al menos 3 caracteres.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nivel</mat-label>
+    <mat-select formControlName="level">
+      @for (level of levels; track level) {
+        <mat-option [value]="level">{{ level }}</mat-option>
+      }
+    </mat-select>
+    @if (form.controls.level.hasError('required') && form.controls.level.touched) {
+      <mat-error>El nivel es obligatorio.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Descripcion</mat-label>
+    <textarea matInput rows="4" formControlName="description"></textarea>
+    @if (form.controls.description.hasError('required') && form.controls.description.touched) {
+      <mat-error>La descripcion es obligatoria.</mat-error>
+    } @else if (form.controls.description.hasError('minlength') && form.controls.description.touched) {
+      <mat-error>Ingresa al menos 10 caracteres.</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="form-actions">
+    <button mat-button type="button" (click)="cancel()" [disabled]="loading">Cancelar</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loading">
+      @if (loading) {
+        <mat-spinner diameter="20" />
+      } @else {
+        {{ submitLabel }}
+      }
+    </button>
+  </div>
+</form>

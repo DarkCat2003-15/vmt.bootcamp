@@ -1,0 +1,49 @@
+<header class="page-heading">
+  <div>
+    <p>Oferta academica</p>
+    <h1>Cursos</h1>
+  </div>
+  <button mat-flat-button color="primary" type="button" (click)="openCourseDialog()">
+    <mat-icon aria-hidden="true">add</mat-icon>
+    Nuevo curso
+  </button>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando cursos">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else {
+  <section class="course-grid" aria-label="Lista de cursos">
+    @for (course of courses(); track course.id) {
+      <mat-card class="course-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="course-avatar">
+            <mat-icon aria-hidden="true">auto_stories</mat-icon>
+          </div>
+          <mat-card-title>{{ course.name }}</mat-card-title>
+          <mat-card-subtitle>{{ course.instructor }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ course.description }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <a mat-icon-button color="primary" [routerLink]="['/courses', course.id]" matTooltip="Ver detalle">
+            <mat-icon aria-hidden="true">visibility</mat-icon>
+          </a>
+          <button mat-icon-button color="primary" type="button" (click)="openCourseDialog(course)" matTooltip="Editar">
+            <mat-icon aria-hidden="true">edit</mat-icon>
+          </button>
+          <button mat-icon-button class="danger-action" type="button" (click)="deleteCourse(course)" matTooltip="Eliminar">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+}

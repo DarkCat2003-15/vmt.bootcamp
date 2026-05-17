@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>{{ student ? 'Editar estudiante' : 'Nuevo estudiante' }}</h2>
+
+<mat-dialog-content>
+  @if (errorMessage()) {
+    <p class="dialog-error">
+      <mat-icon aria-hidden="true">error_outline</mat-icon>
+      {{ errorMessage() }}
+    </p>
+  }
+
+  <app-student-form
+    [student]="student"
+    [loading]="loading()"
+    [submitLabel]="student ? 'Actualizar' : 'Crear'"
+    (formSubmit)="save($event)"
+    (formCancel)="close()"
+  />
+</mat-dialog-content>

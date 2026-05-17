@@ -1,0 +1,54 @@
+.detail-layout {
+  display: grid;
+  place-items: start center;
+}
+
+.profile-card {
+  width: min(100%, 720px);
+  border-color: rgba(79, 70, 229, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 44px rgba(30, 41, 59, 0.1);
+}
+
+.profile-card mat-card-header {
+  align-items: center;
+  padding: 24px 24px 8px;
+}
+
+.profile-card img[mat-card-avatar] {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.profile-card mat-card-title {
+  color: #172554;
+  font-size: clamp(24px, 4vw, 32px);
+}
+
+.profile-card mat-card-subtitle,
+mat-list-item span[matListItemLine] {
+  overflow-wrap: anywhere;
+}
+
+.profile-card mat-card-content {
+  padding-top: 14px;
+}
+
+.profile-card mat-card-actions {
+  padding: 8px 24px 24px;
+}
+
+.loading-state,
+.empty-state {
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+}
+
+.empty-state {
+  gap: 10px;
+  color: #64748b;
+  text-align: center;
+}

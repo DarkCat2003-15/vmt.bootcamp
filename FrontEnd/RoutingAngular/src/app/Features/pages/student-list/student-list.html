@@ -1,0 +1,44 @@
+<header class="page-heading">
+  <div>
+    <p>Directorio academico</p>
+    <h1>Estudiantes</h1>
+  </div>
+  <button mat-flat-button color="primary" type="button" (click)="openStudentDialog()">
+    <mat-icon aria-hidden="true">add</mat-icon>
+    Nuevo estudiante
+  </button>
+</header>
+
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando estudiantes">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (errorMessage()) {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+  </section>
+} @else {
+  <section class="student-grid" aria-label="Lista de estudiantes">
+    @for (student of students(); track student.id) {
+      <mat-card class="student-card" appearance="outlined">
+        <mat-card-header>
+          <img mat-card-avatar [src]="student.avatar" [alt]="student.name" />
+          <mat-card-title>{{ student.name }}</mat-card-title>
+          <mat-card-subtitle>{{ student.email }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions align="end">
+          <a mat-icon-button color="primary" [routerLink]="['/students', student.id]" matTooltip="Ver detalle">
+            <mat-icon aria-hidden="true">visibility</mat-icon>
+          </a>
+          <button mat-icon-button color="primary" type="button" (click)="openStudentDialog(student)" matTooltip="Editar">
+            <mat-icon aria-hidden="true">edit</mat-icon>
+          </button>
+          <button mat-icon-button class="danger-action" type="button" (click)="deleteStudent(student)" matTooltip="Eliminar">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    }
+  </section>
+}

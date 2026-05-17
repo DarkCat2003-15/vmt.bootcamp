@@ -1,0 +1,48 @@
+@if (isLoading()) {
+  <section class="loading-state" aria-label="Cargando detalle del estudiante">
+    <mat-spinner diameter="48" />
+  </section>
+} @else if (student(); as currentStudent) {
+  <article class="detail-layout">
+    <mat-card class="profile-card" appearance="outlined">
+      <mat-card-header>
+        <img mat-card-avatar [src]="currentStudent.avatar" [alt]="currentStudent.name" />
+        <mat-card-title>{{ currentStudent.name }}</mat-card-title>
+        <mat-card-subtitle>{{ currentStudent.email }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon matListItemIcon>badge</mat-icon>
+            <span matListItemTitle>ID</span>
+            <span matListItemLine>{{ currentStudent.id }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>event</mat-icon>
+            <span matListItemTitle>Fecha de creacion</span>
+            <span matListItemLine>{{ currentStudent.createdAt | date: 'medium' }}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon matListItemIcon>menu_book</mat-icon>
+            <span matListItemTitle>Curso asignado</span>
+            <span matListItemLine>{{ currentStudent.courseId }}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-flat-button color="primary" type="button" (click)="goBack()">
+          <mat-icon aria-hidden="true">arrow_back</mat-icon>
+          Volver
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </article>
+} @else {
+  <section class="empty-state">
+    <mat-icon aria-hidden="true">error_outline</mat-icon>
+    <p>{{ errorMessage() }}</p>
+    <button mat-button type="button" (click)="goBack()">Volver a estudiantes</button>
+  </section>
+}
