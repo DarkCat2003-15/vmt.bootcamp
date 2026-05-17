@@ -1,0 +1,881 @@
+{
+  "info": {
+    "_postman_id": "90ee27bf-5152-46af-966a-7de4c89b68c0",
+    "name": "STEAM Full Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "OpenAI Codex"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "App",
+      "item": [
+        {
+          "name": "Info",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/app/info",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "app",
+                "info"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.version) pm.environment.set('appVersion', json.data.version);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Init",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{registerEmail}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register/init",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register", "init"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data) pm.environment.set('registerToken', json.data);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Register Validate",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register/validate/{{registerToken}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register", "validate", "{{registerToken}}"]
+            }
+          }
+        },
+        {
+          "name": "Register Complete",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{registerEmail}}\",\n  \"username\": \"{{registerUsername}}\",\n  \"password\": \"{{registerPassword}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register/complete/{{registerToken}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register", "complete", "{{registerToken}}"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.userId) pm.environment.set('userId', json.data.userId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{loginEmail}}\",\n  \"password\": \"{{loginPassword}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "const data = json.data || {};",
+                  "if (data.token) pm.environment.set('token', data.token);",
+                  "if (data.refreshToken) pm.environment.set('refreshToken', data.refreshToken);",
+                  "if (data.userId) pm.environment.set('userId', data.userId);",
+                  "if (Array.isArray(data.roles)) pm.environment.set('currentRoles', data.roles.join(','));",
+                  "if (Array.isArray(data.permissions)) pm.environment.set('currentPermissions', data.permissions.join(','));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Renew",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/renew",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "renew"]
+            }
+          }
+        },
+        {
+          "name": "Recover Password - Send OTP",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{loginEmail}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/recoverPassword",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "recoverPassword"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data) pm.environment.set('otpCode', json.data);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Recover Password - Use OTP",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newPassword\": \"{{recoverNewPassword}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/recoverPassword/{{otpCode}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "recoverPassword", "{{otpCode}}"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('loginPassword', pm.environment.get('recoverNewPassword'));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"{{loginPassword}}\",\n  \"newPassword\": \"{{changePasswordNew}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/changePassword",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "changePassword"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.environment.set('loginPassword', pm.environment.get('changePasswordNew'));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Catalog Setup",
+      "item": [
+        {
+          "name": "Create Developer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"developerName\": \"Codex Studio\",\n  \"email\": \"studio@codex.local\",\n  \"password\": \"Password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/developers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "developers"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.developerId) pm.environment.set('developerId', json.data.developerId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Publisher",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"publisherName\": \"Codex Publishing\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/publishers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "publishers"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.publisherId) pm.environment.set('publisherId', json.data.publisherId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Genre",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Action\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/genres",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "genres"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.genreId) pm.environment.set('genreId', json.data.genreId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Game",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Codex Arena\",\n  \"description\": \"Juego demo estilo Steam para probar la API\",\n  \"releaseDate\": \"2026-05-01\",\n  \"price\": 29.99,\n  \"developerId\": \"{{developerId}}\",\n  \"publisherId\": \"{{publisherId}}\",\n  \"genreIds\": [{{genreId}}]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/games",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.gameId) pm.environment.set('gameId', json.data.gameId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Achievement",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Primer paso\",\n  \"description\": \"Inicia tu primera partida\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/games/{{gameId}}/achievements",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games", "{{gameId}}", "achievements"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.achievementId) pm.environment.set('achievementId', json.data.achievementId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create DLC",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Supporter Pack\",\n  \"price\": 4.99\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/games/{{gameId}}/dlcs",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games", "{{gameId}}", "dlcs"]
+            }
+          }
+        },
+        {
+          "name": "Create Offer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"discount\": 25,\n  \"startDate\": \"2026-05-01T00:00:00Z\",\n  \"endDate\": \"2027-05-01T00:00:00Z\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/games/{{gameId}}/offers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games", "{{gameId}}", "offers"]
+            }
+          }
+        },
+        {
+          "name": "List Games",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/games?search=Codex",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games"],
+              "query": [
+                { "key": "search", "value": "Codex" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Game Detail",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/games/{{gameId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "games", "{{gameId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Store And Community",
+      "item": [
+        {
+          "name": "Add To Wishlist",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameId\": \"{{gameId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/wishlist",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "wishlist"]
+            }
+          }
+        },
+        {
+          "name": "Get Wishlist",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/wishlist",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "wishlist"]
+            }
+          }
+        },
+        {
+          "name": "Purchase Game",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameId\": \"{{gameId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/library/purchase",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "library", "purchase"]
+            }
+          }
+        },
+        {
+          "name": "Get Library",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/library",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "library"]
+            }
+          }
+        },
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameId\": \"{{gameId}}\",\n  \"isRecommended\": true,\n  \"comment\": \"Muy buena demo para probar la API\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/reviews",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reviews"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.reviewId) pm.environment.set('reviewId', json.data.reviewId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List Reviews By Game",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reviews?gameId={{gameId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reviews"],
+              "query": [
+                { "key": "gameId", "value": "{{gameId}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Answer Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"Gracias por la reseña\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/reviews/{{reviewId}}/answers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "reviews", "{{reviewId}}", "answers"]
+            }
+          }
+        },
+        {
+          "name": "Start Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gameId\": \"{{gameId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/start",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sessions", "start"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.data && json.data.sessionId) pm.environment.set('sessionId', json.data.sessionId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "End Session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sessions/{{sessionId}}/end",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sessions", "{{sessionId}}", "end"]
+            }
+          }
+        },
+        {
+          "name": "Unlock Achievement",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"achievementId\": {{achievementId}}\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/userachievements/unlock",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "userachievements", "unlock"]
+            }
+          }
+        },
+        {
+          "name": "My Achievements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/userachievements?gameId={{gameId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "userachievements"],
+              "query": [
+                { "key": "gameId", "value": "{{gameId}}" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Add Friend",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"friendId\": \"{{friendUserId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/friends",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "friends"]
+            }
+          }
+        },
+        {
+          "name": "My Friends",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/friends",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "friends"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "My Roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "me"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "const roles = (json.data || []).map(x => x.name);",
+                  "pm.environment.set('currentRoles', roles.join(','));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List Roles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "const roles = json.data || [];",
+                  "const admin = roles.find(x => x.name === 'admin');",
+                  "const developer = roles.find(x => x.name === 'developer');",
+                  "const user = roles.find(x => x.name === 'user');",
+                  "if (admin) pm.environment.set('adminRoleId', admin.id);",
+                  "if (developer) pm.environment.set('developerRoleId', developer.id);",
+                  "if (user) pm.environment.set('userRoleId', user.id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "List Permissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/permissions",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "permissions"]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "const permissions = (json.data || []).map(x => x.code);",
+                  "pm.environment.set('currentPermissions', permissions.join(','));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Assign Developer Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{friendUserId}}\",\n  \"roleId\": \"{{developerRoleId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/assign",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "assign"]
+            }
+          }
+        },
+        {
+          "name": "Assign User Role",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"{{friendUserId}}\",\n  \"roleId\": \"{{userRoleId}}\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/assign",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "assign"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

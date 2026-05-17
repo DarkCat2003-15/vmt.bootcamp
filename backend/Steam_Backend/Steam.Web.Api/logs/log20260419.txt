@@ -1,0 +1,172 @@
+2026-04-19 22:07:02.637 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-19 22:07:03.282 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:07:03.360 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:07:03.630 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:07:03.634 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:07:03.719 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-19 22:07:03.723 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-19 22:07:04.102 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-19 22:07:04.154 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-19 22:07:04.600 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-19 22:07:04.682 -05:00 [DBG] Creating DbConnection.
+2026-04-19 22:07:04.743 -05:00 [DBG] Created DbConnection. (58ms).
+2026-04-19 22:07:04.753 -05:00 [DBG] Opening connection to database '' on server ''.
+2026-04-19 22:07:05.073 -05:00 [ERR] An error occurred using the connection to database '' on server ''.
+2026-04-19 22:07:05.119 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SteamDomain.Database.SqlServer.Context.SteamContext'.
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-04-19 22:11:36.507 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-19 22:11:37.085 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:11:37.170 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:11:37.445 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:11:37.451 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:11:37.551 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-19 22:11:37.555 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-19 22:11:37.928 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-19 22:11:37.973 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-19 22:11:38.280 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-19 22:11:38.342 -05:00 [DBG] Creating DbConnection.
+2026-04-19 22:11:38.373 -05:00 [DBG] Created DbConnection. (27ms).
+2026-04-19 22:11:38.383 -05:00 [DBG] Opening connection to database '' on server ''.
+2026-04-19 22:11:38.561 -05:00 [ERR] An error occurred using the connection to database '' on server ''.
+2026-04-19 22:11:38.592 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'SteamDomain.Database.SqlServer.Context.SteamContext'.
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at Microsoft.Data.SqlClient.SqlConnection.PermissionDemand()
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-04-19 22:47:34.754 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-19 22:47:35.275 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:47:35.339 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:47:35.522 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:47:35.529 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-19 22:47:35.622 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-19 22:47:35.626 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-19 22:47:35.913 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 

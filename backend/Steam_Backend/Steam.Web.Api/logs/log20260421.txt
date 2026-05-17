@@ -1,0 +1,1935 @@
+2026-04-21 22:14:55.313 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-21 22:14:56.137 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:14:56.237 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:14:56.553 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:14:56.560 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:14:56.699 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-21 22:14:56.703 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-21 22:14:57.159 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:14:57.282 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-21 22:14:57.724 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:14:57.803 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:14:57.909 -05:00 [DBG] Created DbConnection. (82ms).
+2026-04-21 22:14:57.925 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:02.185 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:02.200 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:15:02.216 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (15ms).
+2026-04-21 22:15:02.223 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (28ms).
+2026-04-21 22:15:02.239 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:15:02.480 -05:00 [INF] Executed DbCommand (229ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:15:02.518 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:02.531 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 38ms reading results.
+2026-04-21 22:15:02.540 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:02.553 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (13ms).
+2026-04-21 22:15:02.559 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:15:02.581 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:02.587 -05:00 [DBG] Disposed connection to database '' on server '' (5ms).
+2026-04-21 22:15:02.770 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-04-21 22:15:02.896 -05:00 [DBG] Hosting starting
+2026-04-21 22:15:02.973 -05:00 [INF] User profile is available. Using 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-21 22:15:03.017 -05:00 [DBG] Reading data from file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-21 22:15:03.046 -05:00 [DBG] Found key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992}.
+2026-04-21 22:15:03.095 -05:00 [DBG] Considering key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with expiration date 2026-07-07 03:27:01Z as default key.
+2026-04-21 22:15:03.121 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:15:03.135 -05:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-04-21 22:15:03.142 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:15:03.164 -05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-04-21 22:15:03.172 -05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-04-21 22:15:03.186 -05:00 [DBG] Using key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} as the default key.
+2026-04-21 22:15:03.195 -05:00 [DBG] Key ring with default key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} was loaded during application startup.
+2026-04-21 22:15:03.228 -05:00 [DBG] Middleware loaded
+2026-04-21 22:15:03.237 -05:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (14931 B).
+2026-04-21 22:15:03.243 -05:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-04-21 22:15:03.520 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-04-21 22:15:03.527 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-04-21 22:15:03.564 -05:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-04-21 22:15:03.752 -05:00 [INF] Now listening on: http://localhost:5168
+2026-04-21 22:15:03.755 -05:00 [DBG] Loaded hosting startup assembly Steam.Web.Api
+2026-04-21 22:15:03.757 -05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-04-21 22:15:03.759 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-04-21 22:15:03.761 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-04-21 22:15:03.777 -05:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:15:03.782 -05:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:15:03.973 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-21 22:15:03.975 -05:00 [INF] Hosting environment: Development
+2026-04-21 22:15:03.977 -05:00 [INF] Content root path: C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api
+2026-04-21 22:15:03.979 -05:00 [DBG] Hosting started
+2026-04-21 22:15:54.506 -05:00 [DBG] Connection id "0HNL03LRGQT3A" received FIN.
+2026-04-21 22:15:54.525 -05:00 [DBG] Connection id "0HNL03LRGQT3A" accepted.
+2026-04-21 22:15:54.530 -05:00 [DBG] Connection id "0HNL03LRGQT3A" started.
+2026-04-21 22:15:54.570 -05:00 [DBG] Connection id "0HNL03LRGQT3B" accepted.
+2026-04-21 22:15:54.573 -05:00 [DBG] Connection id "0HNL03LRGQT3B" started.
+2026-04-21 22:15:54.585 -05:00 [DBG] Connection id "0HNL03LRGQT3A" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:15:54.590 -05:00 [DBG] Connection id "0HNL03LRGQT3A" disconnecting.
+2026-04-21 22:15:54.596 -05:00 [DBG] Connection id "0HNL03LRGQT3A" stopped.
+2026-04-21 22:15:54.650 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 94
+2026-04-21 22:15:54.726 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-21 22:15:54.729 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-21 22:15:54.734 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:15:54.746 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-21 22:15:54.899 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:15:54.905 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:15:54.909 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:15:54.957 -05:00 [INF] Route matched with {action = "Create", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Dtos.UserDto]] Create(SteamApplication.Models.Request.Users.CreateUsersRequest) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 22:15:54.964 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:15:54.967 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:15:54.970 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:15:54.975 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:15:54.978 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:15:54.984 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:15:54.989 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:15:55.021 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' ...
+2026-04-21 22:15:55.030 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' using the name '' in request data ...
+2026-04-21 22:15:55.035 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:15:55.048 -05:00 [DBG] Connection id "0HNL03LRGQT3B", Request id "0HNL03LRGQT3B:00000001": started reading request body.
+2026-04-21 22:15:55.051 -05:00 [DBG] Connection id "0HNL03LRGQT3B", Request id "0HNL03LRGQT3B:00000001": done reading request body.
+2026-04-21 22:15:55.067 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Users.CreateUsersRequest'
+2026-04-21 22:15:55.069 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:15:55.071 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:15:55.074 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' ...
+2026-04-21 22:15:55.101 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:15:55.177 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:15:55.193 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:15:55.241 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL))) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:15:55.269 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:15:55.271 -05:00 [DBG] Created DbConnection. (2ms).
+2026-04-21 22:15:55.274 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.277 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.279 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:15:55.282 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:15:55.289 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (9ms).
+2026-04-21 22:15:55.294 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:15:55.394 -05:00 [INF] Executed DbCommand (102ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:15:55.397 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.400 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2026-04-21 22:15:55.403 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.408 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (5ms).
+2026-04-21 22:15:55.493 -05:00 [DBG] 'SteamContext' generated a temporary value for the property 'User.UserId'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:15:55.630 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:15:55.639 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:15:55.646 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:15:55.672 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:15:55.823 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.825 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.832 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:15:55.834 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:15:55.838 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 22:15:55.841 -05:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 150), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([DeletedAt], [Email], [Password], [StatusID], [UpdateAt], [UserName])
+OUTPUT INSERTED.[UserID], INSERTED.[CreatedAt]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-04-21 22:15:55.896 -05:00 [INF] Executed DbCommand (56ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 150), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([DeletedAt], [Email], [Password], [StatusID], [UpdateAt], [UserName])
+OUTPUT INSERTED.[UserID], INSERTED.[CreatedAt]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-04-21 22:15:55.918 -05:00 [DBG] The foreign key property 'User.UserId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-21 22:15:55.933 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.935 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 35ms reading results.
+2026-04-21 22:15:55.939 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:15:55.942 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:15:55.966 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Added"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:15:55.973 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 1 entities written to the database.
+2026-04-21 22:16:02.222 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:16:02.225 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:16:02.229 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:16:02.232 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 0 entities written to the database.
+2026-04-21 22:16:02.246 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 22:16:02.254 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 22:16:02.263 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 22:16:02.264 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 22:16:02.271 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 22:16:02.276 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[SteamApplication.Models.Dtos.UserDto, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-21 22:16:02.332 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api) in 7344.4995ms
+2026-04-21 22:16:02.339 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:16:02.348 -05:00 [DBG] Connection id "0HNL03LRGQT3B" completed keep alive response.
+2026-04-21 22:16:02.354 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:16:02.362 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:16:02.366 -05:00 [DBG] Disposed connection to database '' on server '' (3ms).
+2026-04-21 22:16:02.370 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 201 null application/json; charset=utf-8 7732.6883ms
+2026-04-21 22:17:08.636 -05:00 [DBG] Connection id "0HNL03LRGQT3C" received FIN.
+2026-04-21 22:17:08.638 -05:00 [DBG] Connection id "0HNL03LRGQT3C" accepted.
+2026-04-21 22:17:08.650 -05:00 [DBG] Connection id "0HNL03LRGQT3C" started.
+2026-04-21 22:17:08.681 -05:00 [DBG] Connection id "0HNL03LRGQT3D" accepted.
+2026-04-21 22:17:08.681 -05:00 [DBG] Connection id "0HNL03LRGQT3C" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:17:08.684 -05:00 [DBG] Connection id "0HNL03LRGQT3D" started.
+2026-04-21 22:17:08.687 -05:00 [DBG] Connection id "0HNL03LRGQT3C" disconnecting.
+2026-04-21 22:17:08.691 -05:00 [DBG] Connection id "0HNL03LRGQT3C" stopped.
+2026-04-21 22:17:08.693 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE - null null
+2026-04-21 22:17:08.701 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE'
+2026-04-21 22:17:08.704 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE'
+2026-04-21 22:17:08.707 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-21 22:17:08.714 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:17:08.722 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-21 22:17:08.731 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-21 22:17:09.308 -05:00 [DBG] Connection id "0HNL03LRGQT3D" completed keep alive response.
+2026-04-21 22:17:09.312 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE - 401 null application/json; charset=utf-8 619.7829ms
+2026-04-21 22:17:49.686 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/Auth/login - application/json 76
+2026-04-21 22:17:49.694 -05:00 [DBG] 1 candidate(s) found for the request path '/api/Auth/login'
+2026-04-21 22:17:49.696 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)' with route pattern 'api/Auth/login' is valid for the request path '/api/Auth/login'
+2026-04-21 22:17:49.699 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:17:49.705 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:17:49.707 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:17:49.710 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:17:49.720 -05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Responses.Auth.LoginAuthResponse]] Login(SteamApplication.Models.Request.Auth.LoginAuthRequest) on controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api).
+2026-04-21 22:17:49.725 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:17:49.728 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:17:49.731 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:17:49.735 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:17:49.738 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:17:49.741 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:17:49.750 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:17:49.754 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:17:49.758 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' using the name '' in request data ...
+2026-04-21 22:17:49.761 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:17:49.766 -05:00 [DBG] Connection id "0HNL03LRGQT3D", Request id "0HNL03LRGQT3D:00000002": started reading request body.
+2026-04-21 22:17:49.769 -05:00 [DBG] Connection id "0HNL03LRGQT3D", Request id "0HNL03LRGQT3D:00000002": done reading request body.
+2026-04-21 22:17:49.774 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'
+2026-04-21 22:17:49.777 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:17:49.780 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:17:49.783 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:17:49.789 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:17:49.909 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:17:49.916 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .FirstOrDefault(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:17:50.011 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<User>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<User>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            User entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                User instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(User);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (User)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                            {
+                                return 
+                                {
+                                    User instance;
+                                    instance = new User();
+                                    instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                    instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                    instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                    instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                    instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                    instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                    instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                    instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(User)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:17:50.027 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:17:50.029 -05:00 [DBG] Created DbConnection. (1ms).
+2026-04-21 22:17:50.031 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:17:50.033 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:17:50.036 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:17:50.038 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:17:50.042 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 22:17:50.045 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:17:50.057 -05:00 [INF] Executed DbCommand (12ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:17:50.069 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:17:50.073 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:17:50.077 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 15ms reading results.
+2026-04-21 22:17:50.080 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:17:50.083 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:24:22.645 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-21 22:24:23.018 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:24:23.074 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:24:23.218 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:24:23.225 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:24:23.308 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-21 22:24:23.312 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-21 22:24:23.561 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:24:23.632 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-21 22:24:23.825 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:24:23.865 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:24:23.897 -05:00 [DBG] Created DbConnection. (31ms).
+2026-04-21 22:24:23.903 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:24:24.273 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:24:24.279 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:24:24.287 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (7ms).
+2026-04-21 22:24:24.290 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (12ms).
+2026-04-21 22:24:24.298 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:24:24.352 -05:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:24:24.370 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:24:24.376 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 18ms reading results.
+2026-04-21 22:24:24.382 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:24:24.388 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (5ms).
+2026-04-21 22:24:24.390 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:24:24.394 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:24:24.396 -05:00 [DBG] Disposed connection to database '' on server '' (2ms).
+2026-04-21 22:24:24.478 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-04-21 22:24:24.536 -05:00 [DBG] Hosting starting
+2026-04-21 22:24:24.567 -05:00 [INF] User profile is available. Using 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-21 22:24:24.581 -05:00 [DBG] Reading data from file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-21 22:24:24.592 -05:00 [DBG] Found key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992}.
+2026-04-21 22:24:24.609 -05:00 [DBG] Considering key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with expiration date 2026-07-07 03:27:01Z as default key.
+2026-04-21 22:24:24.613 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:24:24.615 -05:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-04-21 22:24:24.618 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:24:24.622 -05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-04-21 22:24:24.624 -05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-04-21 22:24:24.630 -05:00 [DBG] Using key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} as the default key.
+2026-04-21 22:24:24.633 -05:00 [DBG] Key ring with default key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} was loaded during application startup.
+2026-04-21 22:24:24.646 -05:00 [DBG] Middleware loaded
+2026-04-21 22:24:24.651 -05:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (14931 B).
+2026-04-21 22:24:24.654 -05:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-04-21 22:24:24.774 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-04-21 22:24:24.778 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-04-21 22:24:24.799 -05:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-04-21 22:24:24.861 -05:00 [INF] Now listening on: http://localhost:5168
+2026-04-21 22:24:24.862 -05:00 [DBG] Loaded hosting startup assembly Steam.Web.Api
+2026-04-21 22:24:24.864 -05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-04-21 22:24:24.865 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-04-21 22:24:24.866 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-04-21 22:24:24.873 -05:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:24:24.876 -05:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:24:24.993 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-21 22:24:24.995 -05:00 [INF] Hosting environment: Development
+2026-04-21 22:24:24.996 -05:00 [INF] Content root path: C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api
+2026-04-21 22:24:24.998 -05:00 [DBG] Hosting started
+2026-04-21 22:25:30.291 -05:00 [DBG] Connection id "0HNL03R73UJ0A" received FIN.
+2026-04-21 22:25:30.308 -05:00 [DBG] Connection id "0HNL03R73UJ0A" accepted.
+2026-04-21 22:25:30.311 -05:00 [DBG] Connection id "0HNL03R73UJ0A" started.
+2026-04-21 22:25:30.348 -05:00 [DBG] Connection id "0HNL03R73UJ0B" accepted.
+2026-04-21 22:25:30.353 -05:00 [DBG] Connection id "0HNL03R73UJ0B" started.
+2026-04-21 22:25:30.362 -05:00 [DBG] Connection id "0HNL03R73UJ0A" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:25:30.369 -05:00 [DBG] Connection id "0HNL03R73UJ0A" disconnecting.
+2026-04-21 22:25:30.373 -05:00 [DBG] Connection id "0HNL03R73UJ0A" stopped.
+2026-04-21 22:25:30.421 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/Auth/login - application/json 76
+2026-04-21 22:25:30.505 -05:00 [DBG] 1 candidate(s) found for the request path '/api/Auth/login'
+2026-04-21 22:25:30.508 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)' with route pattern 'api/Auth/login' is valid for the request path '/api/Auth/login'
+2026-04-21 22:25:30.513 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:25:30.526 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-21 22:25:30.656 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:25:30.662 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:25:30.667 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:25:30.715 -05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Responses.Auth.LoginAuthResponse]] Login(SteamApplication.Models.Request.Auth.LoginAuthRequest) on controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api).
+2026-04-21 22:25:30.721 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:25:30.725 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:25:30.729 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:25:30.733 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:25:30.736 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:25:30.742 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:25:30.749 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:25:30.774 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:25:30.780 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' using the name '' in request data ...
+2026-04-21 22:25:30.786 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:25:30.801 -05:00 [DBG] Connection id "0HNL03R73UJ0B", Request id "0HNL03R73UJ0B:00000001": started reading request body.
+2026-04-21 22:25:30.805 -05:00 [DBG] Connection id "0HNL03R73UJ0B", Request id "0HNL03R73UJ0B:00000001": done reading request body.
+2026-04-21 22:25:30.820 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'
+2026-04-21 22:25:30.824 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:25:30.827 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:25:30.831 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:25:30.863 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:25:30.919 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:25:30.940 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .FirstOrDefault(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:25:31.081 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<User>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<User>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            User entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                User instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(User);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (User)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                            {
+                                return 
+                                {
+                                    User instance;
+                                    instance = new User();
+                                    instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                    instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                    instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                    instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                    instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                    instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                    instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                    instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(User)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:25:31.118 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:25:31.121 -05:00 [DBG] Created DbConnection. (2ms).
+2026-04-21 22:25:31.123 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:25:31.128 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:25:31.132 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:25:31.134 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:25:31.142 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (10ms).
+2026-04-21 22:25:31.149 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:25:31.200 -05:00 [INF] Executed DbCommand (54ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:25:31.289 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:25:31.347 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:25:31.352 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 146ms reading results.
+2026-04-21 22:25:31.356 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:25:31.359 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:31:41.419 -05:00 [DBG] Connection id "0HNL03R73UJ0C" received FIN.
+2026-04-21 22:31:41.546 -05:00 [DBG] Connection id "0HNL03R73UJ0C" accepted.
+2026-04-21 22:31:41.581 -05:00 [DBG] Connection id "0HNL03R73UJ0C" started.
+2026-04-21 22:31:41.583 -05:00 [DBG] Connection id "0HNL03R73UJ0D" accepted.
+2026-04-21 22:31:41.585 -05:00 [DBG] Connection id "0HNL03R73UJ0C" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:31:41.585 -05:00 [DBG] Connection id "0HNL03R73UJ0D" started.
+2026-04-21 22:31:41.589 -05:00 [DBG] Connection id "0HNL03R73UJ0C" disconnecting.
+2026-04-21 22:31:41.589 -05:00 [INF] Executed action Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api) in 370808.0038ms
+2026-04-21 22:31:41.592 -05:00 [DBG] Connection id "0HNL03R73UJ0C" stopped.
+2026-04-21 22:31:41.593 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 103
+2026-04-21 22:31:41.601 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:31:41.609 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-21 22:31:41.612 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-21 22:31:41.782 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:31:41.789 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:31:41.791 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:31:41.793 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:31:41.808 -05:00 [INF] Route matched with {action = "Create", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Dtos.UserDto]] Create(SteamApplication.Models.Request.Users.CreateUsersRequest) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 22:31:41.813 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:31:41.816 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:31:41.818 -05:00 [INF] Se generó una excepción no controlada, con el traceId: "75cb650c-c6bd-4dd6-8353-f9572347517a". Excepción: System.Exception: Template no encontrado: AUTH_LOGIN_SUCCESS
+   at SteamApplication.Servicios.EmailTemplateService.Get(String name, Dictionary`2 variables) in C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\SteamApplication\Servicios\EmailTemplateService.cs:line 26
+   at SteamApplication.Servicios.AuthService.Login(LoginAuthRequest model) in C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\SteamApplication\Servicios\AuthService.cs:line 43
+   at Steam.Web.Api.Controllers.AuthController.Login(LoginAuthRequest model) in C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api\Controllers\AuthController.cs:line 22
+   at lambda_method26(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Steam.Web.Api.Middleware.ErrorHandlerMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api\Middleware\ErrorHandlerMiddleware.cs:line 14
+2026-04-21 22:31:41.819 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:31:41.826 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:31:41.829 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:31:41.833 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:31:41.841 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:31:41.845 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' ...
+2026-04-21 22:31:41.848 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' using the name '' in request data ...
+2026-04-21 22:31:41.851 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:31:41.856 -05:00 [DBG] Connection id "0HNL03R73UJ0D", Request id "0HNL03R73UJ0D:00000001": started reading request body.
+2026-04-21 22:31:41.859 -05:00 [DBG] Connection id "0HNL03R73UJ0D", Request id "0HNL03R73UJ0D:00000001": done reading request body.
+2026-04-21 22:31:41.863 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Users.CreateUsersRequest'
+2026-04-21 22:31:41.865 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:31:41.868 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:31:41.870 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest' ...
+2026-04-21 22:31:41.877 -05:00 [DBG] Connection id "0HNL03R73UJ0B" completed keep alive response.
+2026-04-21 22:31:41.879 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.CreateUsersRequest'.
+2026-04-21 22:31:41.884 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:31:41.898 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:41.903 -05:00 [DBG] Disposed connection to database '' on server '' (5ms).
+2026-04-21 22:31:41.908 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/Auth/login - 500 null application/json; charset=utf-8 371500.3269ms
+2026-04-21 22:31:42.013 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:31:42.021 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:31:42.033 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL))) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:31:42.042 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:31:42.045 -05:00 [DBG] Created DbConnection. (3ms).
+2026-04-21 22:31:42.047 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.103 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.108 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:31:42.111 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:31:42.113 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (4ms).
+2026-04-21 22:31:42.116 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:31:42.126 -05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:31:42.130 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.132 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 2ms reading results.
+2026-04-21 22:31:42.136 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.139 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:31:42.215 -05:00 [DBG] 'SteamContext' generated a temporary value for the property 'User.UserId'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:31:42.240 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:31:42.248 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:31:42.254 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:31:42.273 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:31:42.395 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.398 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.405 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:31:42.407 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:31:42.410 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 22:31:42.414 -05:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 150), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([DeletedAt], [Email], [Password], [StatusID], [UpdateAt], [UserName])
+OUTPUT INSERTED.[UserID], INSERTED.[CreatedAt]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-04-21 22:31:42.429 -05:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (Size = 150), @p2='?' (Size = 255), @p3='?' (DbType = Int32), @p4='?' (DbType = DateTime2), @p5='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([DeletedAt], [Email], [Password], [StatusID], [UpdateAt], [UserName])
+OUTPUT INSERTED.[UserID], INSERTED.[CreatedAt]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2026-04-21 22:31:42.447 -05:00 [DBG] The foreign key property 'User.UserId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-21 22:31:42.459 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.462 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 29ms reading results.
+2026-04-21 22:31:42.466 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:42.469 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (2ms).
+2026-04-21 22:31:42.490 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Added"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:31:42.495 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 1 entities written to the database.
+2026-04-21 22:31:46.264 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:31:46.267 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:31:46.270 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:31:46.273 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 0 entities written to the database.
+2026-04-21 22:31:46.282 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 22:31:46.288 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 22:31:46.289 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 22:31:46.290 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 22:31:46.293 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 22:31:46.298 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[SteamApplication.Models.Dtos.UserDto, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-21 22:31:46.316 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api) in 4483.0422ms
+2026-04-21 22:31:46.318 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-21 22:31:46.320 -05:00 [DBG] Connection id "0HNL03R73UJ0D" completed keep alive response.
+2026-04-21 22:31:46.323 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:31:46.325 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:31:46.326 -05:00 [DBG] Disposed connection to database '' on server '' (1ms).
+2026-04-21 22:31:46.330 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 201 null application/json; charset=utf-8 4738.2735ms
+2026-04-21 22:32:34.607 -05:00 [DBG] Connection id "0HNL03R73UJ0E" received FIN.
+2026-04-21 22:32:34.609 -05:00 [DBG] Connection id "0HNL03R73UJ0E" accepted.
+2026-04-21 22:32:34.619 -05:00 [DBG] Connection id "0HNL03R73UJ0E" started.
+2026-04-21 22:32:34.619 -05:00 [DBG] Connection id "0HNL03R73UJ0F" accepted.
+2026-04-21 22:32:34.621 -05:00 [DBG] Connection id "0HNL03R73UJ0E" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:32:34.624 -05:00 [DBG] Connection id "0HNL03R73UJ0F" started.
+2026-04-21 22:32:34.634 -05:00 [DBG] Connection id "0HNL03R73UJ0E" disconnecting.
+2026-04-21 22:32:34.635 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/Auth/login - application/json 75
+2026-04-21 22:32:34.637 -05:00 [DBG] Connection id "0HNL03R73UJ0E" stopped.
+2026-04-21 22:32:34.641 -05:00 [DBG] 1 candidate(s) found for the request path '/api/Auth/login'
+2026-04-21 22:32:34.644 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)' with route pattern 'api/Auth/login' is valid for the request path '/api/Auth/login'
+2026-04-21 22:32:34.647 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:32:34.653 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:32:34.654 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:32:34.656 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:32:34.659 -05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Responses.Auth.LoginAuthResponse]] Login(SteamApplication.Models.Request.Auth.LoginAuthRequest) on controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api).
+2026-04-21 22:32:34.662 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:32:34.667 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:32:34.669 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:32:34.673 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:32:34.676 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:32:34.680 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:32:34.683 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:32:34.686 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:32:34.688 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' using the name '' in request data ...
+2026-04-21 22:32:34.691 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:32:34.694 -05:00 [DBG] Connection id "0HNL03R73UJ0F", Request id "0HNL03R73UJ0F:00000001": started reading request body.
+2026-04-21 22:32:34.696 -05:00 [DBG] Connection id "0HNL03R73UJ0F", Request id "0HNL03R73UJ0F:00000001": done reading request body.
+2026-04-21 22:32:34.699 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'
+2026-04-21 22:32:34.701 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:32:34.703 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:32:34.706 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:32:34.709 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:32:34.712 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:32:34.721 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:32:34.722 -05:00 [DBG] Created DbConnection. (1ms).
+2026-04-21 22:32:34.724 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:32:34.727 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:32:34.729 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:32:34.731 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2026-04-21 22:32:34.734 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (4ms).
+2026-04-21 22:32:34.736 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:32:34.748 -05:00 [INF] Executed DbCommand (11ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:32:34.752 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:32:34.755 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:32:34.757 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 5ms reading results.
+2026-04-21 22:32:34.760 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:32:34.763 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:55:12.889 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-21 22:55:13.444 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:55:13.509 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:55:13.726 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:55:13.732 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-21 22:55:13.818 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-21 22:55:13.822 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-21 22:55:14.163 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:55:14.262 -05:00 [DBG] Compiling query expression: 
+'DbSet<EmailTemplate>()'
+2026-04-21 22:55:14.643 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<EmailTemplate>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        EmailTemplate entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            EmailTemplate instance1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(EmailTemplate);
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]: 
+                        {
+                            return 
+                            {
+                                EmailTemplate instance;
+                                instance = new EmailTemplate();
+                                instance.<Body>k__BackingField = dataReader.GetString(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.GetDateTime(1);
+                                instance.<EmailTemplateId>k__BackingField = dataReader.GetInt32(2);
+                                instance.<Name>k__BackingField = dataReader.GetString(3);
+                                instance.<Subject>k__BackingField = dataReader.GetString(4);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(EmailTemplate)
+                }
+                ;
+                return instance1;
+            }return instance1;
+        };
+        return entity;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-21 22:55:14.693 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:55:14.735 -05:00 [DBG] Created DbConnection. (40ms).
+2026-04-21 22:55:14.748 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.456 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.466 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:55:15.478 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (10ms).
+2026-04-21 22:55:15.483 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (20ms).
+2026-04-21 22:55:15.500 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-21 22:55:15.759 -05:00 [INF] Executed DbCommand (245ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-21 22:55:15.799 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.811 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 38ms reading results.
+2026-04-21 22:55:15.818 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.828 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (10ms).
+2026-04-21 22:55:15.843 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-21 22:55:15.912 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:55:15.934 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.938 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.942 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:55:15.945 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:55:15.948 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 22:55:15.951 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:55:15.966 -05:00 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:55:15.973 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.975 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 5ms reading results.
+2026-04-21 22:55:15.978 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.981 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (2ms).
+2026-04-21 22:55:15.985 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:55:15.990 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:15.995 -05:00 [DBG] Disposed connection to database '' on server '' (4ms).
+2026-04-21 22:55:16.123 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-04-21 22:55:16.218 -05:00 [DBG] Hosting starting
+2026-04-21 22:55:16.267 -05:00 [INF] User profile is available. Using 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-21 22:55:16.298 -05:00 [DBG] Reading data from file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-21 22:55:16.316 -05:00 [DBG] Found key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992}.
+2026-04-21 22:55:16.343 -05:00 [DBG] Considering key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with expiration date 2026-07-07 03:27:01Z as default key.
+2026-04-21 22:55:16.350 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:55:16.354 -05:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-04-21 22:55:16.358 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-21 22:55:16.369 -05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-04-21 22:55:16.374 -05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-04-21 22:55:16.379 -05:00 [DBG] Using key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} as the default key.
+2026-04-21 22:55:16.384 -05:00 [DBG] Key ring with default key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} was loaded during application startup.
+2026-04-21 22:55:16.401 -05:00 [DBG] Middleware loaded
+2026-04-21 22:55:16.407 -05:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (14931 B).
+2026-04-21 22:55:16.412 -05:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-04-21 22:55:16.538 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-04-21 22:55:16.544 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-04-21 22:55:16.569 -05:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-04-21 22:55:16.659 -05:00 [INF] Now listening on: http://localhost:5168
+2026-04-21 22:55:16.662 -05:00 [DBG] Loaded hosting startup assembly Steam.Web.Api
+2026-04-21 22:55:16.664 -05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-04-21 22:55:16.666 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-04-21 22:55:16.668 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-04-21 22:55:16.677 -05:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:55:16.683 -05:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-21 22:55:16.758 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-21 22:55:16.761 -05:00 [INF] Hosting environment: Development
+2026-04-21 22:55:16.763 -05:00 [INF] Content root path: C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api
+2026-04-21 22:55:16.765 -05:00 [DBG] Hosting started
+2026-04-21 22:55:52.054 -05:00 [DBG] Connection id "0HNL04C61KDPS" received FIN.
+2026-04-21 22:55:52.076 -05:00 [DBG] Connection id "0HNL04C61KDPS" accepted.
+2026-04-21 22:55:52.110 -05:00 [DBG] Connection id "0HNL04C61KDPS" started.
+2026-04-21 22:55:52.150 -05:00 [DBG] Connection id "0HNL04C61KDPT" accepted.
+2026-04-21 22:55:52.153 -05:00 [DBG] Connection id "0HNL04C61KDPT" started.
+2026-04-21 22:55:52.165 -05:00 [DBG] Connection id "0HNL04C61KDPS" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:55:52.172 -05:00 [DBG] Connection id "0HNL04C61KDPS" disconnecting.
+2026-04-21 22:55:52.178 -05:00 [DBG] Connection id "0HNL04C61KDPS" stopped.
+2026-04-21 22:55:52.228 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/Auth/login - application/json 75
+2026-04-21 22:55:52.329 -05:00 [DBG] 1 candidate(s) found for the request path '/api/Auth/login'
+2026-04-21 22:55:52.333 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)' with route pattern 'api/Auth/login' is valid for the request path '/api/Auth/login'
+2026-04-21 22:55:52.339 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:55:52.354 -05:00 [WRN] Failed to determine the https port for redirect.
+2026-04-21 22:55:52.542 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-21 22:55:52.550 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:55:52.587 -05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Responses.Auth.LoginAuthResponse]] Login(SteamApplication.Models.Request.Auth.LoginAuthRequest) on controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api).
+2026-04-21 22:55:52.595 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:55:52.598 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:55:52.603 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:55:52.607 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:55:52.611 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:55:52.618 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:55:52.626 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.AuthController (Steam.Web.Api)
+2026-04-21 22:55:52.654 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:55:52.662 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' using the name '' in request data ...
+2026-04-21 22:55:52.668 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:55:52.683 -05:00 [DBG] Connection id "0HNL04C61KDPT", Request id "0HNL04C61KDPT:00000001": started reading request body.
+2026-04-21 22:55:52.687 -05:00 [DBG] Connection id "0HNL04C61KDPT", Request id "0HNL04C61KDPT:00000001": done reading request body.
+2026-04-21 22:55:52.705 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'
+2026-04-21 22:55:52.708 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:55:52.712 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:55:52.715 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest' ...
+2026-04-21 22:55:52.742 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Auth.LoginAuthRequest'.
+2026-04-21 22:55:52.840 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:55:52.864 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .FirstOrDefault(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:55:52.952 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<User>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<User>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            User entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                User instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(User);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (User)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                            {
+                                return 
+                                {
+                                    User instance;
+                                    instance = new User();
+                                    instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                    instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                    instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                    instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                    instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                    instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                    instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                    instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(User)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:55:52.999 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:55:53.002 -05:00 [DBG] Created DbConnection. (3ms).
+2026-04-21 22:55:53.006 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:53.011 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:53.015 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:55:53.018 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:55:53.028 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (12ms).
+2026-04-21 22:55:53.036 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:55:53.111 -05:00 [INF] Executed DbCommand (78ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:55:53.212 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:55:53.278 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:53.283 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 167ms reading results.
+2026-04-21 22:55:53.287 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:53.291 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:55:57.782 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 22:55:57.792 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 22:55:57.796 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 22:55:57.798 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 22:55:57.802 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 22:55:57.806 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[SteamApplication.Models.Responses.Auth.LoginAuthResponse, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-21 22:55:57.845 -05:00 [INF] Executed action Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api) in 5224.6369ms
+2026-04-21 22:55:57.853 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.AuthController.Login (Steam.Web.Api)'
+2026-04-21 22:55:57.861 -05:00 [DBG] Connection id "0HNL04C61KDPT" completed keep alive response.
+2026-04-21 22:55:57.868 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:55:57.875 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:55:57.879 -05:00 [DBG] Disposed connection to database '' on server '' (4ms).
+2026-04-21 22:55:57.887 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/Auth/login - 200 null application/json; charset=utf-8 5671.559ms
+2026-04-21 22:57:32.633 -05:00 [DBG] Connection id "0HNL04C61KDPU" received FIN.
+2026-04-21 22:57:32.635 -05:00 [DBG] Connection id "0HNL04C61KDPU" accepted.
+2026-04-21 22:57:32.647 -05:00 [DBG] Connection id "0HNL04C61KDPU" started.
+2026-04-21 22:57:32.657 -05:00 [DBG] Connection id "0HNL04C61KDPV" accepted.
+2026-04-21 22:57:32.659 -05:00 [DBG] Connection id "0HNL04C61KDPU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:57:32.660 -05:00 [DBG] Connection id "0HNL04C61KDPV" started.
+2026-04-21 22:57:32.663 -05:00 [DBG] Connection id "0HNL04C61KDPU" disconnecting.
+2026-04-21 22:57:32.667 -05:00 [DBG] Connection id "0HNL04C61KDPU" stopped.
+2026-04-21 22:57:32.667 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE - null null
+2026-04-21 22:57:32.676 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE'
+2026-04-21 22:57:32.680 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE'
+2026-04-21 22:57:32.683 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-21 22:57:32.814 -05:00 [DBG] Successfully validated the token.
+2026-04-21 22:57:32.819 -05:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2026-04-21 22:57:32.835 -05:00 [DBG] Authorization was successful.
+2026-04-21 22:57:32.837 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-21 22:57:32.848 -05:00 [INF] Route matched with {action = "GetById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Dtos.UserDto]] GetById(System.Guid) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 22:57:32.851 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:57:32.855 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:57:32.858 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:57:32.861 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:57:32.864 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:57:32.867 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:57:32.871 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:57:32.876 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' ...
+2026-04-21 22:57:32.879 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' using the name 'id' in request data ...
+2026-04-21 22:57:32.883 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 22:57:32.885 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 22:57:32.888 -05:00 [DBG] Attempting to validate the bound parameter 'id' of type 'System.Guid' ...
+2026-04-21 22:57:32.892 -05:00 [DBG] Done attempting to validate the bound parameter 'id' of type 'System.Guid'.
+2026-04-21 22:57:32.993 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:57:32.999 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .FirstOrDefault(x => x.UserId == __id_0 && x.DeletedAt == null)'
+2026-04-21 22:57:33.009 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<User>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<User>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.UserID == @__id_0) && (u.DeletedAt == NULL)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+            SELECT TOP(1) u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+            FROM Users AS u
+            WHERE (u.UserID == @__id_0) && (u.DeletedAt == NULL), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            User entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                User instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(User);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (User)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                            {
+                                return 
+                                {
+                                    User instance;
+                                    instance = new User();
+                                    instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                    instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                    instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                    instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                    instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                    instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                    instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                    instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(User)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:57:33.017 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:57:33.020 -05:00 [DBG] Created DbConnection. (2ms).
+2026-04-21 22:57:33.022 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:57:33.025 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:57:33.029 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:57:33.032 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:57:33.037 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (7ms).
+2026-04-21 22:57:33.044 -05:00 [DBG] Executing DbCommand [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:57:33.108 -05:00 [INF] Executed DbCommand (65ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:57:33.113 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:57:33.117 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:57:33.121 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 8ms reading results.
+2026-04-21 22:57:33.125 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:57:33.128 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:57:33.135 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 22:57:33.146 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 22:57:33.150 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 22:57:33.153 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 22:57:33.156 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 22:57:33.161 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[SteamApplication.Models.Dtos.UserDto, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-21 22:57:33.182 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api) in 315.5373ms
+2026-04-21 22:57:33.187 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-21 22:57:33.190 -05:00 [DBG] Connection id "0HNL04C61KDPV" completed keep alive response.
+2026-04-21 22:57:33.194 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:57:33.197 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:57:33.200 -05:00 [DBG] Disposed connection to database '' on server '' (3ms).
+2026-04-21 22:57:33.204 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE - 200 null application/json; charset=utf-8 537.1156ms
+2026-04-21 22:59:23.190 -05:00 [DBG] Connection id "0HNL04C61KDQ0" accepted.
+2026-04-21 22:59:23.219 -05:00 [DBG] Connection id "0HNL04C61KDQ0" received FIN.
+2026-04-21 22:59:23.225 -05:00 [DBG] Connection id "0HNL04C61KDQ1" accepted.
+2026-04-21 22:59:23.225 -05:00 [DBG] Connection id "0HNL04C61KDQ0" started.
+2026-04-21 22:59:23.249 -05:00 [DBG] Connection id "0HNL04C61KDQ1" started.
+2026-04-21 22:59:23.252 -05:00 [DBG] Connection id "0HNL04C61KDQ0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 22:59:23.255 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5168/api/user/6DF30FC0-2951-4B24-A8BA-8453E579B3EB - application/json 101
+2026-04-21 22:59:23.258 -05:00 [DBG] Connection id "0HNL04C61KDQ0" disconnecting.
+2026-04-21 22:59:23.262 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/6DF30FC0-2951-4B24-A8BA-8453E579B3EB'
+2026-04-21 22:59:23.264 -05:00 [DBG] Connection id "0HNL04C61KDQ0" stopped.
+2026-04-21 22:59:23.266 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Update (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/6DF30FC0-2951-4B24-A8BA-8453E579B3EB'
+2026-04-21 22:59:23.271 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Update (Steam.Web.Api)'
+2026-04-21 22:59:23.280 -05:00 [DBG] Successfully validated the token.
+2026-04-21 22:59:23.282 -05:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2026-04-21 22:59:23.287 -05:00 [DBG] Authorization was successful.
+2026-04-21 22:59:23.290 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.Update (Steam.Web.Api)'
+2026-04-21 22:59:23.312 -05:00 [INF] Route matched with {action = "Update", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[SteamApplication.Models.Dtos.UserDto]] Update(SteamApplication.Models.Request.Users.UpdateUserRequest, System.Guid) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 22:59:23.317 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 22:59:23.321 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 22:59:23.325 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 22:59:23.329 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 22:59:23.334 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 22:59:23.337 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:59:23.348 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 22:59:23.353 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest' ...
+2026-04-21 22:59:23.357 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest' using the name '' in request data ...
+2026-04-21 22:59:23.365 -05:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2026-04-21 22:59:23.370 -05:00 [DBG] Connection id "0HNL04C61KDQ1", Request id "0HNL04C61KDQ1:00000001": started reading request body.
+2026-04-21 22:59:23.376 -05:00 [DBG] Connection id "0HNL04C61KDQ1", Request id "0HNL04C61KDQ1:00000001": done reading request body.
+2026-04-21 22:59:23.382 -05:00 [DBG] JSON input formatter succeeded, deserializing to type 'SteamApplication.Models.Request.Users.UpdateUserRequest'
+2026-04-21 22:59:23.385 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest'.
+2026-04-21 22:59:23.389 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest'.
+2026-04-21 22:59:23.392 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest' ...
+2026-04-21 22:59:23.403 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.UpdateUserRequest'.
+2026-04-21 22:59:23.408 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' ...
+2026-04-21 22:59:23.413 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' using the name 'id' in request data ...
+2026-04-21 22:59:23.418 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 22:59:23.421 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 22:59:23.424 -05:00 [DBG] Attempting to validate the bound parameter 'id' of type 'System.Guid' ...
+2026-04-21 22:59:23.428 -05:00 [DBG] Done attempting to validate the bound parameter 'id' of type 'System.Guid'.
+2026-04-21 22:59:23.437 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 22:59:23.463 -05:00 [DBG] Creating DbConnection.
+2026-04-21 22:59:23.489 -05:00 [DBG] Created DbConnection. (26ms).
+2026-04-21 22:59:23.499 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.513 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.520 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:59:23.532 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (11ms).
+2026-04-21 22:59:23.538 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (18ms).
+2026-04-21 22:59:23.553 -05:00 [DBG] Executing DbCommand [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:59:23.566 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 22:59:23.575 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:59:23.580 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.585 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 9ms reading results.
+2026-04-21 22:59:23.589 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.592 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:59:23.601 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any(x => x.Email == __email_0 && x.DeletedAt == null)'
+2026-04-21 22:59:23.614 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL))) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u
+                WHERE (u.Email == @__email_0) && (u.DeletedAt == NULL)), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-21 22:59:23.623 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.628 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.632 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:59:23.634 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:59:23.637 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 22:59:23.642 -05:00 [DBG] Executing DbCommand [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:59:23.655 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__email_0='?' (Size = 150)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]
+        WHERE [u].[Email] = @__email_0 AND [u].[DeletedAt] IS NULL) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-21 22:59:23.662 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.666 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2026-04-21 22:59:23.670 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.673 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-21 22:59:23.699 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:59:23.709 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:59:23.716 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:59:23.765 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:59:23.925 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.928 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:23.938 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 22:59:23.941 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 22:59:23.945 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2026-04-21 22:59:23.948 -05:00 [DBG] Executing DbCommand [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (Size = 255), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [DeletedAt] = @p1, [Email] = @p2, [Password] = @p3, [StatusID] = @p4, [UpdateAt] = @p5, [UserName] = @p6
+OUTPUT 1
+WHERE [UserID] = @p7;
+2026-04-21 22:59:24.073 -05:00 [INF] Executed DbCommand (125ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (Size = 255), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [DeletedAt] = @p1, [Email] = @p2, [Password] = @p3, [StatusID] = @p4, [UpdateAt] = @p5, [UserName] = @p6
+OUTPUT 1
+WHERE [UserID] = @p7;
+2026-04-21 22:59:24.091 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:24.095 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 16ms reading results.
+2026-04-21 22:59:24.102 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:24.106 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (4ms).
+2026-04-21 22:59:24.116 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Modified"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 22:59:24.125 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 1 entities written to the database.
+2026-04-21 22:59:24.129 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 22:59:24.133 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 22:59:24.140 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 22:59:24.143 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 0 entities written to the database.
+2026-04-21 22:59:24.148 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 22:59:24.154 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 22:59:24.156 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 22:59:24.158 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 22:59:24.160 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 22:59:24.163 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[SteamApplication.Models.Dtos.UserDto, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-04-21 22:59:24.167 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.Update (Steam.Web.Api) in 830.832ms
+2026-04-21 22:59:24.171 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.Update (Steam.Web.Api)'
+2026-04-21 22:59:24.174 -05:00 [DBG] Connection id "0HNL04C61KDQ1" completed keep alive response.
+2026-04-21 22:59:24.177 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 22:59:24.180 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 22:59:24.183 -05:00 [DBG] Disposed connection to database '' on server '' (3ms).
+2026-04-21 22:59:24.187 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5168/api/user/6DF30FC0-2951-4B24-A8BA-8453E579B3EB - 204 null application/json; charset=utf-8 932.0358ms
+2026-04-21 23:01:23.517 -05:00 [DBG] Connection id "0HNL04C61KDQ2" accepted.
+2026-04-21 23:01:23.519 -05:00 [DBG] Connection id "0HNL04C61KDQ2" received FIN.
+2026-04-21 23:01:23.531 -05:00 [DBG] Connection id "0HNL04C61KDQ2" started.
+2026-04-21 23:01:23.531 -05:00 [DBG] Connection id "0HNL04C61KDQ3" accepted.
+2026-04-21 23:01:23.585 -05:00 [DBG] Connection id "0HNL04C61KDQ3" started.
+2026-04-21 23:01:23.588 -05:00 [DBG] Connection id "0HNL04C61KDQ2" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 23:01:23.590 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5168/api/user/DF977915-F28A-440A-B557-A1E87CAAEEEE - null null
+2026-04-21 23:01:23.593 -05:00 [DBG] Connection id "0HNL04C61KDQ2" disconnecting.
+2026-04-21 23:01:23.597 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/DF977915-F28A-440A-B557-A1E87CAAEEEE'
+2026-04-21 23:01:23.601 -05:00 [DBG] Connection id "0HNL04C61KDQ2" stopped.
+2026-04-21 23:01:23.603 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Delete (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/DF977915-F28A-440A-B557-A1E87CAAEEEE'
+2026-04-21 23:01:23.608 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Delete (Steam.Web.Api)'
+2026-04-21 23:01:23.611 -05:00 [DBG] Successfully validated the token.
+2026-04-21 23:01:23.614 -05:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2026-04-21 23:01:23.619 -05:00 [DBG] Authorization was successful.
+2026-04-21 23:01:23.621 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.Delete (Steam.Web.Api)'
+2026-04-21 23:01:23.630 -05:00 [INF] Route matched with {action = "Delete", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[System.Boolean]] Delete(System.Guid) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 23:01:23.636 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 23:01:23.640 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 23:01:23.644 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 23:01:23.649 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 23:01:23.652 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 23:01:23.657 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 23:01:23.661 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 23:01:23.664 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' ...
+2026-04-21 23:01:23.668 -05:00 [DBG] Attempting to bind parameter 'id' of type 'System.Guid' using the name 'id' in request data ...
+2026-04-21 23:01:23.672 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 23:01:23.676 -05:00 [DBG] Done attempting to bind parameter 'id' of type 'System.Guid'.
+2026-04-21 23:01:23.679 -05:00 [DBG] Attempting to validate the bound parameter 'id' of type 'System.Guid' ...
+2026-04-21 23:01:23.683 -05:00 [DBG] Done attempting to validate the bound parameter 'id' of type 'System.Guid'.
+2026-04-21 23:01:23.690 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 23:01:23.695 -05:00 [DBG] Creating DbConnection.
+2026-04-21 23:01:23.697 -05:00 [DBG] Created DbConnection. (2ms).
+2026-04-21 23:01:23.699 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.702 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.705 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 23:01:23.708 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 23:01:23.711 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 23:01:23.714 -05:00 [DBG] Executing DbCommand [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 23:01:23.743 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[UserID] = @__id_0 AND [u].[DeletedAt] IS NULL
+2026-04-21 23:01:23.749 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:01:23.753 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.757 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 8ms reading results.
+2026-04-21 23:01:23.761 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.765 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (4ms).
+2026-04-21 23:01:23.769 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:01:23.774 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-21 23:01:23.775 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-21 23:01:23.777 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-21 23:01:23.784 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.788 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.791 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 23:01:23.793 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 23:01:23.796 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-21 23:01:23.798 -05:00 [DBG] Executing DbCommand [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (Size = 255), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [DeletedAt] = @p1, [Email] = @p2, [Password] = @p3, [StatusID] = @p4, [UpdateAt] = @p5, [UserName] = @p6
+OUTPUT 1
+WHERE [UserID] = @p7;
+2026-04-21 23:01:23.829 -05:00 [INF] Executed DbCommand (30ms) [Parameters=[@p7='?' (DbType = Guid), @p0='?' (DbType = DateTime2), @p1='?' (DbType = DateTime2), @p2='?' (Size = 150), @p3='?' (Size = 255), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime2), @p6='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedAt] = @p0, [DeletedAt] = @p1, [Email] = @p2, [Password] = @p3, [StatusID] = @p4, [UpdateAt] = @p5, [UserName] = @p6
+OUTPUT 1
+WHERE [UserID] = @p7;
+2026-04-21 23:01:23.833 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.836 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 3ms reading results.
+2026-04-21 23:01:23.840 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.843 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (2ms).
+2026-04-21 23:01:23.847 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Modified"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:01:23.851 -05:00 [DBG] SaveChanges completed for 'SteamContext' with 1 entities written to the database.
+2026-04-21 23:01:23.856 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 23:01:23.861 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 23:01:23.863 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 23:01:23.865 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 23:01:23.867 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 23:01:23.871 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[System.Boolean, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-21 23:01:23.878 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.Delete (Steam.Web.Api) in 220.315ms
+2026-04-21 23:01:23.881 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.Delete (Steam.Web.Api)'
+2026-04-21 23:01:23.884 -05:00 [DBG] Connection id "0HNL04C61KDQ3" completed keep alive response.
+2026-04-21 23:01:23.887 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 23:01:23.889 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:01:23.892 -05:00 [DBG] Disposed connection to database '' on server '' (2ms).
+2026-04-21 23:01:23.895 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5168/api/user/DF977915-F28A-440A-B557-A1E87CAAEEEE - 200 null application/json; charset=utf-8 305.5505ms
+2026-04-21 23:02:29.054 -05:00 [DBG] Connection id "0HNL04C61KDQ4" accepted.
+2026-04-21 23:02:29.060 -05:00 [DBG] Connection id "0HNL04C61KDQ4" received FIN.
+2026-04-21 23:02:29.078 -05:00 [DBG] Connection id "0HNL04C61KDQ4" started.
+2026-04-21 23:02:29.078 -05:00 [DBG] Connection id "0HNL04C61KDQ5" accepted.
+2026-04-21 23:02:29.117 -05:00 [DBG] Connection id "0HNL04C61KDQ5" started.
+2026-04-21 23:02:29.120 -05:00 [DBG] Connection id "0HNL04C61KDQ4" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-21 23:02:29.123 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/ - null null
+2026-04-21 23:02:29.126 -05:00 [DBG] Connection id "0HNL04C61KDQ4" disconnecting.
+2026-04-21 23:02:29.131 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-21 23:02:29.133 -05:00 [DBG] Connection id "0HNL04C61KDQ4" stopped.
+2026-04-21 23:02:29.136 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-21 23:02:29.141 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-21 23:02:29.144 -05:00 [DBG] Successfully validated the token.
+2026-04-21 23:02:29.146 -05:00 [DBG] AuthenticationScheme: Bearer was successfully authenticated.
+2026-04-21 23:02:29.149 -05:00 [DBG] Authorization was successful.
+2026-04-21 23:02:29.151 -05:00 [INF] Executing endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-21 23:02:29.166 -05:00 [INF] Route matched with {action = "GetAll", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[SteamApplication.Models.Response.GenericResponse`1[System.Collections.Generic.List`1[SteamApplication.Models.Dtos.UserDto]]] GetAll(SteamApplication.Models.Request.Users.FilterUserRequest) on controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api).
+2026-04-21 23:02:29.171 -05:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2026-04-21 23:02:29.174 -05:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2026-04-21 23:02:29.178 -05:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2026-04-21 23:02:29.182 -05:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2026-04-21 23:02:29.186 -05:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2026-04-21 23:02:29.189 -05:00 [DBG] Executing controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 23:02:29.193 -05:00 [DBG] Executed controller factory for controller Steam.Web.Api.Controllers.UserController (Steam.Web.Api)
+2026-04-21 23:02:29.196 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest' ...
+2026-04-21 23:02:29.200 -05:00 [DBG] Attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest' using the name '' in request data ...
+2026-04-21 23:02:29.217 -05:00 [DBG] Attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Username' of type 'System.String' using the name 'Username' in request data ...
+2026-04-21 23:02:29.224 -05:00 [DBG] Could not find a value in the request with name 'Username' for binding property 'SteamApplication.Models.Request.Users.FilterUserRequest.Username' of type 'System.String'.
+2026-04-21 23:02:29.229 -05:00 [DBG] Done attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Username' of type 'System.String'.
+2026-04-21 23:02:29.235 -05:00 [DBG] Attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Email' of type 'System.String' using the name 'Email' in request data ...
+2026-04-21 23:02:29.239 -05:00 [DBG] Could not find a value in the request with name 'Email' for binding property 'SteamApplication.Models.Request.Users.FilterUserRequest.Email' of type 'System.String'.
+2026-04-21 23:02:29.243 -05:00 [DBG] Done attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Email' of type 'System.String'.
+2026-04-21 23:02:29.248 -05:00 [DBG] Attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Password' of type 'System.String' using the name 'Password' in request data ...
+2026-04-21 23:02:29.251 -05:00 [DBG] Could not find a value in the request with name 'Password' for binding property 'SteamApplication.Models.Request.Users.FilterUserRequest.Password' of type 'System.String'.
+2026-04-21 23:02:29.256 -05:00 [DBG] Done attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Password' of type 'System.String'.
+2026-04-21 23:02:29.259 -05:00 [DBG] Attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Limit' of type 'System.Int32' using the name 'Limit' in request data ...
+2026-04-21 23:02:29.264 -05:00 [DBG] Could not find a value in the request with name 'Limit' for binding property 'SteamApplication.Models.Request.Users.FilterUserRequest.Limit' of type 'System.Int32'.
+2026-04-21 23:02:29.268 -05:00 [DBG] Done attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Limit' of type 'System.Int32'.
+2026-04-21 23:02:29.271 -05:00 [DBG] Attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Offset' of type 'System.Int32' using the name 'Offset' in request data ...
+2026-04-21 23:02:29.276 -05:00 [DBG] Could not find a value in the request with name 'Offset' for binding property 'SteamApplication.Models.Request.Users.FilterUserRequest.Offset' of type 'System.Int32'.
+2026-04-21 23:02:29.280 -05:00 [DBG] Done attempting to bind property 'SteamApplication.Models.Request.Users.FilterUserRequest.Offset' of type 'System.Int32'.
+2026-04-21 23:02:29.285 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest'.
+2026-04-21 23:02:29.287 -05:00 [DBG] Done attempting to bind parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest'.
+2026-04-21 23:02:29.290 -05:00 [DBG] Attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest' ...
+2026-04-21 23:02:29.295 -05:00 [DBG] Done attempting to validate the bound parameter 'model' of type 'SteamApplication.Models.Request.Users.FilterUserRequest'.
+2026-04-21 23:02:29.304 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-21 23:02:29.315 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Where(x => x.DeletedAt == null)
+    .Skip(__p_0)
+    .Take(__p_1)
+    .Select(user => UserService.Map(user))'
+2026-04-21 23:02:29.325 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-04-21 23:02:29.328 -05:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-04-21 23:02:29.359 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<UserDto>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE u.DeletedAt == NULL
+        OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Client Projections:
+            0 -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE u.DeletedAt == NULL
+        OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        User entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            User instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(User);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (User)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                        {
+                            return 
+                            {
+                                User instance;
+                                instance = new User();
+                                instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(User)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return UserService.Map(entity);
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-21 23:02:29.376 -05:00 [DBG] Creating DbConnection.
+2026-04-21 23:02:29.378 -05:00 [DBG] Created DbConnection. (1ms).
+2026-04-21 23:02:29.381 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.388 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.391 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 23:02:29.393 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-21 23:02:29.396 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (4ms).
+2026-04-21 23:02:29.399 -05:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[DeletedAt] IS NULL
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-04-21 23:02:29.445 -05:00 [INF] Executed DbCommand (46ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[DeletedAt] IS NULL
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-04-21 23:02:29.453 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:02:29.458 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:02:29.461 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-21 23:02:29.467 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.471 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 19ms reading results.
+2026-04-21 23:02:29.477 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.482 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (4ms).
+2026-04-21 23:02:29.491 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Where(x => x.DeletedAt == null)
+    .Count()'
+2026-04-21 23:02:29.551 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<int>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Users AS u
+        WHERE u.DeletedAt == NULL) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT COUNT(*)
+        FROM Users AS u
+        WHERE u.DeletedAt == NULL, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        int? value1;
+        value1 = dataReader.IsDBNull(0) ? default(int?) : (int?)dataReader.GetInt32(0);
+        return (int)value1;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)
+    .Single()'
+2026-04-21 23:02:29.571 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.576 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.579 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-21 23:02:29.582 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2026-04-21 23:02:29.585 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2026-04-21 23:02:29.590 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[DeletedAt] IS NULL
+2026-04-21 23:02:29.613 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Users] AS [u]
+WHERE [u].[DeletedAt] IS NULL
+2026-04-21 23:02:29.633 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.638 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 5ms reading results.
+2026-04-21 23:02:29.642 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.646 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (4ms).
+2026-04-21 23:02:29.652 -05:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2026-04-21 23:02:29.657 -05:00 [DBG] No information found on request to perform content negotiation.
+2026-04-21 23:02:29.660 -05:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2026-04-21 23:02:29.662 -05:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2026-04-21 23:02:29.664 -05:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2026-04-21 23:02:29.668 -05:00 [INF] Executing ObjectResult, writing value of type 'SteamApplication.Models.Response.GenericResponse`1[[System.Collections.Generic.List`1[[SteamApplication.Models.Dtos.UserDto, SteamApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-21 23:02:29.677 -05:00 [INF] Executed action Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api) in 488.1321ms
+2026-04-21 23:02:29.681 -05:00 [INF] Executed endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-21 23:02:29.686 -05:00 [DBG] Connection id "0HNL04C61KDQ5" completed keep alive response.
+2026-04-21 23:02:29.688 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-21 23:02:29.695 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-21 23:02:29.705 -05:00 [DBG] Disposed connection to database '' on server '' (9ms).
+2026-04-21 23:02:29.721 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/ - 200 null application/json; charset=utf-8 597.4217ms

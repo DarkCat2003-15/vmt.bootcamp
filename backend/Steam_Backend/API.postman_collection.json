@@ -1,0 +1,821 @@
+﻿{
+    "info":  {
+                 "_postman_id":  "8015160d-02a7-4922-b5ee-35d4bd93a041",
+                 "name":  "API",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+                 "_exporter_id":  "53291998",
+                 "_collection_link":  "https://go.postman.co/collection/53291998-8015160d-02a7-4922-b5ee-35d4bd93a041?source=collection_link"
+             },
+    "item":  [
+                 {
+                     "name":  "USERS",
+                     "item":  [
+                                  {
+                                      "name":  "BUSCAR USER",
+                                      "protocolProfileBehavior":  {
+                                                                      "disableBodyPruning":  true
+                                                                  },
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/user/B31FBCA1-D175-4319-BE01-2C9DEB16F1DE",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "user",
+                                                                               "B31FBCA1-D175-4319-BE01-2C9DEB16F1DE"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "CREAR USER",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "noauth"
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\r\n  \"username\": \"{{registerUsername}}\",\r\n  \"email\": \"{{registerEmail}}\",\r\n  \"password\": \"{{registerPassword}}\"\r\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/user",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "user"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ],
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Usuario creado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                    "const json = pm.response.json();",
+                                                                                    "pm.environment.set(\u0027userId\u0027, json.data.userId);"
+                                                                                ],
+                                                                       "type":  "text/javascript",
+                                                                       "packages":  {
+
+                                                                                    },
+                                                                       "requests":  {
+
+                                                                                    }
+                                                                   }
+                                                    }
+                                                ]
+                                  },
+                                  {
+                                      "name":  "ACTUALIZAR USER",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "PUT",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\r\n   \"UserName\": \"UserRoot1\",\r\n  \"Email\": \"changeme@userroot0.com\"\r\n}\r\n",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/user/6DF30FC0-2951-4B24-A8BA-8453E579B3EB",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "user",
+                                                                               "6DF30FC0-2951-4B24-A8BA-8453E579B3EB"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "ELIMINAR USER",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "DELETE",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/user/DF977915-F28A-440A-B557-A1E87CAAEEEE",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "user",
+                                                                               "DF977915-F28A-440A-B557-A1E87CAAEEEE"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "TODOS LOS USERS",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "bearer",
+                                                                   "bearer":  [
+                                                                                  {
+                                                                                      "key":  "token",
+                                                                                      "value":  "{{token}}",
+                                                                                      "type":  "string"
+                                                                                  }
+                                                                              ]
+                                                               },
+                                                      "method":  "GET",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/user/",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "user",
+                                                                               ""
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "AUTH",
+                     "item":  [
+                                  {
+                                      "name":  "Register",
+                                      "item":  [
+                                                   {
+                                                       "name":  "1. Comenzar proceso de registro",
+                                                       "request":  {
+                                                                       "method":  "POST",
+                                                                       "header":  [
+                                                                                      {
+                                                                                          "key":  "Content-Type",
+                                                                                          "value":  "application/json",
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                                  ],
+                                                                       "body":  {
+                                                                                    "mode":  "raw",
+                                                                                    "raw":  "{\r\n  \"email\": \"{{registerEmail}}\"\r\n}",
+                                                                                    "options":  {
+                                                                                                    "raw":  {
+                                                                                                                "language":  "json"
+                                                                                                            }
+                                                                                                }
+                                                                                },
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/register/init",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "register",
+                                                                                                "init"
+                                                                                            ]
+                                                                               }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027Registro iniciado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.test(\u0027Respuesta exitosa\u0027, function () { pm.expect(json.success).to.eql(true); });",
+                                                                                                     "pm.environment.set(\u0027registerToken\u0027, json.data);",
+                                                                                                     "pm.environment.set(\u0027loginEmail\u0027, pm.environment.get(\u0027registerEmail\u0027));",
+                                                                                                     "pm.environment.set(\u0027loginPassword\u0027, pm.environment.get(\u0027registerPassword\u0027));"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   },
+                                                   {
+                                                       "name":  "2. Validar si el token de registro existe",
+                                                       "request":  {
+                                                                       "method":  "GET",
+                                                                       "header":  [
+
+                                                                                  ],
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/register/validate/{{registerToken}}",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "register",
+                                                                                                "validate",
+                                                                                                "{{registerToken}}"
+                                                                                            ]
+                                                                               }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027Token de registro valido\u0027, function () { pm.expect(pm.response.code).to.eql(200); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.test(\u0027Email validado\u0027, function () { pm.expect(json.data.email).to.eql(pm.environment.get(\u0027registerEmail\u0027)); });"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   },
+                                                   {
+                                                       "name":  "3. Completar proceso de registro",
+                                                       "request":  {
+                                                                       "method":  "POST",
+                                                                       "header":  [
+                                                                                      {
+                                                                                          "key":  "Content-Type",
+                                                                                          "value":  "application/json",
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                                  ],
+                                                                       "body":  {
+                                                                                    "mode":  "raw",
+                                                                                    "raw":  "{\r\n  \"email\": \"{{registerEmail}}\",\r\n  \"username\": \"{{registerUsername}}\",\r\n  \"password\": \"{{registerPassword}}\"\r\n}",
+                                                                                    "options":  {
+                                                                                                    "raw":  {
+                                                                                                                "language":  "json"
+                                                                                                            }
+                                                                                                }
+                                                                                },
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/register/complete/{{registerToken}}",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "register",
+                                                                                                "complete",
+                                                                                                "{{registerToken}}"
+                                                                                            ]
+                                                                               }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027Registro completado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.test(\u0027Se devolvio el usuario\u0027, function () { pm.expect(json.data.userId).to.exist; });",
+                                                                                                     "pm.environment.set(\u0027userId\u0027, json.data.userId);",
+                                                                                                     "pm.environment.set(\u0027loginEmail\u0027, json.data.email);",
+                                                                                                     "pm.environment.set(\u0027loginPassword\u0027, pm.environment.get(\u0027registerPassword\u0027));"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   }
+                                               ]
+                                  },
+                                  {
+                                      "name":  "Recover Password",
+                                      "item":  [
+                                                   {
+                                                       "name":  "1. Enviar cÃ³digo para recuperar contraseÃ±a",
+                                                       "request":  {
+                                                                       "method":  "POST",
+                                                                       "header":  [
+                                                                                      {
+                                                                                          "key":  "Content-Type",
+                                                                                          "value":  "application/json",
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                                  ],
+                                                                       "body":  {
+                                                                                    "mode":  "raw",
+                                                                                    "raw":  "{\r\n  \"email\": \"{{loginEmail}}\"\r\n}",
+                                                                                    "options":  {
+                                                                                                    "raw":  {
+                                                                                                                "language":  "json"
+                                                                                                            }
+                                                                                                }
+                                                                                },
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/recoverPassword",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "recoverPassword"
+                                                                                            ]
+                                                                               }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027OTP enviado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.environment.set(\u0027otpCode\u0027, json.data);"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   },
+                                                   {
+                                                       "name":  "2. Cambiar contraseÃ±a (OTPCODE)",
+                                                       "request":  {
+                                                                       "method":  "POST",
+                                                                       "header":  [
+                                                                                      {
+                                                                                          "key":  "Content-Type",
+                                                                                          "value":  "application/json",
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                                  ],
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/recoverPassword/{{otpCode}}",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "recoverPassword",
+                                                                                                "{{otpCode}}"
+                                                                                            ]
+                                                                               },
+                                                                       "body":  {
+                                                                                    "mode":  "raw",
+                                                                                    "raw":  "{\r\n  \"newPassword\": \"{{recoverNewPassword}}\"\r\n}",
+                                                                                    "options":  {
+                                                                                                    "raw":  {
+                                                                                                                "language":  "json"
+                                                                                                            }
+                                                                                                }
+                                                                                }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027Password recuperado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.test(\u0027Respuesta exitosa\u0027, function () { pm.expect(json.success).to.eql(true); });",
+                                                                                                     "pm.environment.set(\u0027loginPassword\u0027, pm.environment.get(\u0027recoverNewPassword\u0027));"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   },
+                                                   {
+                                                       "name":  "3. Realizar cambiÃ³ de contraseÃ±a",
+                                                       "request":  {
+                                                                       "auth":  {
+                                                                                    "type":  "bearer",
+                                                                                    "bearer":  [
+                                                                                                   {
+                                                                                                       "key":  "token",
+                                                                                                       "value":  "{{token}}",
+                                                                                                       "type":  "string"
+                                                                                                   }
+                                                                                               ]
+                                                                                },
+                                                                       "method":  "POST",
+                                                                       "header":  [
+                                                                                      {
+                                                                                          "key":  "Content-Type",
+                                                                                          "value":  "application/json",
+                                                                                          "type":  "text"
+                                                                                      }
+                                                                                  ],
+                                                                       "body":  {
+                                                                                    "mode":  "raw",
+                                                                                    "raw":  "{\r\n  \"currentPassword\": \"{{loginPassword}}\",\r\n  \"newPassword\": \"{{changePasswordNew}}\"\r\n}",
+                                                                                    "options":  {
+                                                                                                    "raw":  {
+                                                                                                                "language":  "json"
+                                                                                                            }
+                                                                                                }
+                                                                                },
+                                                                       "url":  {
+                                                                                   "raw":  "{{baseUrl}}/api/auth/changePassword",
+                                                                                   "host":  [
+                                                                                                "{{baseUrl}}"
+                                                                                            ],
+                                                                                   "path":  [
+                                                                                                "api",
+                                                                                                "auth",
+                                                                                                "changePassword"
+                                                                                            ]
+                                                                               }
+                                                                   },
+                                                       "response":  [
+
+                                                                    ],
+                                                       "event":  [
+                                                                     {
+                                                                         "listen":  "test",
+                                                                         "script":  {
+                                                                                        "exec":  [
+                                                                                                     "pm.test(\u0027Password cambiado\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                                     "const json = pm.response.json();",
+                                                                                                     "pm.test(\u0027Respuesta exitosa\u0027, function () { pm.expect(json.success).to.eql(true); });",
+                                                                                                     "pm.environment.set(\u0027loginPassword\u0027, pm.environment.get(\u0027changePasswordNew\u0027));"
+                                                                                                 ],
+                                                                                        "type":  "text/javascript",
+                                                                                        "packages":  {
+
+                                                                                                     },
+                                                                                        "requests":  {
+
+                                                                                                     }
+                                                                                    }
+                                                                     }
+                                                                 ]
+                                                   }
+                                               ]
+                                  },
+                                  {
+                                      "name":  "Iniciar SesiÃ³n",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "noauth"
+                                                               },
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\r\n  \"email\": \"{{loginEmail}}\",\r\n  \"password\": \"{{loginPassword}}\"\r\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/auth/login",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ],
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Login correcto\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                    "const json = pm.response.json();",
+                                                                                    "pm.test(\u0027Tokens devueltos\u0027, function () { pm.expect(json.data.token).to.exist; pm.expect(json.data.refreshToken).to.exist; });",
+                                                                                    "pm.environment.set(\u0027token\u0027, json.data.token);",
+                                                                                    "pm.environment.set(\u0027refreshToken\u0027, json.data.refreshToken);"
+                                                                                ],
+                                                                       "type":  "text/javascript",
+                                                                       "packages":  {
+
+                                                                                    },
+                                                                       "requests":  {
+
+                                                                                    }
+                                                                   }
+                                                    }
+                                                ]
+                                  },
+                                  {
+                                      "name":  "Renovar SesiÃ³n",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{\r\n  \"refreshToken\": \"{{refreshToken}}\"\r\n}\r\n",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               },
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/auth/renew",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "renew"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ],
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Sesion renovada\u0027, function () { pm.expect(pm.response.code).to.be.oneOf([200, 201]); });",
+                                                                                    "const json = pm.response.json();",
+                                                                                    "pm.environment.set(\u0027token\u0027, json.data.token);",
+                                                                                    "pm.environment.set(\u0027refreshToken\u0027, json.data.refreshToken);"
+                                                                                ],
+                                                                       "type":  "text/javascript",
+                                                                       "packages":  {
+
+                                                                                    },
+                                                                       "requests":  {
+
+                                                                                    }
+                                                                   }
+                                                    }
+                                                ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "App",
+                     "item":  [
+                                  {
+                                      "name":  "InformaciÃ³n de la APP",
+                                      "request":  {
+                                                      "auth":  {
+                                                                   "type":  "noauth"
+                                                               },
+                                                      "method":  "GET",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/app/info",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "app",
+                                                                               "info"
+                                                                           ]
+                                                              }
+                                                  },
+                                      "response":  [
+
+                                                   ],
+                                      "event":  [
+                                                    {
+                                                        "listen":  "test",
+                                                        "script":  {
+                                                                       "exec":  [
+                                                                                    "pm.test(\u0027Info de la app\u0027, function () { pm.expect(pm.response.code).to.eql(200); });",
+                                                                                    "const json = pm.response.json();",
+                                                                                    "pm.test(\u0027Version recibida\u0027, function () { pm.expect(json.data.version).to.exist; });",
+                                                                                    "pm.environment.set(\u0027appVersion\u0027, json.data.version);"
+                                                                                ],
+                                                                       "type":  "text/javascript",
+                                                                       "packages":  {
+
+                                                                                    },
+                                                                       "requests":  {
+
+                                                                                    }
+                                                                   }
+                                                    }
+                                                ]
+                                  }
+                              ]
+                 }
+             ],
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "value":  "http://localhost:5168",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "registerEmail",
+                         "value":  "demo@example.com",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "registerUsername",
+                         "value":  "DemoUser",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "registerPassword",
+                         "value":  "Password123",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "loginEmail",
+                         "value":  "demo@example.com",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "loginPassword",
+                         "value":  "Password123",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "recoverNewPassword",
+                         "value":  "Password456",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "changePasswordNew",
+                         "value":  "Password789",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "registerToken",
+                         "value":  "",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "otpCode",
+                         "value":  "",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "token",
+                         "value":  "",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "refreshToken",
+                         "value":  "",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "userId",
+                         "value":  "",
+                         "type":  "string"
+                     },
+                     {
+                         "key":  "appVersion",
+                         "value":  "",
+                         "type":  "string"
+                     }
+                 ]
+}

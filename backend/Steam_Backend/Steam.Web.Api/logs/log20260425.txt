@@ -1,0 +1,989 @@
+2026-04-25 16:01:17.925 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-25 16:01:19.029 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:01:19.186 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:01:19.651 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:01:19.664 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:01:19.883 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-25 16:01:19.895 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-25 16:01:20.556 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-25 16:01:20.737 -05:00 [DBG] Compiling query expression: 
+'DbSet<EmailTemplate>()'
+2026-04-25 16:01:21.469 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<EmailTemplate>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        EmailTemplate entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            EmailTemplate instance1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(EmailTemplate);
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]: 
+                        {
+                            return 
+                            {
+                                EmailTemplate instance;
+                                instance = new EmailTemplate();
+                                instance.<Body>k__BackingField = dataReader.GetString(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.GetDateTime(1);
+                                instance.<EmailTemplateId>k__BackingField = dataReader.GetInt32(2);
+                                instance.<Name>k__BackingField = dataReader.GetString(3);
+                                instance.<Subject>k__BackingField = dataReader.GetString(4);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(EmailTemplate)
+                }
+                ;
+                return instance1;
+            }return instance1;
+        };
+        return entity;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-25 16:01:21.572 -05:00 [DBG] Creating DbConnection.
+2026-04-25 16:01:21.642 -05:00 [DBG] Created DbConnection. (66ms).
+2026-04-25 16:01:21.665 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:22.819 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:22.839 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:01:22.859 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (16ms).
+2026-04-25 16:01:22.869 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (35ms).
+2026-04-25 16:01:22.893 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-25 16:01:23.105 -05:00 [INF] Executed DbCommand (197ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-25 16:01:23.156 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.172 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 51ms reading results.
+2026-04-25 16:01:23.182 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.196 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (13ms).
+2026-04-25 16:01:23.228 -05:00 [DBG] Compiling query expression: 
+'DbSet<Status>()
+    .FirstOrDefault(x => x.StatusId == __requiredStatus_Id_0)'
+2026-04-25 16:01:23.386 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Status>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<Status>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Status.StatusId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Status.Code (string) Required MaxLength(20), 1], [Property: Status.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 2], [Property: Status.ShowName (string) Required MaxLength(20), 3] }
+            SELECT TOP(1) s.StatusID, s.Code, s.CreatedAt, s.ShowName
+            FROM Status AS s
+            WHERE s.StatusID == @__requiredStatus_Id_0) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Status.StatusId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Status.Code (string) Required MaxLength(20), 1], [Property: Status.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 2], [Property: Status.ShowName (string) Required MaxLength(20), 3] }
+            SELECT TOP(1) s.StatusID, s.Code, s.CreatedAt, s.ShowName
+            FROM Status AS s
+            WHERE s.StatusID == @__requiredStatus_Id_0, 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            Status entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                Status instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(Status);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: Status.StatusId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (Status)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")]: 
+                            {
+                                return 
+                                {
+                                    Status instance;
+                                    instance = new Status();
+                                    instance.<StatusId>k__BackingField = dataReader.GetInt32(0);
+                                    instance.<Code>k__BackingField = dataReader.GetString(1);
+                                    instance.<CreatedAt>k__BackingField = dataReader.GetDateTime(2);
+                                    instance.<ShowName>k__BackingField = dataReader.GetString(3);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(Status)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-25 16:01:23.410 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.415 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.419 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:01:23.422 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2026-04-25 16:01:23.432 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (13ms).
+2026-04-25 16:01:23.441 -05:00 [DBG] Executing DbCommand [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:01:23.506 -05:00 [INF] Executed DbCommand (70ms) [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:01:23.512 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.516 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2026-04-25 16:01:23.520 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.524 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-25 16:01:23.594 -05:00 [DBG] 'SteamContext' generated a temporary value for the property 'Status.StatusId'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:23.708 -05:00 [DBG] Context 'SteamContext' started tracking 'Status' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:23.720 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.725 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.729 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:01:23.732 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (3ms).
+2026-04-25 16:01:23.737 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (7ms).
+2026-04-25 16:01:23.740 -05:00 [DBG] Executing DbCommand [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:01:23.753 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:01:23.761 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.768 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 6ms reading results.
+2026-04-25 16:01:23.777 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.785 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (7ms).
+2026-04-25 16:01:23.796 -05:00 [DBG] Context 'SteamContext' started tracking 'Status' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:23.805 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Where(user => user.StatusId == null || user.DeletedAt == null && user.StatusId != (int?)1 || user.DeletedAt != null && user.StatusId != (int?)0)'
+2026-04-25 16:01:23.836 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<User>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE ((u.StatusID == NULL) || ((u.DeletedAt == NULL) && (u.StatusID != 1))) || ((u.DeletedAt != NULL) && (u.StatusID != 0))) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE ((u.StatusID == NULL) || ((u.DeletedAt == NULL) && (u.StatusID != 1))) || ((u.DeletedAt != NULL) && (u.StatusID != 0)), 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        User entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            User instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(User);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (User)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                        {
+                            return 
+                            {
+                                User instance;
+                                instance = new User();
+                                instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(User)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-25 16:01:23.862 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.869 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:23.874 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:01:23.882 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (7ms).
+2026-04-25 16:01:23.887 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (12ms).
+2026-04-25 16:01:23.892 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[StatusID] IS NULL OR ([u].[DeletedAt] IS NULL AND [u].[StatusID] <> 1) OR ([u].[DeletedAt] IS NOT NULL AND [u].[StatusID] <> 0)
+2026-04-25 16:01:23.925 -05:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[StatusID] IS NULL OR ([u].[DeletedAt] IS NULL AND [u].[StatusID] <> 1) OR ([u].[DeletedAt] IS NOT NULL AND [u].[StatusID] <> 0)
+2026-04-25 16:01:23.983 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.016 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.020 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.024 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.028 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.033 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.036 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 104ms reading results.
+2026-04-25 16:01:24.042 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.046 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-25 16:01:24.054 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-25 16:01:24.062 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-25 16:01:24.107 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.120 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.125 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.155 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.181 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.186 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.190 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.194 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.198 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.202 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.207 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.213 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.217 -05:00 [DBG] The unchanged property 'User.UpdateAt' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.221 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.224 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.231 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.235 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.239 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.243 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:01:24.248 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.251 -05:00 [DBG] The unchanged property 'User.UpdateAt' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.255 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-25 16:01:24.407 -05:00 [DBG] Executing 7 update commands as a batch.
+2026-04-25 16:01:24.414 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.418 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.425 -05:00 [DBG] Beginning transaction with isolation level 'Unspecified'.
+2026-04-25 16:01:24.445 -05:00 [DBG] Began transaction with isolation level 'ReadCommitted'.
+2026-04-25 16:01:24.456 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:01:24.459 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-25 16:01:24.466 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (9ms).
+2026-04-25 16:01:24.471 -05:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (Size = 20), @p1='?' (DbType = DateTime2), @p2='?' (Size = 20), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (DbType = DateTime2), @p6='?' (Size = 20), @p9='?' (DbType = Guid), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p10='?' (DbType = Int32), @p13='?' (DbType = Guid), @p12='?' (DbType = Int32), @p16='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p18='?' (DbType = Guid), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Status] ([Code], [CreatedAt], [ShowName])
+OUTPUT INSERTED.[StatusID]
+VALUES (@p0, @p1, @p2);
+INSERT INTO [Status] ([StatusID], [Code], [CreatedAt], [ShowName])
+VALUES (@p3, @p4, @p5, @p6);
+UPDATE [Users] SET [StatusID] = @p7, [UpdateAt] = @p8
+OUTPUT 1
+WHERE [UserID] = @p9;
+UPDATE [Users] SET [StatusID] = @p10
+OUTPUT 1
+WHERE [UserID] = @p11;
+UPDATE [Users] SET [StatusID] = @p12
+OUTPUT 1
+WHERE [UserID] = @p13;
+UPDATE [Users] SET [StatusID] = @p14, [UpdateAt] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+UPDATE [Users] SET [StatusID] = @p17
+OUTPUT 1
+WHERE [UserID] = @p18;
+2026-04-25 16:01:24.538 -05:00 [INF] Executed DbCommand (67ms) [Parameters=[@p0='?' (Size = 20), @p1='?' (DbType = DateTime2), @p2='?' (Size = 20), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (DbType = DateTime2), @p6='?' (Size = 20), @p9='?' (DbType = Guid), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p10='?' (DbType = Int32), @p13='?' (DbType = Guid), @p12='?' (DbType = Int32), @p16='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p18='?' (DbType = Guid), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Status] ([Code], [CreatedAt], [ShowName])
+OUTPUT INSERTED.[StatusID]
+VALUES (@p0, @p1, @p2);
+INSERT INTO [Status] ([StatusID], [Code], [CreatedAt], [ShowName])
+VALUES (@p3, @p4, @p5, @p6);
+UPDATE [Users] SET [StatusID] = @p7, [UpdateAt] = @p8
+OUTPUT 1
+WHERE [UserID] = @p9;
+UPDATE [Users] SET [StatusID] = @p10
+OUTPUT 1
+WHERE [UserID] = @p11;
+UPDATE [Users] SET [StatusID] = @p12
+OUTPUT 1
+WHERE [UserID] = @p13;
+UPDATE [Users] SET [StatusID] = @p14, [UpdateAt] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+UPDATE [Users] SET [StatusID] = @p17
+OUTPUT 1
+WHERE [UserID] = @p18;
+2026-04-25 16:01:24.564 -05:00 [DBG] The foreign key property 'Status.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:01:24.582 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.587 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 43ms reading results.
+2026-04-25 16:01:24.601 -05:00 [DBG] Disposing transaction.
+2026-04-25 16:01:24.607 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:01:24.611 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (4ms).
+2026-04-25 16:01:24.685 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'SteamDomain.Database.SqlServer.Context.SteamContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.InvalidOperationException: The instance of entity type 'Status' cannot be tracked because another instance with the same key value for {'StatusId'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.UpdateIdentityMap(InternalEntityEntry entry, IKey key)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.KeyPropertyChanged(InternalEntityEntry entry, IProperty property, IEnumerable`1 containingPrincipalKeys, IEnumerable`1 containingForeignKeys, Object oldValue, Object newValue)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.KeyPropertyChanged(InternalEntityEntry entry, IProperty property, IEnumerable`1 keys, IEnumerable`1 foreignKeys, Object oldValue, Object newValue)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectKeyChange(InternalEntityEntry entry, IProperty property)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.PropertyChanged(InternalEntityEntry entry, IPropertyBase propertyBase, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.PropertyChanged(InternalEntityEntry entry, IPropertyBase property, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetStoreGeneratedValue(IProperty property, Object value, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.Update.ColumnModification.SetStoreGeneratedValue(IUpdateEntry entry, IProperty property, Object value)
+   at Microsoft.EntityFrameworkCore.Update.ColumnModification.set_Value(Object value)
+   at Microsoft.EntityFrameworkCore.Update.ModificationCommand.PropagateResults(RelationalDataReader relationalReader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> System.InvalidOperationException: The instance of entity type 'Status' cannot be tracked because another instance with the same key value for {'StatusId'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.UpdateIdentityMap(InternalEntityEntry entry, IKey key)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.KeyPropertyChanged(InternalEntityEntry entry, IProperty property, IEnumerable`1 containingPrincipalKeys, IEnumerable`1 containingForeignKeys, Object oldValue, Object newValue)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.KeyPropertyChanged(InternalEntityEntry entry, IProperty property, IEnumerable`1 keys, IEnumerable`1 foreignKeys, Object oldValue, Object newValue)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectKeyChange(InternalEntityEntry entry, IProperty property)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.PropertyChanged(InternalEntityEntry entry, IPropertyBase propertyBase, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.PropertyChanged(InternalEntityEntry entry, IPropertyBase property, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetProperty(IPropertyBase propertyBase, Object value, Boolean isMaterialization, Boolean setModified, Boolean isCascadeDelete, CurrentValueType valueType)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetStoreGeneratedValue(IProperty property, Object value, Boolean setModified)
+   at Microsoft.EntityFrameworkCore.Update.ColumnModification.SetStoreGeneratedValue(IUpdateEntry entry, IProperty property, Object value)
+   at Microsoft.EntityFrameworkCore.Update.ColumnModification.set_Value(Object value)
+   at Microsoft.EntityFrameworkCore.Update.ModificationCommand.PropagateResults(RelationalDataReader relationalReader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-04-25 16:15:18.505 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-25 16:15:19.042 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:15:19.109 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:15:19.382 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:15:19.389 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-25 16:15:19.496 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-25 16:15:19.500 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-25 16:15:19.874 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-25 16:15:19.961 -05:00 [DBG] Compiling query expression: 
+'DbSet<EmailTemplate>()'
+2026-04-25 16:15:20.311 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<EmailTemplate>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: EmailTemplate.Body (string) Required, 0], [Property: EmailTemplate.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 1], [Property: EmailTemplate.EmailTemplateId (int) Required ValueGenerated.OnAdd, 2], [Property: EmailTemplate.Name (string) Required MaxLength(100) ANSI, 3], [Property: EmailTemplate.Subject (string) Required MaxLength(255) ANSI, 4] }
+        SELECT e.Body, e.CreatedAt, e.EmailTemplateId, e.Name, e.Subject
+        FROM EmailTemplates AS e, 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        EmailTemplate entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            EmailTemplate instance1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(EmailTemplate);
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]: 
+                        {
+                            return 
+                            {
+                                EmailTemplate instance;
+                                instance = new EmailTemplate();
+                                instance.<Body>k__BackingField = dataReader.GetString(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.GetDateTime(1);
+                                instance.<EmailTemplateId>k__BackingField = dataReader.GetInt32(2);
+                                instance.<Name>k__BackingField = dataReader.GetString(3);
+                                instance.<Subject>k__BackingField = dataReader.GetString(4);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: EmailTemplate Keyless | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.EmailTemplate")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(EmailTemplate)
+                }
+                ;
+                return instance1;
+            }return instance1;
+        };
+        return entity;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-25 16:15:20.363 -05:00 [DBG] Creating DbConnection.
+2026-04-25 16:15:20.453 -05:00 [DBG] Created DbConnection. (89ms).
+2026-04-25 16:15:20.462 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:20.912 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:20.922 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:15:20.932 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (10ms).
+2026-04-25 16:15:20.937 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (19ms).
+2026-04-25 16:15:20.948 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-25 16:15:21.021 -05:00 [INF] Executed DbCommand (63ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [e].[Body], [e].[CreatedAt], [e].[EmailTemplateId], [e].[Name], [e].[Subject]
+FROM [EmailTemplates] AS [e]
+2026-04-25 16:15:21.049 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.063 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 28ms reading results.
+2026-04-25 16:15:21.074 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.085 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (10ms).
+2026-04-25 16:15:21.108 -05:00 [DBG] Compiling query expression: 
+'DbSet<Status>()
+    .FirstOrDefault(x => x.StatusId == __requiredStatus_Id_0)'
+2026-04-25 16:15:21.210 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Status>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<Status>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Status.StatusId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Status.Code (string) Required MaxLength(20), 1], [Property: Status.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 2], [Property: Status.ShowName (string) Required MaxLength(20), 3] }
+            SELECT TOP(1) s.StatusID, s.Code, s.CreatedAt, s.ShowName
+            FROM Status AS s
+            WHERE s.StatusID == @__requiredStatus_Id_0) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Status.StatusId (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Status.Code (string) Required MaxLength(20), 1], [Property: Status.CreatedAt (DateTime) Required ValueGenerated.OnAdd, 2], [Property: Status.ShowName (string) Required MaxLength(20), 3] }
+            SELECT TOP(1) s.StatusID, s.Code, s.CreatedAt, s.ShowName
+            FROM Status AS s
+            WHERE s.StatusID == @__requiredStatus_Id_0, 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            Status entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                Status instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(Status);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: Status.StatusId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (Status)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")]: 
+                            {
+                                return 
+                                {
+                                    Status instance;
+                                    instance = new Status();
+                                    instance.<StatusId>k__BackingField = dataReader.GetInt32(0);
+                                    instance.<Code>k__BackingField = dataReader.GetString(1);
+                                    instance.<CreatedAt>k__BackingField = dataReader.GetDateTime(2);
+                                    instance.<ShowName>k__BackingField = dataReader.GetString(3);
+                                    (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                        context: materializationContext1.Context, 
+                                        entity: instance, 
+                                        queryTrackingBehavior: TrackAll, 
+                                        structuralType: [LIFTABLE Constant: EntityType: Status | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.Status")]) : default(void);
+                                    return instance;
+                                }}
+                        default: 
+                            default(Status)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-25 16:15:21.227 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.230 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.234 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:15:21.236 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-25 16:15:21.243 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (8ms).
+2026-04-25 16:15:21.250 -05:00 [DBG] Executing DbCommand [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:15:21.290 -05:00 [INF] Executed DbCommand (43ms) [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:15:21.294 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.298 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 4ms reading results.
+2026-04-25 16:15:21.300 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.301 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (1ms).
+2026-04-25 16:15:21.347 -05:00 [DBG] 'SteamContext' generated a temporary value for the property 'Status.StatusId'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.427 -05:00 [DBG] Context 'SteamContext' started tracking 'Status' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.436 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.439 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.443 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:15:21.445 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2026-04-25 16:15:21.448 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (5ms).
+2026-04-25 16:15:21.451 -05:00 [DBG] Executing DbCommand [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:15:21.459 -05:00 [INF] Executed DbCommand (8ms) [Parameters=[@__requiredStatus_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [s].[StatusID], [s].[Code], [s].[CreatedAt], [s].[ShowName]
+FROM [Status] AS [s]
+WHERE [s].[StatusID] = @__requiredStatus_Id_0
+2026-04-25 16:15:21.470 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.473 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 2ms reading results.
+2026-04-25 16:15:21.475 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.478 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (2ms).
+2026-04-25 16:15:21.481 -05:00 [DBG] Context 'SteamContext' started tracking 'Status' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.534 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Where(user => user.StatusId == null || user.DeletedAt == null && user.StatusId != (int?)1 || user.DeletedAt != null && user.StatusId != (int?)0)'
+2026-04-25 16:15:21.551 -05:00 [DBG] Generated query execution expression: 
+'queryContext => SingleQueryingEnumerable.Create<User>(
+    relationalQueryContext: (RelationalQueryContext)queryContext, 
+    relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE ((u.StatusID == NULL) || ((u.DeletedAt == NULL) && (u.StatusID != 1))) || ((u.DeletedAt != NULL) && (u.StatusID != 0))) | Resolver: c => new RelationalCommandCache(
+        c.Dependencies.MemoryCache, 
+        c.RelationalDependencies.QuerySqlGeneratorFactory, 
+        c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.UserId (Guid) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.CreatedAt (DateTime?) ValueGenerated.OnAdd, 1], [Property: User.DeletedAt (DateTime?), 2], [Property: User.Email (string) Index MaxLength(150), 3], [Property: User.Password (string) MaxLength(255), 4], [Property: User.StatusId (int?) FK Index, 5], [Property: User.UpdateAt (DateTime?), 6], [Property: User.UserName (string) Required MaxLength(100), 7] }
+        SELECT u.UserID, u.CreatedAt, u.DeletedAt, u.Email, u.Password, u.StatusID, u.UpdateAt, u.UserName
+        FROM Users AS u
+        WHERE ((u.StatusID == NULL) || ((u.DeletedAt == NULL) && (u.StatusID != 1))) || ((u.DeletedAt != NULL) && (u.StatusID != 0)), 
+        False, 
+        new HashSet<string>(
+            new string[]{ }, 
+            StringComparer.Ordinal
+        )
+    )].GetRelationalCommandTemplate(parameters), 
+    readerColumns: null, 
+    shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+    {
+        User entity;
+        entity = 
+        {
+            MaterializationContext materializationContext1;
+            IEntityType entityType1;
+            User instance1;
+            InternalEntityEntry entry1;
+            bool hasNullKey1;
+            materializationContext1 = new MaterializationContext(
+                [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                queryContext.Context
+            );
+            instance1 = default(User);
+            entry1 = queryContext.TryGetEntry(
+                key: [LIFTABLE Constant: Key: User.UserId PK | Resolver: c => c.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User").FindPrimaryKey()], 
+                keyValues: new object[]{ (object)dataReader.GetGuid(0) }, 
+                throwOnNullKey: True, 
+                hasNullKey: hasNullKey1);
+            !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+            {
+                entityType1 = entry1.EntityType;
+                return instance1 = (User)entry1.Entity;
+            } : 
+            {
+                ISnapshot shadowSnapshot1;
+                shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")];
+                instance1 = switch (entityType1)
+                {
+                    case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]: 
+                        {
+                            return 
+                            {
+                                User instance;
+                                instance = new User();
+                                instance.<UserId>k__BackingField = dataReader.GetGuid(0);
+                                instance.<CreatedAt>k__BackingField = dataReader.IsDBNull(1) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(1);
+                                instance.<DeletedAt>k__BackingField = dataReader.IsDBNull(2) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(2);
+                                instance.<Email>k__BackingField = dataReader.IsDBNull(3) ? default(string) : dataReader.GetString(3);
+                                instance.<Password>k__BackingField = dataReader.IsDBNull(4) ? default(string) : dataReader.GetString(4);
+                                instance.<StatusId>k__BackingField = dataReader.IsDBNull(5) ? default(int?) : (int?)dataReader.GetInt32(5);
+                                instance.<UpdateAt>k__BackingField = dataReader.IsDBNull(6) ? default(DateTime?) : (DateTime?)dataReader.GetDateTime(6);
+                                instance.<UserName>k__BackingField = dataReader.GetString(7);
+                                (instance is IInjectableService) ? ((IInjectableService)instance).Injected(
+                                    context: materializationContext1.Context, 
+                                    entity: instance, 
+                                    queryTrackingBehavior: TrackAll, 
+                                    structuralType: [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{2} => namelessParameter{2}.Dependencies.Model.FindEntityType("SteamDomain.Database.SqlServer.Entities.User")]) : default(void);
+                                return instance;
+                            }}
+                    default: 
+                        default(User)
+                }
+                ;
+                entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                    entityType: entityType1, 
+                    entity: instance1, 
+                    snapshot: shadowSnapshot1);
+                return instance1;
+            } : default(void);
+            return instance1;
+        };
+        return entity;
+    }, 
+    contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+    standAloneStateManager: False, 
+    detailedErrorsEnabled: False, 
+    threadSafetyChecksEnabled: True)'
+2026-04-25 16:15:21.565 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.569 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.570 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:15:21.572 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2026-04-25 16:15:21.574 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (4ms).
+2026-04-25 16:15:21.577 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[StatusID] IS NULL OR ([u].[DeletedAt] IS NULL AND [u].[StatusID] <> 1) OR ([u].[DeletedAt] IS NOT NULL AND [u].[StatusID] <> 0)
+2026-04-25 16:15:21.634 -05:00 [INF] Executed DbCommand (57ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[UserID], [u].[CreatedAt], [u].[DeletedAt], [u].[Email], [u].[Password], [u].[StatusID], [u].[UpdateAt], [u].[UserName]
+FROM [Users] AS [u]
+WHERE [u].[StatusID] IS NULL OR ([u].[DeletedAt] IS NULL AND [u].[StatusID] <> 1) OR ([u].[DeletedAt] IS NOT NULL AND [u].[StatusID] <> 0)
+2026-04-25 16:15:21.671 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.710 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.714 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.717 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.720 -05:00 [DBG] Context 'SteamContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.723 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.726 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 87ms reading results.
+2026-04-25 16:15:21.729 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.731 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (2ms).
+2026-04-25 16:15:21.738 -05:00 [DBG] SaveChanges starting for 'SteamContext'.
+2026-04-25 16:15:21.745 -05:00 [DBG] DetectChanges starting for 'SteamContext'.
+2026-04-25 16:15:21.774 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.784 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.788 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.810 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.827 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.830 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.833 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.835 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.838 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.839 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.842 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.844 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.846 -05:00 [DBG] The unchanged property 'User.UpdateAt' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.848 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.849 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.853 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.855 -05:00 [DBG] The navigation 'User.Status' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.857 -05:00 [DBG] The unchanged property 'User.StatusId' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.860 -05:00 [DBG] An entity of type 'User' tracked by 'SteamContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2026-04-25 16:15:21.862 -05:00 [DBG] The foreign key property 'User.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.864 -05:00 [DBG] The unchanged property 'User.UpdateAt' was detected as changed and will be marked as modified. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:21.868 -05:00 [DBG] DetectChanges completed for 'SteamContext'.
+2026-04-25 16:15:21.965 -05:00 [DBG] Executing 7 update commands as a batch.
+2026-04-25 16:15:21.972 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.974 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:21.979 -05:00 [DBG] Beginning transaction with isolation level 'Unspecified'.
+2026-04-25 16:15:22.009 -05:00 [DBG] Began transaction with isolation level 'ReadCommitted'.
+2026-04-25 16:15:22.015 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-25 16:15:22.016 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2026-04-25 16:15:22.021 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (6ms).
+2026-04-25 16:15:22.023 -05:00 [DBG] Executing DbCommand [Parameters=[@p0='?' (Size = 20), @p1='?' (DbType = DateTime2), @p2='?' (Size = 20), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (DbType = DateTime2), @p6='?' (Size = 20), @p9='?' (DbType = Guid), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p10='?' (DbType = Int32), @p13='?' (DbType = Guid), @p12='?' (DbType = Int32), @p16='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p18='?' (DbType = Guid), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Status] ([Code], [CreatedAt], [ShowName])
+OUTPUT INSERTED.[StatusID]
+VALUES (@p0, @p1, @p2);
+INSERT INTO [Status] ([StatusID], [Code], [CreatedAt], [ShowName])
+VALUES (@p3, @p4, @p5, @p6);
+UPDATE [Users] SET [StatusID] = @p7, [UpdateAt] = @p8
+OUTPUT 1
+WHERE [UserID] = @p9;
+UPDATE [Users] SET [StatusID] = @p10
+OUTPUT 1
+WHERE [UserID] = @p11;
+UPDATE [Users] SET [StatusID] = @p12
+OUTPUT 1
+WHERE [UserID] = @p13;
+UPDATE [Users] SET [StatusID] = @p14, [UpdateAt] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+UPDATE [Users] SET [StatusID] = @p17
+OUTPUT 1
+WHERE [UserID] = @p18;
+2026-04-25 16:15:22.046 -05:00 [INF] Executed DbCommand (22ms) [Parameters=[@p0='?' (Size = 20), @p1='?' (DbType = DateTime2), @p2='?' (Size = 20), @p3='?' (DbType = Int32), @p4='?' (Size = 20), @p5='?' (DbType = DateTime2), @p6='?' (Size = 20), @p9='?' (DbType = Guid), @p7='?' (DbType = Int32), @p8='?' (DbType = DateTime2), @p11='?' (DbType = Guid), @p10='?' (DbType = Int32), @p13='?' (DbType = Guid), @p12='?' (DbType = Int32), @p16='?' (DbType = Guid), @p14='?' (DbType = Int32), @p15='?' (DbType = DateTime2), @p18='?' (DbType = Guid), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Status] ([Code], [CreatedAt], [ShowName])
+OUTPUT INSERTED.[StatusID]
+VALUES (@p0, @p1, @p2);
+INSERT INTO [Status] ([StatusID], [Code], [CreatedAt], [ShowName])
+VALUES (@p3, @p4, @p5, @p6);
+UPDATE [Users] SET [StatusID] = @p7, [UpdateAt] = @p8
+OUTPUT 1
+WHERE [UserID] = @p9;
+UPDATE [Users] SET [StatusID] = @p10
+OUTPUT 1
+WHERE [UserID] = @p11;
+UPDATE [Users] SET [StatusID] = @p12
+OUTPUT 1
+WHERE [UserID] = @p13;
+UPDATE [Users] SET [StatusID] = @p14, [UpdateAt] = @p15
+OUTPUT 1
+WHERE [UserID] = @p16;
+UPDATE [Users] SET [StatusID] = @p17
+OUTPUT 1
+WHERE [UserID] = @p18;
+2026-04-25 16:15:22.060 -05:00 [DBG] The foreign key property 'Status.StatusId' was detected as changed. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see property values.
+2026-04-25 16:15:22.079 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:22.082 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 33ms reading results.
+2026-04-25 16:15:22.095 -05:00 [DBG] Disposing transaction.
+2026-04-25 16:15:22.099 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:22.102 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (3ms).
+2026-04-25 16:15:22.149 -05:00 [ERR] An exception occurred in the database while saving changes for context type 'SteamDomain.Database.SqlServer.Context.SteamContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Status' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreResults(Boolean& moreResults)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryNextResult(Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.NextResultAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:2849e1ea-7191-4bf7-81a8-428eb6dfaf8b
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert explicit value for identity column in table 'Status' when IDENTITY_INSERT is set to OFF.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreResults(Boolean& moreResults)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryNextResult(Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.NextResultAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:2849e1ea-7191-4bf7-81a8-428eb6dfaf8b
+Error Number:544,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-04-25 16:15:26.963 -05:00 [DBG] 'SteamContext' disposed.
+2026-04-25 16:15:26.970 -05:00 [DBG] Disposing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-25 16:15:26.977 -05:00 [DBG] Disposed connection to database '' on server '' (4ms).

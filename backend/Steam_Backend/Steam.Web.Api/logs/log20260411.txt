@@ -1,0 +1,541 @@
+2026-04-11 16:22:59.549 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-11 16:23:00.433 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-11 16:23:00.542 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-11 16:23:00.843 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-11 16:23:00.850 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-11 16:23:01.019 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-11 16:23:01.024 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-11 16:23:01.561 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-11 16:23:01.700 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-11 16:23:02.117 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-11 16:23:02.199 -05:00 [DBG] Creating DbConnection.
+2026-04-11 16:23:02.241 -05:00 [DBG] Created DbConnection. (39ms).
+2026-04-11 16:23:02.254 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-11 16:23:03.367 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-11 16:23:03.380 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-11 16:23:03.395 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (13ms).
+2026-04-11 16:23:03.402 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (26ms).
+2026-04-11 16:23:03.415 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-11 16:23:03.539 -05:00 [INF] Executed DbCommand (106ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-11 16:23:03.575 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-11 16:23:03.588 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 36ms reading results.
+2026-04-11 16:23:03.596 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-11 16:23:03.607 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (10ms).
+2026-04-11 16:23:03.945 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-04-11 16:23:04.089 -05:00 [DBG] Hosting starting
+2026-04-11 16:23:04.159 -05:00 [INF] User profile is available. Using 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-11 16:23:04.189 -05:00 [DBG] Reading data from file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-11 16:23:04.208 -05:00 [DBG] Found key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992}.
+2026-04-11 16:23:04.236 -05:00 [DBG] Considering key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with expiration date 2026-07-07 03:27:01Z as default key.
+2026-04-11 16:23:04.246 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-11 16:23:04.250 -05:00 [DBG] Decrypting secret element using Windows DPAPI.
+2026-04-11 16:23:04.255 -05:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2026-04-11 16:23:04.265 -05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-04-11 16:23:04.270 -05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-04-11 16:23:04.277 -05:00 [DBG] Using key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} as the default key.
+2026-04-11 16:23:04.281 -05:00 [DBG] Key ring with default key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} was loaded during application startup.
+2026-04-11 16:23:04.306 -05:00 [DBG] Middleware loaded
+2026-04-11 16:23:04.314 -05:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (14931 B).
+2026-04-11 16:23:04.319 -05:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-04-11 16:23:04.492 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-04-11 16:23:04.500 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-04-11 16:23:04.544 -05:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-04-11 16:23:04.853 -05:00 [INF] Now listening on: https://localhost:7134
+2026-04-11 16:23:04.855 -05:00 [INF] Now listening on: http://localhost:5168
+2026-04-11 16:23:04.857 -05:00 [DBG] Loaded hosting startup assembly Steam.Web.Api
+2026-04-11 16:23:04.859 -05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-04-11 16:23:04.861 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-04-11 16:23:04.864 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-04-11 16:23:04.874 -05:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-11 16:23:04.879 -05:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-11 16:23:05.075 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-11 16:23:05.078 -05:00 [INF] Hosting environment: Development
+2026-04-11 16:23:05.082 -05:00 [INF] Content root path: C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api
+2026-04-11 16:23:05.084 -05:00 [DBG] Hosting started
+2026-04-11 16:25:48.172 -05:00 [DBG] Connection id "0HNKO23J2NF4G" received FIN.
+2026-04-11 16:25:48.192 -05:00 [DBG] Connection id "0HNKO23J2NF4G" accepted.
+2026-04-11 16:25:48.196 -05:00 [DBG] Connection id "0HNKO23J2NF4G" started.
+2026-04-11 16:25:48.209 -05:00 [DBG] Connection id "0HNKO23J2NF4H" accepted.
+2026-04-11 16:25:48.212 -05:00 [DBG] Connection id "0HNKO23J2NF4H" started.
+2026-04-11 16:25:48.222 -05:00 [DBG] Connection id "0HNKO23J2NF4G" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:25:48.229 -05:00 [DBG] Connection id "0HNKO23J2NF4G" disconnecting.
+2026-04-11 16:25:48.234 -05:00 [DBG] Connection id "0HNKO23J2NF4G" stopped.
+2026-04-11 16:25:48.292 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:25:48.375 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:25:48.381 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:25:48.386 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:25:48.624 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-11 16:25:48.631 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-11 16:25:48.637 -05:00 [DBG] Https port '7134' loaded from configuration.
+2026-04-11 16:25:48.648 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:25:48.679 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:25:48.686 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 404.1694ms
+2026-04-11 16:25:48.695 -05:00 [DBG] Connection id "0HNKO23J2NF4I" accepted.
+2026-04-11 16:25:48.696 -05:00 [DBG] Connection id "0HNKO23J2NF4J" accepted.
+2026-04-11 16:25:48.705 -05:00 [DBG] Connection id "0HNKO23J2NF4I" received FIN.
+2026-04-11 16:25:48.714 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000001": started reading request body.
+2026-04-11 16:25:48.717 -05:00 [DBG] Connection id "0HNKO23J2NF4I" started.
+2026-04-11 16:25:48.720 -05:00 [DBG] Connection id "0HNKO23J2NF4J" started.
+2026-04-11 16:25:48.725 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000001": done reading request body.
+2026-04-11 16:25:48.727 -05:00 [DBG] Connection id "0HNKO23J2NF4I" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:25:48.737 -05:00 [DBG] Connection id "0HNKO23J2NF4I" disconnecting.
+2026-04-11 16:25:48.740 -05:00 [DBG] Connection id "0HNKO23J2NF4I" stopped.
+2026-04-11 16:25:48.825 -05:00 [DBG] Connection 0HNKO23J2NF4J established using the following protocol: "Tls13"
+2026-04-11 16:25:48.879 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:25:48.886 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:25:48.889 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:25:48.893 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:25:48.897 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-11 16:25:48.901 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-11 16:25:48.920 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:25:48.937 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:25:49.241 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 362.1474ms
+2026-04-11 16:25:49.247 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000001": started reading request body.
+2026-04-11 16:25:49.249 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000001": done reading request body.
+2026-04-11 16:26:09.391 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:26:09.397 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:26:09.399 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:26:09.406 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:26:09.411 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:26:09.418 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:26:09.420 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:26:09.424 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 32.8675ms
+2026-04-11 16:26:09.437 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:26:09.439 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000002": started reading request body.
+2026-04-11 16:26:09.445 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:26:09.447 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000002": done reading request body.
+2026-04-11 16:26:09.449 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:26:09.455 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:26:09.457 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:26:09.460 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:26:09.462 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:26:09.617 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 179.182ms
+2026-04-11 16:26:09.624 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000003": started reading request body.
+2026-04-11 16:26:09.628 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000003": done reading request body.
+2026-04-11 16:27:04.165 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:27:04.205 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:04.208 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:04.211 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:04.213 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:04.216 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:27:04.219 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:27:04.222 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 57.0258ms
+2026-04-11 16:27:04.236 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:27:04.239 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000003": started reading request body.
+2026-04-11 16:27:04.244 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:04.246 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000003": done reading request body.
+2026-04-11 16:27:04.250 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:04.254 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:04.256 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:04.268 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:27:04.271 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:27:04.431 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 195.0248ms
+2026-04-11 16:27:04.437 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000005": started reading request body.
+2026-04-11 16:27:04.440 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000005": done reading request body.
+2026-04-11 16:27:11.861 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:27:11.866 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:11.868 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:11.872 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:11.875 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:11.877 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:27:11.880 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:27:11.883 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 22.3616ms
+2026-04-11 16:27:11.883 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:27:11.889 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000004": started reading request body.
+2026-04-11 16:27:11.895 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:11.897 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000004": done reading request body.
+2026-04-11 16:27:11.899 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:11.905 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:11.907 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:11.910 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:27:11.912 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:27:12.051 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 167.3228ms
+2026-04-11 16:27:12.058 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000007": started reading request body.
+2026-04-11 16:27:12.062 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000007": done reading request body.
+2026-04-11 16:27:46.867 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:27:46.872 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:46.876 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:46.879 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:46.883 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:46.885 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:27:46.887 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:27:46.891 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 34.3941ms
+2026-04-11 16:27:46.905 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:27:46.911 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000005": started reading request body.
+2026-04-11 16:27:46.917 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:27:46.919 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000005": done reading request body.
+2026-04-11 16:27:46.921 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:27:46.928 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:27:46.930 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:27:46.933 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:27:46.935 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:27:47.087 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 185.8095ms
+2026-04-11 16:27:47.095 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000009": started reading request body.
+2026-04-11 16:27:47.098 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000009": done reading request body.
+2026-04-11 16:28:02.497 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - null null
+2026-04-11 16:28:02.502 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:02.505 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:02.508 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-11 16:28:02.511 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:02.513 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'.
+2026-04-11 16:28:02.515 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:28:02.518 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - 307 0 null 20.6709ms
+2026-04-11 16:28:02.518 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - null null
+2026-04-11 16:28:02.529 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:02.532 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:02.536 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-11 16:28:02.538 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:02.541 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:28:02.544 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:28:02.695 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - 401 null application/json; charset=utf-8 177.0966ms
+2026-04-11 16:28:43.242 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - null null
+2026-04-11 16:28:43.251 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:43.254 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:43.257 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-11 16:28:43.261 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:43.263 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'.
+2026-04-11 16:28:43.266 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:28:43.269 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - 307 0 null 50.9837ms
+2026-04-11 16:28:43.300 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - null null
+2026-04-11 16:28:43.335 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:43.337 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)' with route pattern 'api/User/{id:guid}' is valid for the request path '/api/user/B3B8FF85-D596-4276-93BC-540EDA975986'
+2026-04-11 16:28:43.341 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetById (Steam.Web.Api)'
+2026-04-11 16:28:43.343 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:43.345 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:28:43.348 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:28:43.485 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/api/user/B3B8FF85-D596-4276-93BC-540EDA975986 - 401 null application/json; charset=utf-8 185.2973ms
+2026-04-11 16:28:50.905 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 97
+2026-04-11 16:28:50.909 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:28:50.911 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:28:50.914 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:28:50.916 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:50.919 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-11 16:28:50.921 -05:00 [DBG] Connection id "0HNKO23J2NF4H" completed keep alive response.
+2026-04-11 16:28:50.925 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 97
+2026-04-11 16:28:50.925 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 20.1432ms
+2026-04-11 16:28:50.931 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-11 16:28:50.941 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000008": started reading request body.
+2026-04-11 16:28:50.943 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-11 16:28:50.947 -05:00 [DBG] Connection id "0HNKO23J2NF4H", Request id "0HNKO23J2NF4H:00000008": done reading request body.
+2026-04-11 16:28:50.949 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-11 16:28:50.954 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:28:50.956 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-11 16:28:50.958 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-11 16:28:51.088 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 163.0131ms
+2026-04-11 16:28:51.095 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000000F": started reading request body.
+2026-04-11 16:28:51.098 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000000F": done reading request body.
+2026-04-11 16:30:08.333 -05:00 [DBG] Connection id "0HNKO23J2NF4K" accepted.
+2026-04-11 16:30:08.335 -05:00 [DBG] Connection id "0HNKO23J2NF4K" received FIN.
+2026-04-11 16:30:08.344 -05:00 [DBG] Connection id "0HNKO23J2NF4L" accepted.
+2026-04-11 16:30:08.344 -05:00 [DBG] Connection id "0HNKO23J2NF4K" started.
+2026-04-11 16:30:08.363 -05:00 [DBG] Connection id "0HNKO23J2NF4L" started.
+2026-04-11 16:30:08.366 -05:00 [DBG] Connection id "0HNKO23J2NF4K" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:30:08.368 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/auth/register - application/json 97
+2026-04-11 16:30:08.370 -05:00 [DBG] Connection id "0HNKO23J2NF4K" disconnecting.
+2026-04-11 16:30:08.375 -05:00 [DBG] No candidates found for the request path '/auth/register'
+2026-04-11 16:30:08.377 -05:00 [DBG] Connection id "0HNKO23J2NF4K" stopped.
+2026-04-11 16:30:08.379 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:30:08.383 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:30:08.385 -05:00 [DBG] Redirecting to 'https://localhost:7134/auth/register'.
+2026-04-11 16:30:08.387 -05:00 [DBG] Connection id "0HNKO23J2NF4L" completed keep alive response.
+2026-04-11 16:30:08.388 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/auth/register - 307 0 null 20.9112ms
+2026-04-11 16:30:08.390 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/auth/register - application/json 97
+2026-04-11 16:30:08.395 -05:00 [DBG] Connection id "0HNKO23J2NF4L", Request id "0HNKO23J2NF4L:00000001": started reading request body.
+2026-04-11 16:30:08.400 -05:00 [DBG] No candidates found for the request path '/auth/register'
+2026-04-11 16:30:08.402 -05:00 [DBG] Connection id "0HNKO23J2NF4L", Request id "0HNKO23J2NF4L:00000001": done reading request body.
+2026-04-11 16:30:08.404 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:30:08.409 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:30:08.412 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/auth/register - 404 0 null 21.8165ms
+2026-04-11 16:30:08.420 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/auth/register, Response status code: 404
+2026-04-11 16:30:08.423 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000011": started reading request body.
+2026-04-11 16:30:08.426 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000011": done reading request body.
+2026-04-11 16:33:27.897 -05:00 [DBG] Connection id "0HNKO23J2NF4M" accepted.
+2026-04-11 16:33:27.900 -05:00 [DBG] Connection id "0HNKO23J2NF4M" received FIN.
+2026-04-11 16:33:27.910 -05:00 [DBG] Connection id "0HNKO23J2NF4N" accepted.
+2026-04-11 16:33:27.910 -05:00 [DBG] Connection id "0HNKO23J2NF4M" started.
+2026-04-11 16:33:27.928 -05:00 [DBG] Connection id "0HNKO23J2NF4N" started.
+2026-04-11 16:33:27.930 -05:00 [DBG] Connection id "0HNKO23J2NF4M" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:33:27.932 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/auth/register - application/json 97
+2026-04-11 16:33:27.935 -05:00 [DBG] Connection id "0HNKO23J2NF4M" disconnecting.
+2026-04-11 16:33:27.939 -05:00 [DBG] No candidates found for the request path '/auth/register'
+2026-04-11 16:33:27.942 -05:00 [DBG] Connection id "0HNKO23J2NF4M" stopped.
+2026-04-11 16:33:27.944 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:27.948 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:27.950 -05:00 [DBG] Redirecting to 'https://localhost:7134/auth/register'.
+2026-04-11 16:33:27.952 -05:00 [DBG] Connection id "0HNKO23J2NF4N" completed keep alive response.
+2026-04-11 16:33:27.954 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/auth/register - 307 0 null 21.7927ms
+2026-04-11 16:33:27.956 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/auth/register - application/json 97
+2026-04-11 16:33:27.961 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000001": started reading request body.
+2026-04-11 16:33:27.967 -05:00 [DBG] No candidates found for the request path '/auth/register'
+2026-04-11 16:33:27.970 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000001": done reading request body.
+2026-04-11 16:33:27.972 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:27.975 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:27.978 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/auth/register - 404 0 null 21.5973ms
+2026-04-11 16:33:27.985 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/auth/register, Response status code: 404
+2026-04-11 16:33:27.989 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000013": started reading request body.
+2026-04-11 16:33:27.992 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000013": done reading request body.
+2026-04-11 16:33:35.758 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/register - application/json 97
+2026-04-11 16:33:35.764 -05:00 [DBG] No candidates found for the request path '/api/register'
+2026-04-11 16:33:35.766 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:35.768 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:35.771 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/register'.
+2026-04-11 16:33:35.774 -05:00 [DBG] Connection id "0HNKO23J2NF4N" completed keep alive response.
+2026-04-11 16:33:35.776 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/register - 307 0 null 18.0164ms
+2026-04-11 16:33:35.776 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/register - application/json 97
+2026-04-11 16:33:35.783 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000002": started reading request body.
+2026-04-11 16:33:35.790 -05:00 [DBG] No candidates found for the request path '/api/register'
+2026-04-11 16:33:35.792 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000002": done reading request body.
+2026-04-11 16:33:35.794 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:35.799 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:35.801 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/register - 404 0 null 25.0253ms
+2026-04-11 16:33:35.814 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/api/register, Response status code: 404
+2026-04-11 16:33:35.820 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000015": started reading request body.
+2026-04-11 16:33:35.823 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000015": done reading request body.
+2026-04-11 16:33:37.796 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/register - application/json 97
+2026-04-11 16:33:37.802 -05:00 [DBG] No candidates found for the request path '/api/register'
+2026-04-11 16:33:37.804 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:37.805 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:37.807 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/register'.
+2026-04-11 16:33:37.809 -05:00 [DBG] Connection id "0HNKO23J2NF4N" completed keep alive response.
+2026-04-11 16:33:37.812 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/register - application/json 97
+2026-04-11 16:33:37.814 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/register - 307 0 null 17.2512ms
+2026-04-11 16:33:37.819 -05:00 [DBG] No candidates found for the request path '/api/register'
+2026-04-11 16:33:37.826 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000003": started reading request body.
+2026-04-11 16:33:37.830 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:33:37.833 -05:00 [DBG] Connection id "0HNKO23J2NF4N", Request id "0HNKO23J2NF4N:00000003": done reading request body.
+2026-04-11 16:33:37.835 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:33:37.840 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/register - 404 0 null 28.3235ms
+2026-04-11 16:33:37.854 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/api/register, Response status code: 404
+2026-04-11 16:33:37.860 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000017": started reading request body.
+2026-04-11 16:33:37.863 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000017": done reading request body.
+2026-04-11 16:34:41.313 -05:00 [DBG] Connection id "0HNKO23J2NF4O" accepted.
+2026-04-11 16:34:41.316 -05:00 [DBG] Connection id "0HNKO23J2NF4O" received FIN.
+2026-04-11 16:34:41.329 -05:00 [DBG] Connection id "0HNKO23J2NF4P" accepted.
+2026-04-11 16:34:41.329 -05:00 [DBG] Connection id "0HNKO23J2NF4O" started.
+2026-04-11 16:34:41.347 -05:00 [DBG] Connection id "0HNKO23J2NF4P" started.
+2026-04-11 16:34:41.349 -05:00 [DBG] Connection id "0HNKO23J2NF4O" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:34:41.351 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/auth/register - application/json 97
+2026-04-11 16:34:41.354 -05:00 [DBG] Connection id "0HNKO23J2NF4O" disconnecting.
+2026-04-11 16:34:41.359 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:34:41.361 -05:00 [DBG] Connection id "0HNKO23J2NF4O" stopped.
+2026-04-11 16:34:41.362 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:34:41.367 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:34:41.369 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/auth/register'.
+2026-04-11 16:34:41.372 -05:00 [DBG] Connection id "0HNKO23J2NF4P" completed keep alive response.
+2026-04-11 16:34:41.374 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/auth/register - 307 0 null 22.0371ms
+2026-04-11 16:34:41.374 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/auth/register - application/json 97
+2026-04-11 16:34:41.381 -05:00 [DBG] Connection id "0HNKO23J2NF4P", Request id "0HNKO23J2NF4P:00000001": started reading request body.
+2026-04-11 16:34:41.385 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:34:41.388 -05:00 [DBG] Connection id "0HNKO23J2NF4P", Request id "0HNKO23J2NF4P:00000001": done reading request body.
+2026-04-11 16:34:41.390 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:34:41.394 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:34:41.397 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/auth/register - 404 0 null 23.2664ms
+2026-04-11 16:34:41.403 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/api/auth/register, Response status code: 404
+2026-04-11 16:34:41.408 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000019": started reading request body.
+2026-04-11 16:34:41.411 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:00000019": done reading request body.
+2026-04-11 16:36:39.606 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" accepted.
+2026-04-11 16:36:39.607 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" received FIN.
+2026-04-11 16:36:39.615 -05:00 [DBG] Connection id "0HNKO23J2NF4R" accepted.
+2026-04-11 16:36:39.616 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" started.
+2026-04-11 16:36:39.632 -05:00 [DBG] Connection id "0HNKO23J2NF4R" started.
+2026-04-11 16:36:39.635 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:36:39.637 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/auth/register - application/json 97
+2026-04-11 16:36:39.640 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" disconnecting.
+2026-04-11 16:36:39.644 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:36:39.646 -05:00 [DBG] Connection id "0HNKO23J2NF4Q" stopped.
+2026-04-11 16:36:39.648 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:36:39.651 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:36:39.654 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/auth/register'.
+2026-04-11 16:36:39.655 -05:00 [DBG] Connection id "0HNKO23J2NF4R" completed keep alive response.
+2026-04-11 16:36:39.657 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/auth/register - 307 0 null 20.5731ms
+2026-04-11 16:36:39.658 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/auth/register - application/json 97
+2026-04-11 16:36:39.664 -05:00 [DBG] Connection id "0HNKO23J2NF4R", Request id "0HNKO23J2NF4R:00000001": started reading request body.
+2026-04-11 16:36:39.669 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:36:39.671 -05:00 [DBG] Connection id "0HNKO23J2NF4R", Request id "0HNKO23J2NF4R:00000001": done reading request body.
+2026-04-11 16:36:39.673 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:36:39.676 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:36:39.678 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/auth/register - 404 0 null 20.1296ms
+2026-04-11 16:36:39.687 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/api/auth/register, Response status code: 404
+2026-04-11 16:36:39.690 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000001B": started reading request body.
+2026-04-11 16:36:39.694 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000001B": done reading request body.
+2026-04-11 16:37:33.186 -05:00 [DBG] Connection id "0HNKO23J2NF4S" accepted.
+2026-04-11 16:37:33.188 -05:00 [DBG] Connection id "0HNKO23J2NF4S" received FIN.
+2026-04-11 16:37:33.197 -05:00 [DBG] Connection id "0HNKO23J2NF4S" started.
+2026-04-11 16:37:33.202 -05:00 [DBG] Connection id "0HNKO23J2NF4T" accepted.
+2026-04-11 16:37:33.208 -05:00 [DBG] Connection id "0HNKO23J2NF4T" started.
+2026-04-11 16:37:33.228 -05:00 [DBG] Failed to authenticate HTTPS connection.
+System.Security.Authentication.AuthenticationException: Cannot determine the frame size or a corrupted frame was received.
+   at System.Net.Security.SslStream.GetFrameSize(ReadOnlySpan`1 buffer)
+   at System.Net.Security.SslStream.EnsureFullTlsFrameAsync[TIOAdapter](CancellationToken cancellationToken, Int32 estimatedSize)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2026-04-11 16:37:33.228 -05:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2026-04-11 16:37:33.240 -05:00 [DBG] Connection id "0HNKO23J2NF4T" stopped.
+2026-04-11 16:37:33.247 -05:00 [DBG] Connection id "0HNKO23J2NF4S" stopped.
+2026-04-11 16:37:33.249 -05:00 [DBG] Connection id "0HNKO23J2NF4T" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:37:33.254 -05:00 [DBG] Connection id "0HNKO23J2NF4S" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:37:40.235 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/auth/register - application/json 97
+2026-04-11 16:37:40.242 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:37:40.252 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:37:40.254 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:37:40.257 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/auth/register'.
+2026-04-11 16:37:40.260 -05:00 [DBG] Connection id "0HNKO23J2NF4R" completed keep alive response.
+2026-04-11 16:37:40.262 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/auth/register - 307 0 null 27.5017ms
+2026-04-11 16:37:40.263 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/auth/register - application/json 97
+2026-04-11 16:37:40.270 -05:00 [DBG] Connection id "0HNKO23J2NF4R", Request id "0HNKO23J2NF4R:00000002": started reading request body.
+2026-04-11 16:37:40.277 -05:00 [DBG] No candidates found for the request path '/api/auth/register'
+2026-04-11 16:37:40.280 -05:00 [DBG] Connection id "0HNKO23J2NF4R", Request id "0HNKO23J2NF4R:00000002": done reading request body.
+2026-04-11 16:37:40.282 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:37:40.286 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:37:40.292 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/auth/register - 404 0 null 29.3113ms
+2026-04-11 16:37:40.305 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: POST https://localhost:7134/api/auth/register, Response status code: 404
+2026-04-11 16:37:40.310 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000001D": started reading request body.
+2026-04-11 16:37:40.312 -05:00 [DBG] Connection id "0HNKO23J2NF4J", Request id "0HNKO23J2NF4J:0000001D": done reading request body.
+2026-04-11 16:38:53.251 -05:00 [DBG] Connection id "0HNKO23J2NF4U" accepted.
+2026-04-11 16:38:53.258 -05:00 [DBG] Connection id "0HNKO23J2NF4V" accepted.
+2026-04-11 16:38:53.258 -05:00 [DBG] Connection id "0HNKO23J2NF4U" started.
+2026-04-11 16:38:53.278 -05:00 [DBG] Connection id "0HNKO23J2NF4V" started.
+2026-04-11 16:38:53.304 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/swagger - null null
+2026-04-11 16:38:53.683 -05:00 [DBG] No candidates found for the request path '/swagger'
+2026-04-11 16:38:53.686 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:38:53.688 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:38:53.691 -05:00 [DBG] Redirecting to 'https://localhost:7134/swagger'.
+2026-04-11 16:38:53.695 -05:00 [DBG] Connection id "0HNKO23J2NF4U" completed keep alive response.
+2026-04-11 16:38:53.698 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/swagger - 307 null null 394.021ms
+2026-04-11 16:38:53.708 -05:00 [DBG] Connection id "0HNKO23J2NF50" accepted.
+2026-04-11 16:38:53.710 -05:00 [DBG] Connection id "0HNKO23J2NF50" started.
+2026-04-11 16:38:53.723 -05:00 [DBG] Connection 0HNKO23J2NF50 established using the following protocol: "Tls13"
+2026-04-11 16:38:53.727 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/swagger - null null
+2026-04-11 16:38:53.744 -05:00 [DBG] No candidates found for the request path '/swagger'
+2026-04-11 16:38:53.747 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:38:53.749 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:38:53.752 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/swagger - 404 null null 24.2132ms
+2026-04-11 16:38:53.759 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7134/swagger, Response status code: 404
+2026-04-11 16:39:08.879 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/swagger - null null
+2026-04-11 16:39:08.896 -05:00 [DBG] No candidates found for the request path '/swagger'
+2026-04-11 16:39:08.899 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:39:08.904 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:39:08.907 -05:00 [DBG] Redirecting to 'https://localhost:7134/swagger'.
+2026-04-11 16:39:08.910 -05:00 [DBG] Connection id "0HNKO23J2NF4U" completed keep alive response.
+2026-04-11 16:39:08.913 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/swagger - 307 null null 34.9614ms
+2026-04-11 16:39:08.918 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/swagger - null null
+2026-04-11 16:39:08.942 -05:00 [DBG] No candidates found for the request path '/swagger'
+2026-04-11 16:39:08.945 -05:00 [DBG] Request did not match any endpoints
+2026-04-11 16:39:08.947 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-11 16:39:08.949 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/swagger - 404 null null 30.9416ms
+2026-04-11 16:39:08.956 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7134/swagger, Response status code: 404
+2026-04-11 16:39:58.458 -05:00 [DBG] Connection id "0HNKO23J2NF4V" received FIN.
+2026-04-11 16:39:58.460 -05:00 [DBG] Connection id "0HNKO23J2NF4V" disconnecting.
+2026-04-11 16:39:58.462 -05:00 [DBG] Connection id "0HNKO23J2NF4V" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:39:58.466 -05:00 [DBG] Connection id "0HNKO23J2NF4V" stopped.
+2026-04-11 16:40:21.286 -05:00 [DBG] Connection id "0HNKO23J2NF50" received FIN.
+2026-04-11 16:40:21.333 -05:00 [DBG] Connection id "0HNKO23J2NF50" is closed. The last processed stream ID was 3.
+2026-04-11 16:40:21.334 -05:00 [DBG] The connection queue processing loop for 0HNKO23J2NF50 completed.
+2026-04-11 16:40:21.337 -05:00 [DBG] Connection id "0HNKO23J2NF4U" received FIN.
+2026-04-11 16:40:21.389 -05:00 [DBG] Connection id "0HNKO23J2NF50" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:21.402 -05:00 [DBG] Connection id "0HNKO23J2NF4U" disconnecting.
+2026-04-11 16:40:21.446 -05:00 [DBG] Connection id "0HNKO23J2NF50" stopped.
+2026-04-11 16:40:21.464 -05:00 [DBG] Connection id "0HNKO23J2NF4U" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:21.476 -05:00 [DBG] Connection id "0HNKO23J2NF4U" stopped.
+2026-04-11 16:40:28.689 -05:00 [DBG] Connection id "0HNKO23J2NF4H" received FIN.
+2026-04-11 16:40:28.689 -05:00 [DBG] Connection id "0HNKO23J2NF4J" received FIN.
+2026-04-11 16:40:28.689 -05:00 [DBG] Connection id "0HNKO23J2NF4L" received FIN.
+2026-04-11 16:40:28.689 -05:00 [DBG] Connection id "0HNKO23J2NF4P" received FIN.
+2026-04-11 16:40:28.690 -05:00 [DBG] Connection id "0HNKO23J2NF4N" received FIN.
+2026-04-11 16:40:28.703 -05:00 [DBG] Connection id "0HNKO23J2NF4R" received FIN.
+2026-04-11 16:40:28.714 -05:00 [DBG] Connection id "0HNKO23J2NF4H" disconnecting.
+2026-04-11 16:40:28.724 -05:00 [DBG] Connection id "0HNKO23J2NF4N" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.734 -05:00 [DBG] Connection id "0HNKO23J2NF4L" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.747 -05:00 [DBG] Connection id "0HNKO23J2NF4N" disconnecting.
+2026-04-11 16:40:28.759 -05:00 [DBG] Connection id "0HNKO23J2NF4L" disconnecting.
+2026-04-11 16:40:28.761 -05:00 [DBG] Connection id "0HNKO23J2NF4N" stopped.
+2026-04-11 16:40:28.763 -05:00 [DBG] Connection id "0HNKO23J2NF4P" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.766 -05:00 [DBG] Connection id "0HNKO23J2NF4H" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.770 -05:00 [DBG] Connection id "0HNKO23J2NF4J" is closed. The last processed stream ID was 29.
+2026-04-11 16:40:28.771 -05:00 [DBG] Connection id "0HNKO23J2NF4J" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.782 -05:00 [DBG] Connection id "0HNKO23J2NF4R" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-11 16:40:28.784 -05:00 [DBG] Connection id "0HNKO23J2NF4L" stopped.
+2026-04-11 16:40:28.786 -05:00 [DBG] Connection id "0HNKO23J2NF4P" disconnecting.
+2026-04-11 16:40:28.795 -05:00 [DBG] The connection queue processing loop for 0HNKO23J2NF4J completed.
+2026-04-11 16:40:28.797 -05:00 [DBG] Connection id "0HNKO23J2NF4H" stopped.
+2026-04-11 16:40:28.797 -05:00 [DBG] Connection id "0HNKO23J2NF4R" disconnecting.
+2026-04-11 16:40:28.802 -05:00 [DBG] Connection id "0HNKO23J2NF4P" stopped.
+2026-04-11 16:40:28.805 -05:00 [DBG] Connection id "0HNKO23J2NF4J" stopped.
+2026-04-11 16:40:28.806 -05:00 [DBG] Connection id "0HNKO23J2NF4R" stopped.

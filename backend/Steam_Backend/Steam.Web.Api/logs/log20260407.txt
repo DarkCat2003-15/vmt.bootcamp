@@ -1,0 +1,398 @@
+2026-04-07 22:26:56.978 -05:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2026-04-07 22:26:57.750 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-07 22:26:57.832 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-07 22:26:58.111 -05:00 [DBG] No relationship from 'Friend' to 'User' has been configured by convention because there are multiple properties on one entity type - {'FriendNavigation', 'User'} that could be matched with the properties on the other entity type - {'FriendFriendNavigations', 'FriendUsers'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-07 22:26:58.116 -05:00 [DBG] No relationship from 'User' to 'Friend' has been configured by convention because there are multiple properties on one entity type - {'FriendFriendNavigations', 'FriendUsers'} that could be matched with the properties on the other entity type - {'FriendNavigation', 'User'}. This message can be disregarded if explicit configuration has been specified in 'OnModelCreating'.
+2026-04-07 22:26:58.231 -05:00 [DBG] The index {'UserId'} was not created on entity type 'Friend' as the properties are already covered by the index {'UserId', 'FriendId'}.
+2026-04-07 22:26:58.235 -05:00 [DBG] The index {'ReviewId'} was not created on entity type 'ReviewAnswer' as the properties are already covered by the index {'ReviewId', 'UserId'}.
+2026-04-07 22:26:58.603 -05:00 [DBG] Entity Framework Core 9.0.14 initialized 'SteamContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.14' with options: EngineType=SqlServer 
+2026-04-07 22:26:58.722 -05:00 [DBG] Compiling query expression: 
+'DbSet<User>()
+    .Any()'
+2026-04-07 22:26:59.118 -05:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleAsync<bool>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<bool>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u)) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> 0
+            SELECT EXISTS (
+                SELECT 1
+                FROM Users AS u), 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            bool? value1;
+            value1 = dataReader.IsDBNull(0) ? default(bool?) : (bool?)dataReader.GetBoolean(0);
+            return (bool)value1;
+        }, 
+        contextType: SteamDomain.Database.SqlServer.Context.SteamContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+2026-04-07 22:26:59.188 -05:00 [DBG] Creating DbConnection.
+2026-04-07 22:26:59.223 -05:00 [DBG] Created DbConnection. (32ms).
+2026-04-07 22:26:59.232 -05:00 [DBG] Opening connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-07 22:27:00.372 -05:00 [DBG] Opened connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-07 22:27:00.385 -05:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2026-04-07 22:27:00.402 -05:00 [DBG] Created DbCommand for 'ExecuteReader' (15ms).
+2026-04-07 22:27:00.408 -05:00 [DBG] Initialized DbCommand for 'ExecuteReader' (27ms).
+2026-04-07 22:27:00.428 -05:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-07 22:27:00.658 -05:00 [INF] Executed DbCommand (216ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Users] AS [u]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2026-04-07 22:27:00.697 -05:00 [DBG] Closing data reader to 'STEAM' on server 'localhost,1433'.
+2026-04-07 22:27:00.717 -05:00 [DBG] A data reader for 'STEAM' on server 'localhost,1433' is being disposed after spending 42ms reading results.
+2026-04-07 22:27:00.731 -05:00 [DBG] Closing connection to database 'STEAM' on server 'localhost,1433'.
+2026-04-07 22:27:00.744 -05:00 [DBG] Closed connection to database 'STEAM' on server 'localhost,1433' (12ms).
+2026-04-07 22:27:01.050 -05:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2026-04-07 22:27:01.169 -05:00 [DBG] Hosting starting
+2026-04-07 22:27:01.235 -05:00 [INF] User profile is available. Using 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-07 22:27:01.271 -05:00 [DBG] Repository contains no viable default key. Caller should generate a key with immediate activation.
+2026-04-07 22:27:01.275 -05:00 [DBG] Policy resolution states that a new key should be added to the key ring.
+2026-04-07 22:27:01.281 -05:00 [INF] Creating key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with creation date 2026-04-08 03:27:01Z, activation date 2026-04-08 03:27:01Z, and expiration date 2026-07-07 03:27:01Z.
+2026-04-07 22:27:01.299 -05:00 [DBG] Descriptor deserializer type for key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} is 'Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'.
+2026-04-07 22:27:01.312 -05:00 [DBG] No key escrow sink found. Not writing key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} to escrow.
+2026-04-07 22:27:01.324 -05:00 [DBG] Encrypting to Windows DPAPI for current user account (DARK-CAT1508\Asus).
+2026-04-07 22:27:01.343 -05:00 [INF] Writing data to file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-07 22:27:01.348 -05:00 [DBG] Key cache expiration token triggered by 'CreateNewKey' operation.
+2026-04-07 22:27:01.353 -05:00 [DBG] Reading data from file 'C:\Users\Asus\AppData\Local\ASP.NET\DataProtection-Keys\key-eb52c935-72b0-4d67-ad2d-5cfd3eb9c992.xml'.
+2026-04-07 22:27:01.359 -05:00 [DBG] Found key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992}.
+2026-04-07 22:27:01.366 -05:00 [DBG] Considering key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} with expiration date 2026-07-07 03:27:01Z as default key.
+2026-04-07 22:27:01.370 -05:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2026-04-07 22:27:01.374 -05:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2026-04-07 22:27:01.379 -05:00 [DBG] Using key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} as the default key.
+2026-04-07 22:27:01.383 -05:00 [DBG] Key ring with default key {eb52c935-72b0-4d67-ad2d-5cfd3eb9c992} was loaded during application startup.
+2026-04-07 22:27:01.402 -05:00 [DBG] Middleware loaded
+2026-04-07 22:27:01.409 -05:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (14931 B).
+2026-04-07 22:27:01.413 -05:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2026-04-07 22:27:01.572 -05:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2026-04-07 22:27:01.578 -05:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2026-04-07 22:27:01.608 -05:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2026-04-07 22:27:01.916 -05:00 [INF] Now listening on: https://localhost:7134
+2026-04-07 22:27:01.919 -05:00 [INF] Now listening on: http://localhost:5168
+2026-04-07 22:27:01.921 -05:00 [DBG] Loaded hosting startup assembly Steam.Web.Api
+2026-04-07 22:27:01.923 -05:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2026-04-07 22:27:01.925 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2026-04-07 22:27:01.928 -05:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2026-04-07 22:27:01.941 -05:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-07 22:27:01.945 -05:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2026-04-07 22:27:02.062 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-07 22:27:02.064 -05:00 [INF] Hosting environment: Development
+2026-04-07 22:27:02.068 -05:00 [INF] Content root path: C:\Users\Asus\OneDrive\Documentos\BOOTCAMP\BaseDeDatos\STEAM\Steam-Clone\Steam_Backend\Steam.Web.Api
+2026-04-07 22:27:02.071 -05:00 [DBG] Hosting started
+2026-04-07 22:30:24.044 -05:00 [DBG] Connection id "0HNKL3SLORQMN" received FIN.
+2026-04-07 22:30:24.083 -05:00 [DBG] Connection id "0HNKL3SLORQMN" accepted.
+2026-04-07 22:30:24.092 -05:00 [DBG] Connection id "0HNKL3SLORQMN" started.
+2026-04-07 22:30:24.098 -05:00 [DBG] Connection id "0HNKL3SLORQMO" accepted.
+2026-04-07 22:30:24.100 -05:00 [DBG] Connection id "0HNKL3SLORQMO" started.
+2026-04-07 22:30:24.113 -05:00 [DBG] Connection id "0HNKL3SLORQMN" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:30:24.119 -05:00 [DBG] Connection id "0HNKL3SLORQMN" disconnecting.
+2026-04-07 22:30:24.124 -05:00 [DBG] Connection id "0HNKL3SLORQMN" stopped.
+2026-04-07 22:30:24.182 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 99
+2026-04-07 22:30:24.263 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:30:24.267 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:30:24.272 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:30:24.438 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-07 22:30:24.445 -05:00 [DBG] Https port '7134' loaded from configuration.
+2026-04-07 22:30:24.450 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-07 22:30:24.473 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:30:24.479 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 309.6735ms
+2026-04-07 22:30:24.488 -05:00 [DBG] Connection id "0HNKL3SLORQMP" accepted.
+2026-04-07 22:30:24.488 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" accepted.
+2026-04-07 22:30:24.536 -05:00 [DBG] Connection id "0HNKL3SLORQMP" received FIN.
+2026-04-07 22:30:24.536 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000001": started reading request body.
+2026-04-07 22:30:24.537 -05:00 [DBG] Connection id "0HNKL3SLORQMP" started.
+2026-04-07 22:30:24.549 -05:00 [DBG] Connection id "0HNKL3SLORQMP" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:30:24.550 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" started.
+2026-04-07 22:30:24.552 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000001": done reading request body.
+2026-04-07 22:30:24.555 -05:00 [DBG] Connection id "0HNKL3SLORQMP" disconnecting.
+2026-04-07 22:30:24.562 -05:00 [DBG] Connection id "0HNKL3SLORQMP" stopped.
+2026-04-07 22:30:24.639 -05:00 [DBG] Connection 0HNKL3SLORQMQ established using the following protocol: "Tls13"
+2026-04-07 22:30:24.688 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 99
+2026-04-07 22:30:24.694 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:30:24.696 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:30:24.699 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:30:24.702 -05:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2026-04-07 22:30:24.712 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:30:24.719 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:30:25.182 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 494.5719ms
+2026-04-07 22:30:25.189 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000001": started reading request body.
+2026-04-07 22:30:25.192 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000001": done reading request body.
+2026-04-07 22:31:05.810 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 99
+2026-04-07 22:31:05.815 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:31:05.817 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:31:05.820 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:31:05.918 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-04-07 22:31:05.926 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+2026-04-07 22:31:05.932 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-07 22:31:05.934 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:31:05.936 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 127.0618ms
+2026-04-07 22:31:05.948 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 99
+2026-04-07 22:31:05.950 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000002": started reading request body.
+2026-04-07 22:31:05.955 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:31:05.957 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000002": done reading request body.
+2026-04-07 22:31:05.960 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:31:05.965 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:31:05.969 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-04-07 22:31:05.975 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+2026-04-07 22:31:05.977 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:31:05.979 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:31:06.149 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 201.0047ms
+2026-04-07 22:31:06.155 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000003": started reading request body.
+2026-04-07 22:31:06.157 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000003": done reading request body.
+2026-04-07 22:31:31.600 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 99
+2026-04-07 22:31:31.610 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:31:31.612 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:31:31.615 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:31:31.618 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:31:31.622 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:31:31.624 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-07 22:31:31.626 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:31:31.628 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 32.4421ms
+2026-04-07 22:31:31.639 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 99
+2026-04-07 22:31:31.643 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000003": started reading request body.
+2026-04-07 22:31:31.648 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:31:31.650 -05:00 [DBG] Connection id "0HNKL3SLORQMO", Request id "0HNKL3SLORQMO:00000003": done reading request body.
+2026-04-07 22:31:31.652 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:31:31.658 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:31:31.660 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:31:31.663 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:31:31.667 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:31:31.670 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:31:31.823 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 189.7001ms
+2026-04-07 22:31:31.829 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000005": started reading request body.
+2026-04-07 22:31:31.832 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:00000005": done reading request body.
+2026-04-07 22:32:11.370 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/ - null null
+2026-04-07 22:32:11.376 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:11.378 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:11.381 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:11.384 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:32:11.388 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:32:11.389 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user/'.
+2026-04-07 22:32:11.391 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:32:11.394 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/ - 307 0 null 23.7317ms
+2026-04-07 22:32:11.405 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/api/user/ - null null
+2026-04-07 22:32:11.413 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:11.415 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:11.419 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:11.421 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:32:11.425 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:32:11.427 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:32:11.429 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:32:11.592 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/api/user/ - 401 null application/json; charset=utf-8 187.0863ms
+2026-04-07 22:32:23.837 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/ - null null
+2026-04-07 22:32:23.841 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:23.843 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:23.846 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:23.848 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:32:23.852 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:32:23.854 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user/'.
+2026-04-07 22:32:23.856 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:32:23.858 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/ - 307 0 null 20.9564ms
+2026-04-07 22:32:23.859 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/api/user/ - null null
+2026-04-07 22:32:23.868 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:23.870 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:23.873 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:23.875 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:32:23.879 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:32:23.881 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:32:23.882 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:32:24.037 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/api/user/ - 401 null application/json; charset=utf-8 178.2524ms
+2026-04-07 22:32:45.378 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5168/api/user/ - null null
+2026-04-07 22:32:45.382 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:45.385 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:45.387 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:45.390 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-04-07 22:32:45.394 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+2026-04-07 22:32:45.396 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user/'.
+2026-04-07 22:32:45.398 -05:00 [DBG] Connection id "0HNKL3SLORQMO" completed keep alive response.
+2026-04-07 22:32:45.401 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5168/api/user/ - 307 0 null 22.6942ms
+2026-04-07 22:32:45.401 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7134/api/user/ - null null
+2026-04-07 22:32:45.411 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user/'
+2026-04-07 22:32:45.413 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user/'
+2026-04-07 22:32:45.416 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.GetAll (Steam.Web.Api)'
+2026-04-07 22:32:45.418 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenSignatureKeyNotFoundException: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignature(JsonWebToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateSignatureAndIssuerSecurityKey(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-04-07 22:32:45.423 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'Pc7nOQxGQBe-NH_FQqwN8dhuUgpufEWhfbWE4WrZGGg'. , KeyId: 
+'. Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'. 
+Exceptions caught:
+ '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details.
+2026-04-07 22:32:45.425 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:32:45.426 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:32:45.591 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7134/api/user/ - 401 null application/json; charset=utf-8 189.9464ms
+2026-04-07 22:34:37.968 -05:00 [DBG] Connection id "0HNKL3SLORQMR" accepted.
+2026-04-07 22:34:37.969 -05:00 [DBG] Connection id "0HNKL3SLORQMR" received FIN.
+2026-04-07 22:34:37.980 -05:00 [DBG] Connection id "0HNKL3SLORQMR" started.
+2026-04-07 22:34:37.980 -05:00 [DBG] Connection id "0HNKL3SLORQMS" accepted.
+2026-04-07 22:34:38.000 -05:00 [DBG] Connection id "0HNKL3SLORQMS" started.
+2026-04-07 22:34:38.002 -05:00 [DBG] Connection id "0HNKL3SLORQMR" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:34:38.004 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5168/api/user - application/json 98
+2026-04-07 22:34:38.006 -05:00 [DBG] Connection id "0HNKL3SLORQMR" disconnecting.
+2026-04-07 22:34:38.010 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:34:38.012 -05:00 [DBG] Connection id "0HNKL3SLORQMR" stopped.
+2026-04-07 22:34:38.013 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:34:38.017 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:34:38.019 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:34:38.023 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:34:38.026 -05:00 [DBG] Redirecting to 'https://localhost:7134/api/user'.
+2026-04-07 22:34:38.028 -05:00 [DBG] Connection id "0HNKL3SLORQMS" completed keep alive response.
+2026-04-07 22:34:38.030 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5168/api/user - 307 0 null 25.5617ms
+2026-04-07 22:34:38.030 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7134/api/user - application/json 98
+2026-04-07 22:34:38.035 -05:00 [DBG] Connection id "0HNKL3SLORQMS", Request id "0HNKL3SLORQMS:00000001": started reading request body.
+2026-04-07 22:34:38.038 -05:00 [DBG] 1 candidate(s) found for the request path '/api/user'
+2026-04-07 22:34:38.040 -05:00 [DBG] Connection id "0HNKL3SLORQMS", Request id "0HNKL3SLORQMS:00000001": done reading request body.
+2026-04-07 22:34:38.042 -05:00 [DBG] Endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)' with route pattern 'api/User' is valid for the request path '/api/user'
+2026-04-07 22:34:38.047 -05:00 [DBG] Request matched endpoint 'Steam.Web.Api.Controllers.UserController.Create (Steam.Web.Api)'
+2026-04-07 22:34:38.049 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-04-07 22:34:38.053 -05:00 [INF] Bearer was not authenticated. Failure message: IDX14100: JWT is not well formed, there are no dots (.).
+The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EncodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+2026-04-07 22:34:38.054 -05:00 [DBG] Policy authentication schemes  did not succeed
+2026-04-07 22:34:38.056 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-04-07 22:34:38.227 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7134/api/user - 401 null application/json; charset=utf-8 197.1571ms
+2026-04-07 22:34:38.233 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:0000000D": started reading request body.
+2026-04-07 22:34:38.235 -05:00 [DBG] Connection id "0HNKL3SLORQMQ", Request id "0HNKL3SLORQMQ:0000000D": done reading request body.
+2026-04-07 22:35:32.065 -05:00 [DBG] Connection id "0HNKL3SLORQMO" received FIN.
+2026-04-07 22:35:32.067 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" received FIN.
+2026-04-07 22:35:32.078 -05:00 [DBG] Connection id "0HNKL3SLORQMS" received FIN.
+2026-04-07 22:35:32.091 -05:00 [DBG] Connection id "0HNKL3SLORQMO" disconnecting.
+2026-04-07 22:35:32.120 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" is closed. The last processed stream ID was 13.
+2026-04-07 22:35:32.153 -05:00 [DBG] Connection id "0HNKL3SLORQMO" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:35:32.159 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:35:32.161 -05:00 [DBG] Connection id "0HNKL3SLORQMS" sending FIN because: "The Socket transport's send loop completed gracefully."
+2026-04-07 22:35:32.171 -05:00 [DBG] The connection queue processing loop for 0HNKL3SLORQMQ completed.
+2026-04-07 22:35:32.179 -05:00 [DBG] Connection id "0HNKL3SLORQMS" disconnecting.
+2026-04-07 22:35:32.183 -05:00 [DBG] Connection id "0HNKL3SLORQMO" stopped.
+2026-04-07 22:35:32.183 -05:00 [DBG] Connection id "0HNKL3SLORQMS" stopped.
+2026-04-07 22:35:32.184 -05:00 [DBG] Connection id "0HNKL3SLORQMQ" stopped.
