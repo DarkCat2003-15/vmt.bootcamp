@@ -1,0 +1,156 @@
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    background: #1a237e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: width 0.25s ease;
+    overflow: hidden;
+
+    &.collapsed {
+        width: 64px;
+
+        .sidebar-brand {
+            justify-content: center;
+            padding: 1.25rem 0;
+        }
+
+        .logout-btn {
+            justify-content: center;
+            padding: 0;
+            min-width: unset;
+        }
+    }
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    transition: padding 0.25s ease;
+
+    mat-icon {
+        font-size: 26px;
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+    }
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding-top: 0.5rem;
+
+    ::ng-deep {
+        .mat-mdc-list-item {
+            color: rgba(255, 255, 255, 0.75) !important;
+            border-radius: 0 !important;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.08) !important;
+                color: white !important;
+
+                .mat-icon {
+                    color: white !important;
+                }
+            }
+        }
+
+        .mat-mdc-list-item-title {
+            color: white !important;
+        }
+
+        .mat-mdc-list-item .mat-icon {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+    }
+}
+
+.active-item {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-left: 3px solid #90caf9;
+
+    ::ng-deep {
+        .mat-mdc-list-item-title {
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .mat-icon {
+            color: white !important;
+        }
+    }
+}
+
+.sidebar-footer {
+    padding: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7) !important;
+    justify-content: flex-start;
+    gap: 8px;
+    white-space: nowrap;
+    transition: justify-content 0.25s ease;
+
+    &:hover {
+        color: white !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+}
+
+.admin-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #f5f7ff;
+    overflow: auto;
+}
+
+.topbar {
+    background: white !important;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.topbar-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a237e;
+    margin-left: 0.5rem;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.admin-avatar {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: #1a237e;
+    cursor: pointer;
+}
+
+.main {
+    padding: 2rem;
+    flex: 1;
+}

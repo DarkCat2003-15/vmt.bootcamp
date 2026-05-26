@@ -1,0 +1,83 @@
+<section class="hero">
+    <h1>Sobre Nosotros</h1>
+    <p>Somos una tienda moderna construida con pasión por la tecnología y el buen diseño.</p>
+</section>
+
+<div class="container">
+    <section class="mission-section">
+        <div class="mission-grid">
+
+            <mat-card appearance="outlined" class="mission-card">
+                <mat-card-content>
+                    <mat-icon color="primary">flag</mat-icon>
+                    <h2>Nuestra Misión</h2>
+                    <p>
+                        Conectar a las personas con los productos que necesitan, de forma rápida,
+                        confiable y accesible. Creemos que una buena experiencia de compra
+                        transforma el día a día.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card appearance="outlined" class="mission-card">
+                <mat-card-content>
+                    <mat-icon color="accent">visibility</mat-icon>
+                    <h2>Nuestra Visión</h2>
+                    <p>
+                        Ser la plataforma de referencia en comercio digital, donde tecnología
+                        y confianza se combinan para crear relaciones duraderas entre
+                        compradores y vendedores.
+                    </p>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </section>
+
+    <mat-divider />
+
+    <section class="values-section">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="values-grid">
+            @for (value of values; track value.title) {
+            <div class="value-item">
+                <mat-icon [style.color]="value.color">{{ value.icon }}</mat-icon>
+                <h3>{{ value.title }}</h3>
+                <p>{{ value.desc }}</p>
+            </div>
+            }
+        </div>
+    </section>
+
+    <mat-divider />
+
+    <section class="team-section">
+        <h2 class="section-title">El Equipo</h2>
+        <div class="team-grid">
+            @for (member of team; track member.name) {
+            <mat-card appearance="outlined" class="team-card">
+                <mat-card-content>
+                    <div class="avatar" [style.background]="member.color">
+                        {{ member.initials }}
+                    </div>
+                    <h3>{{ member.name }}</h3>
+                    <p class="role">{{ member.role }}</p>
+                    <p class="bio">{{ member.bio }}</p>
+                </mat-card-content>
+            </mat-card>
+            }
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <mat-card class="cta-card" appearance="outlined">
+            <mat-card-content>
+                <mat-icon>shopping_cart</mat-icon>
+                <h2>¿Listo para explorar?</h2>
+                <p>Ingresa a tu cuenta y descubre todos nuestros productos.</p>
+                <a mat-flat-button color="primary" routerLink="/login">Ir al login</a>
+            </mat-card-content>
+        </mat-card>
+    </section>
+
+</div>

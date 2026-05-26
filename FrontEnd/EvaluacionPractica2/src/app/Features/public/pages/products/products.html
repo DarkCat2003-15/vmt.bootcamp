@@ -1,0 +1,30 @@
+<section class="page-header">
+  <h1>Catálogo de productos</h1>
+  <p>Productos Disponibles</p>
+</section>
+
+@if (loading()) {
+  <div class="state-box">
+    <div class="spinner" aria-label="Cargando productos" style="width:48px;height:48px;border:4px solid rgba(0,0,0,0.1);border-top-color:#3f51b5;border-radius:50%;animation:spin 1s linear infinite"></div>
+    <p>Cargando productos...</p>
+  </div>
+} @else if (errorMessage()) {
+  <div class="state-box error">
+    <p>{{ errorMessage() }}</p>
+    <button type="button" (click)="loadProducts()">Reintentar</button>
+  </div>
+} @else if (products().length === 0) {
+  <div class="state-box">
+    <p>No hay productos disponibles en este momento.</p>
+  </div>
+} @else {
+  <div class="products-grid">
+    @for (product of products(); track product.id) {
+      <app-product-card [product]="product" />
+    }
+  </div>
+}
+
+<style>
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+</style>

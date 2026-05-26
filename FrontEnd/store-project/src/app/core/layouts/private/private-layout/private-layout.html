@@ -1,0 +1,53 @@
+<div class="admin-wrapper">
+
+    <aside class="sidebar" [class.collapsed]="collapsed()">
+
+        <div class="sidebar-brand">
+            <mat-icon>storefront</mat-icon>
+            @if (!collapsed()) {
+            <span>TiendaMía</span>
+            }
+        </div>
+
+        <mat-nav-list class="sidebar-nav">
+            @for (item of navItems; track item.route) {
+            <a mat-list-item [routerLink]="item.route" routerLinkActive="active-item"
+                [matTooltip]="collapsed() ? item.label : ''" matTooltipPosition="right">
+                <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                @if (!collapsed()) {
+                <span matListItemTitle>{{ item.label }}</span>
+                }
+            </a>
+            }
+        </mat-nav-list>
+
+        <div class="sidebar-footer">
+            <button mat-button class="logout-btn" (click)="logout()" [matTooltip]="collapsed() ? 'Cerrar sesión' : ''"
+                matTooltipPosition="right">
+                <mat-icon>logout</mat-icon>
+                @if (!collapsed()) {
+                <span>Cerrar sesión</span>
+                }
+            </button>
+        </div>
+
+    </aside>
+
+    <div class="admin-content">
+
+        <mat-toolbar class="topbar">
+            <button mat-icon-button (click)="toggle()">
+                <mat-icon>{{ collapsed() ? 'menu_open' : 'menu' }}</mat-icon>
+            </button>
+            <span class="topbar-title">Panel de Administración</span>
+            <span class="spacer"></span>
+            <mat-icon class="admin-avatar">account_circle</mat-icon>
+        </mat-toolbar>
+
+        <main class="main">
+            <router-outlet />
+        </main>
+
+    </div>
+
+</div>

@@ -1,0 +1,184 @@
+<section class="admin-page-header">
+  <div>
+    <p class="eyebrow">Catalogo</p>
+    <h1>Mantenimiento de productos</h1>
+  </div>
+  <button mat-flat-button color="primary" type="button" (click)="startCreate()">
+    <mat-icon>add</mat-icon>
+    Nuevo producto
+  </button>
+</section>
+
+<section class="summary-grid" aria-label="Resumen de productos">
+  <article>
+    <span>Total productos</span>
+    <strong>{{ products().length }}</strong>
+  </article>
+  <article>
+    <span>Stock total</span>
+    <strong>{{ totalStock() }}</strong>
+  </article>
+  <article>
+    <span>Valor inventario</span>
+    <strong>{{ inventoryValue() | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+  </article>
+</section>
+
+@if (successMessage()) {
+  <div class="state-message success">
+    <mat-icon>check_circle</mat-icon>
+    {{ successMessage() }}
+  </div>
+}
+
+@if (errorMessage()) {
+  <div class="state-message error">
+    <mat-icon>error</mat-icon>
+    {{ errorMessage() }}
+  </div>
+}
+
+@if (formOpen()) {
+  <mat-card class="form-panel">
+    <div class="panel-header">
+      <h2>{{ editingProduct() ? 'Editar producto' : 'Crear producto' }}</h2>
+      <button mat-icon-button type="button" aria-label="Cerrar formulario" (click)="cancelForm()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="productForm" (ngSubmit)="submitProduct()" class="product-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="title" />
+        @if (productForm.controls.title.touched && productForm.controls.title.hasError('required')) {
+          <mat-error>El nombre es obligatorio</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <mat-select formControlName="category">
+          @for (category of categories(); track category) {
+            <mat-option [value]="category">{{ category }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" min="0" step="0.01" formControlName="price" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Stock</mat-label>
+        <input matInput type="number" min="0" formControlName="stock" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="wide">
+        <mat-label>Imagen</mat-label>
+        <input matInput formControlName="thumbnail" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="wide">
+        <mat-label>Descripcion</mat-label>
+        <textarea matInput rows="3" formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div class="form-actions wide">
+        <button mat-button type="button" (click)="cancelForm()">Cancelar</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="saving()">
+          @if (saving()) {
+            <mat-spinner diameter="20" />
+          } @else {
+            <mat-icon>save</mat-icon>
+          }
+          Guardar
+        </button>
+      </div>
+    </form>
+  </mat-card>
+}
+
+<mat-card class="list-panel">
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Buscar</mat-label>
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput type="search" [value]="searchTerm()" (input)="onSearchChange($event)" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Filtrar categoria</mat-label>
+      <mat-select [value]="categoryFilter()" (selectionChange)="setCategoryFilter($event.value)">
+        <mat-option value="all">Todas</mat-option>
+        @for (category of categories(); track category) {
+          <mat-option [value]="category">{{ category }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button type="button" (click)="loadProducts()">
+      <mat-icon>refresh</mat-icon>
+      Recargar
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="state-box">
+      <mat-spinner diameter="44" />
+      <p>Cargando productos...</p>
+    </div>
+  } @else if (filteredProducts().length === 0) {
+    <div class="state-box">
+      <mat-icon>inventory_2</mat-icon>
+      <p>No hay productos con los filtros actuales.</p>
+    </div>
+  } @else {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Estado</th>
+            <th class="actions-col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (product of filteredProducts(); track product.id) {
+            <tr>
+              <td>
+                <div class="product-cell">
+                  <img [src]="product.thumbnail" [alt]="product.title" />
+                  <div>
+                    <strong>{{ product.title }}</strong>
+                    <span>{{ product.description }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.price | currency: 'USD' : 'symbol' : '1.0-2' }}</td>
+              <td>{{ product.stock ?? 0 }}</td>
+              <td>
+                <span class="status-pill" [class]="stockClass(product)">
+                  {{ stockLabel(product) }}
+                </span>
+              </td>
+              <td class="actions">
+                <button mat-icon-button type="button" aria-label="Editar producto" (click)="startEdit(product)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" type="button" aria-label="Eliminar producto" (click)="deleteProduct(product)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</mat-card>

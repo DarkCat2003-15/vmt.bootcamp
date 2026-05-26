@@ -1,0 +1,38 @@
+<nav class="app-nav" aria-label="Navegacion principal">
+  <a
+    mat-button
+    routerLink="/"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <mat-icon aria-hidden="true">home</mat-icon>
+    Home
+  </a>
+  <a
+    mat-button
+    routerLink="/products"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon aria-hidden="true">inventory_2</mat-icon>
+    Products
+  </a>
+  <a
+    mat-button
+    routerLink="/about"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon aria-hidden="true">info</mat-icon>
+    About
+  </a>
+  <a
+    mat-button
+    routerLink="/contact"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon aria-hidden="true">mail</mat-icon>
+    Contact
+  </a>
+</nav>

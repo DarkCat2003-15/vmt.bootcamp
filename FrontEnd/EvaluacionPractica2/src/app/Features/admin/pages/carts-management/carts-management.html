@@ -1,0 +1,182 @@
+<section class="admin-page-header">
+  <div>
+    <p class="eyebrow">Carritos</p>
+    <h1>Mantenimiento de carts</h1>
+  </div>
+  <button mat-stroked-button type="button" (click)="loadData()">
+    <mat-icon>refresh</mat-icon>
+    Recargar
+  </button>
+</section>
+
+<section class="summary-grid" aria-label="Resumen de carritos">
+  <article>
+    <span>Carritos</span>
+    <strong>{{ carts().length }}</strong>
+  </article>
+  <article>
+    <span>Items</span>
+    <strong>{{ totalItems() }}</strong>
+  </article>
+  <article>
+    <span>Total estimado</span>
+    <strong>{{ cartTotal() | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+  </article>
+</section>
+
+@if (successMessage()) {
+  <div class="state-message success">
+    <mat-icon>check_circle</mat-icon>
+    {{ successMessage() }}
+  </div>
+}
+
+@if (errorMessage()) {
+  <div class="state-message error">
+    <mat-icon>error</mat-icon>
+    {{ errorMessage() }}
+  </div>
+}
+
+@if (loading()) {
+  <mat-card class="state-panel">
+    <mat-spinner diameter="44" />
+    <p>Cargando carritos...</p>
+  </mat-card>
+} @else {
+  <section class="cart-grid">
+    <mat-card class="form-panel">
+      <h2>Crear carrito</h2>
+      <form [formGroup]="createCartForm" (ngSubmit)="createCart()" class="cart-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="number" min="1" formControlName="userId" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Producto</mat-label>
+          <mat-select formControlName="productId">
+            @for (product of products(); track product.id) {
+              <mat-option [value]="product.id">{{ product.title }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Cantidad</mat-label>
+          <input matInput type="number" min="1" formControlName="quantity" />
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" [disabled]="saving()">
+          <mat-icon>add_shopping_cart</mat-icon>
+          Crear
+        </button>
+      </form>
+    </mat-card>
+
+    <mat-card class="list-panel">
+      <div class="panel-header">
+        <h2>Listado</h2>
+        <span>{{ carts().length }} registros</span>
+      </div>
+
+      <div class="cart-list">
+        @for (cart of carts(); track cart.id) {
+          <button
+            type="button"
+            class="cart-row"
+            [class.active]="selectedCart()?.id === cart.id"
+            (click)="selectCart(cart)"
+          >
+            <span>
+              <strong>Carrito #{{ cart.id }}</strong>
+              <small>Usuario {{ cart.userId }}</small>
+            </span>
+            <span>
+              <strong>{{ cart.total ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+              <small>{{ cart.totalQuantity ?? 0 }} items</small>
+            </span>
+          </button>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card class="detail-panel">
+      @if (selectedCart(); as cart) {
+        <div class="panel-header">
+          <div>
+            <h2>Detalle #{{ cart.id }}</h2>
+            <p>Usuario {{ cart.userId }}</p>
+          </div>
+          <button mat-icon-button color="warn" type="button" aria-label="Eliminar carrito" (click)="deleteCart(cart)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
+        <div class="totals">
+          <article>
+            <span>Total</span>
+            <strong>{{ cart.total ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+          </article>
+          <article>
+            <span>Descuento</span>
+            <strong>{{ cart.discountedTotal ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+          </article>
+          <article>
+            <span>Productos</span>
+            <strong>{{ cart.totalProducts ?? cart.products.length }}</strong>
+          </article>
+        </div>
+
+        <form [formGroup]="addProductForm" (ngSubmit)="addProductToCart()" class="add-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Agregar producto</mat-label>
+            <mat-select formControlName="productId">
+              @for (product of products(); track product.id) {
+                <mat-option [value]="product.id">{{ product.title }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" min="1" formControlName="quantity" />
+          </mat-form-field>
+
+          <button mat-stroked-button type="submit" [disabled]="saving()">
+            <mat-icon>add</mat-icon>
+            Agregar
+          </button>
+        </form>
+
+        <div class="items-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (product of cart.products; track product.id) {
+                <tr>
+                  <td>{{ product.title ?? productName(product.id) }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.price ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</td>
+                  <td>{{ product.total ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="empty-detail">
+          <mat-icon>shopping_cart</mat-icon>
+          <p>Selecciona un carrito para ver su detalle.</p>
+        </div>
+      }
+    </mat-card>
+  </section>
+}

@@ -1,0 +1,61 @@
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Todo lo que necesitas,<br /><span class="accent">en un solo lugar</span></h1>
+    <p>Explora nuestra colección de productos en las mejores categorías. Calidad garantizada.</p>
+    <div class="hero-actions">
+      <a mat-flat-button color="primary" routerLink="/about">
+        <mat-icon>info</mat-icon> Conócenos
+      </a>
+    </div>
+  </div>
+  <div class="hero-illustration">
+    <mat-icon class="hero-icon">storefront</mat-icon>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">¿Por qué elegirnos?</h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.icon) {
+        <mat-card class="feature-card" appearance="outlined">
+          <mat-card-content>
+            <mat-icon class="feature-icon" [style.color]="feature.color">{{ feature.icon }}</mat-icon>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.desc }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Productos destacados -->
+<section class="featured-products">
+  <div class="container">
+    <h2 class="section-title">Productos destacados</h2>
+    <div class="products-grid">
+      @for (product of products(); track product.id) {
+        <mat-card class="product-card" appearance="outlined">
+          <img mat-card-image [src]="product.image" [alt]="product.title" class="product-img" />
+          <mat-card-content>
+            <mat-chip-set>
+              <mat-chip>{{ product.category }}</mat-chip>
+            </mat-chip-set>
+            <h4>{{ product.title | slice: 0 : 50 }}...</h4>
+            <p class="price">{{ product.price | currency: 'USD' }}</p>
+            <div class="rating">
+              <mat-icon class="star">star</mat-icon>
+              <span>{{ product.rating.rate }} ({{ product.rating.count }})</span>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <a mat-button color="primary" routerLink="/admin">Ver detalle</a>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,139 @@
+.hero {
+    background: linear-gradient(135deg, #1a237e 0%, #283593 60%, #3949ab 100%);
+    color: white;
+    padding: 5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-height: 420px;
+
+    h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+    }
+
+    p {
+        font-size: 1.15rem;
+        opacity: 0.85;
+        margin: 0 0 2rem;
+    }
+}
+
+.hero-content {
+    max-width: 560px;
+}
+
+.accent {
+    color: #90caf9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.hero-illustration {
+    opacity: 0.12;
+}
+
+.hero-icon {
+    font-size: 280px;
+    width: 280px;
+    height: 280px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1a237e;
+}
+
+.features {
+    padding: 5rem 1.5rem;
+    background: #f5f7ff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+
+    h3 {
+        font-weight: 600;
+        margin: 0 0 0.5rem;
+    }
+
+    p {
+        color: #666;
+        margin: 0;
+        font-size: 0.9rem;
+    }
+}
+
+.feature-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.featured-products {
+    padding: 5rem 1.5rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img {
+    height: 200px;
+    object-fit: contain;
+    padding: 1rem;
+    background: #fafafa;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a237e;
+    margin: 0.5rem 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.star {
+    font-size: 16px;
+    color: #f59e0b;
+    width: 16px;
+    height: 16px;
+}

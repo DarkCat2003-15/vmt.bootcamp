@@ -1,0 +1,48 @@
+<div class="login-page">
+  <mat-card class="login-card">
+    <div class="login-header">
+      <mat-icon>storefront</mat-icon>
+      <h1>{{ appName }}</h1>
+      <p>Iniciar sesión en el panel administrativo</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email o usuario</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="admin o usuario@correo.com" />
+        @if (loginForm.controls.email.touched && loginForm.controls.email.hasError('required')) {
+          <mat-error>El email o usuario es obligatorio</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="********" />
+        @if (loginForm.controls.password.touched && loginForm.controls.password.hasError('required')) {
+          <mat-error>La contraseña es obligatoria</mat-error>
+        }
+        @if (loginForm.controls.password.touched && loginForm.controls.password.hasError('minlength')) {
+          <mat-error>Mínimo 4 caracteres</mat-error>
+        }
+      </mat-form-field>
+
+      @if (errorMessage()) {
+        <p class="error-msg">{{ errorMessage() }}</p>
+      }
+
+      <button mat-flat-button color="primary" class="full-width" type="submit" [disabled]="loading()">
+        @if (loading()) {
+          <mat-spinner diameter="20" />
+        } @else {
+          Ingresar
+        }
+      </button>
+    </form>
+
+    <p class="demo-hint">
+      Demo: <strong>admin</strong> / <strong>admin</strong> o <strong>atuny0</strong> / <strong>9uQFF1Lh</strong>
+    </p>
+
+    <a mat-button routerLink="/">Volver al sitio público</a>
+  </mat-card>
+</div>

@@ -1,0 +1,36 @@
+<section class="banner">
+  <div class="banner-content">
+    <p class="banner-tag">Bienvenido a NovaMarket</p>
+    <h1>Tecnología y accesorios para tu día a día</h1>
+    <p>Encuentra laptops, audio, wearables y más con una experiencia moderna de compra.</p>
+    <a mat-flat-button color="primary" routerLink="/products">Ver productos</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Productos destacados</h2>
+    <p>Selección especial de nuestro catálogo</p>
+  </div>
+  <div class="products-grid">
+    @for (product of featuredProducts; track product.id) {
+      <app-product-card [product]="product" />
+    }
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <h2>Promociones</h2>
+    <p>Aprovecha estas ofertas</p>
+  </div>
+  <div class="promo-grid">
+    @for (promo of promotions; track promo.title) {
+      <mat-card class="promo-card">
+        <mat-icon>{{ promo.icon }}</mat-icon>
+        <h3>{{ promo.title }}</h3>
+        <p>{{ promo.description }}</p>
+      </mat-card>
+    }
+  </div>
+</section>

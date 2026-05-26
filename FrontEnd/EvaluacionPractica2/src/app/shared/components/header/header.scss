@@ -1,0 +1,54 @@
+.app-toolbar {
+  min-height: 74px;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #dbe3ef;
+  color: #00194e;
+  padding-inline: max(16px, calc((100vw - 1120px) / 2));
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(16, 24, 40, 0.06);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #101828;
+  text-decoration: none;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-text strong {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  font-weight: 800;
+}
+
+.brand-text small {
+  font-size: 0.75rem;
+  color: #667085;
+  font-weight: 500;
+}
+
+.brand-mark {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #087e8b, #175cd3);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(23, 92, 211, 0.26);
+}
+
+.toolbar-spacer {
+  flex: 1;
+}
+
+.login-btn mat-icon {
+  margin-right: 4px;
+    color: #ffffff;
+}

@@ -1,0 +1,20 @@
+<nav class="app-nav" aria-label="Navegacion principal">
+  <a
+    mat-button
+    routerLink="/books"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon aria-hidden="true">menu_book</mat-icon>
+    Libros
+  </a>
+  <a
+    mat-button
+    routerLink="/authors"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: false }"
+  >
+    <mat-icon aria-hidden="true">edit_note</mat-icon>
+    Autores
+  </a>
+</nav>

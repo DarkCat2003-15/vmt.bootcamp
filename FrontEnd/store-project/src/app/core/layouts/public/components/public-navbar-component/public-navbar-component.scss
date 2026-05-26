@@ -1,0 +1,20 @@
+.navbar {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    
+    &.mat-toolbar {
+        justify-content: center;
+    }
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.active-link {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}

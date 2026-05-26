@@ -1,0 +1,107 @@
+<section class="dashboard-header">
+  <div>
+    <p class="eyebrow">Panel administrativo</p>
+    <h1>Dashboard NovaMarket</h1>
+    <p>Control rapido de inventario, carritos y sesion activa.</p>
+  </div>
+  <div class="quick-actions">
+    <a mat-stroked-button routerLink="/dashboard/products">
+      <mat-icon>inventory_2</mat-icon>
+      Productos
+    </a>
+    <a mat-flat-button color="primary" routerLink="/dashboard/carts">
+      <mat-icon>shopping_cart</mat-icon>
+      Carritos
+    </a>
+  </div>
+</section>
+
+@if (currentUser(); as user) {
+  <mat-card class="user-card">
+    <img [src]="user.image" [alt]="user.firstName" />
+    <div>
+      <span>Administrador conectado</span>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <p>{{ user.email }} · {{ user.username }}</p>
+    </div>
+  </mat-card>
+}
+
+@if (loading()) {
+  <div class="state-box">
+    <mat-spinner diameter="44" />
+    <p>Cargando indicadores...</p>
+  </div>
+} @else if (errorMessage()) {
+  <div class="state-box error">
+    <mat-icon>error</mat-icon>
+    <p>{{ errorMessage() }}</p>
+    <button mat-stroked-button type="button" (click)="loadDashboard()">Reintentar</button>
+  </div>
+} @else {
+  <section class="metrics-grid">
+    <mat-card class="metric-card">
+      <mat-icon>inventory</mat-icon>
+      <span>Productos cargados</span>
+      <strong>{{ products().length }}</strong>
+    </mat-card>
+
+    <mat-card class="metric-card">
+      <mat-icon>warning</mat-icon>
+      <span>Stock bajo</span>
+      <strong>{{ lowStockProducts() }}</strong>
+    </mat-card>
+
+    <mat-card class="metric-card">
+      <mat-icon>payments</mat-icon>
+      <span>Valor inventario</span>
+      <strong>{{ inventoryValue() | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+    </mat-card>
+
+    <mat-card class="metric-card">
+      <mat-icon>shopping_bag</mat-icon>
+      <span>Total carritos</span>
+      <strong>{{ cartRevenue() | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+    </mat-card>
+  </section>
+
+  <section class="dashboard-grid">
+    <mat-card class="panel">
+      <div class="panel-header">
+        <h2>Productos recientes</h2>
+        <a mat-button routerLink="/dashboard/products">Gestionar</a>
+      </div>
+      <div class="mini-list">
+        @for (product of products().slice(0, 5); track product.id) {
+          <article>
+            <img [src]="product.thumbnail" [alt]="product.title" />
+            <div>
+              <strong>{{ product.title }}</strong>
+              <span>{{ product.category }} · Stock {{ product.stock ?? 0 }}</span>
+            </div>
+            <strong>{{ product.price | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+          </article>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card class="panel">
+      <div class="panel-header">
+        <h2>Carritos activos</h2>
+        <a mat-button routerLink="/dashboard/carts">Gestionar</a>
+      </div>
+      <div class="mini-list carts">
+        @for (cart of carts().slice(0, 5); track cart.id) {
+          <article>
+            <mat-icon>shopping_cart</mat-icon>
+            <div>
+              <strong>Carrito #{{ cart.id }}</strong>
+              <span>Usuario {{ cart.userId }} · {{ cart.totalQuantity ?? 0 }} items</span>
+            </div>
+            <strong>{{ cart.total ?? 0 | currency: 'USD' : 'symbol' : '1.0-2' }}</strong>
+          </article>
+        }
+      </div>
+    </mat-card>
+  </section>
+}

@@ -22,6 +22,6 @@ describe('App', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.textContent).toContain('Escribiendo Suenos');
+    expect(compiled.textContent).toContain('Escribiendo Sueños');
   });
 });

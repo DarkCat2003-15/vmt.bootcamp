@@ -1,0 +1,75 @@
+<div class="login-page">
+
+    <div class="login-left">
+        <div class="brand-area">
+            <mat-icon class="brand-icon">storefront</mat-icon>
+            <h1>TiendaMía</h1>
+            <p>Panel de administración. Solo personal autorizado.</p>
+        </div>
+    </div>
+
+    <div class="login-right">
+        <mat-card class="login-card" appearance="outlined">
+
+            <mat-card-header>
+                <mat-card-title>Iniciar sesión</mat-card-title>
+                <mat-card-subtitle>Ingresa tus credenciales para continuar</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput formControlName="username" placeholder="mor_2314" />
+                        <mat-icon matSuffix>person</mat-icon>
+                        @if (form.get('username')?.hasError('required') && form.get('username')?.touched) {
+                        <mat-error>El usuario es requerido</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput formControlName="password" [type]="showPass() ? 'text' : 'password'"
+                            placeholder="••••••••" />
+                        <button mat-icon-button matSuffix type="button" (click)="showPass.set(!showPass())">
+                            <mat-icon>{{ showPass() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        </button>
+                        @if (form.get('password')?.hasError('required') && form.get('password')?.touched) {
+                        <mat-error>La contraseña es requerida</mat-error>
+                        }
+                    </mat-form-field>
+
+                    @if (error()) {
+                    <p class="error-msg">
+                        <mat-icon>error_outline</mat-icon>
+                        {{ error() }}
+                    </p>
+                    }
+
+                    <button mat-flat-button color="primary" type="submit" class="submit-btn" [disabled]="loading()">
+                        <ng-container>
+                            @if (loading()) {
+                            <mat-spinner diameter="20" />
+                            } @else {
+                            <span class="btn-content">
+                                <mat-icon>login</mat-icon> Ingresar
+                            </span>
+                            }
+                        </ng-container>
+                    </button>
+
+                </form>
+            </mat-card-content>
+
+            <mat-card-footer>
+                <div class="hint">
+                    <mat-icon>info</mat-icon>
+                    <span>Prueba: <strong>mor_2314</strong> / <strong>83r5^_</strong></span>
+                </div>
+            </mat-card-footer>
+
+        </mat-card>
+    </div>
+
+</div>

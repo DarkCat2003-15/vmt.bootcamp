@@ -1,0 +1,52 @@
+<section class="hero">
+    <h1>¡Contáctanos!</h1>
+    <p>Estamos aquí para ayudarte. Escríbenos o visítanos cuando quieras.</p>
+</section>
+
+<div class="container">
+    <section class="info-section">
+        <h2 class="section-title">¿Cómo encontrarnos?</h2>
+        <div class="info-grid">
+            @for (item of contactInfo; track item.label) {
+            <mat-card appearance="outlined" class="info-card">
+                <mat-card-content>
+                    <mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon>
+                    <h3>{{ item.label }}</h3>
+                    <p>{{ item.value }}</p>
+                </mat-card-content>
+            </mat-card>
+            }
+        </div>
+    </section>
+
+    <mat-divider />
+
+    <section class="social-section">
+        <h2 class="section-title">Síguenos en redes</h2>
+        <div class="social-grid">
+            @for (social of socialLinks; track social.label) {
+            <a class="social-card" [href]="social.url" target="_blank" rel="noopener">
+                <mat-card appearance="outlined">
+                    <mat-card-content>
+                        <mat-icon>{{ social.icon }}</mat-icon>
+                        <span>{{ social.label }}</span>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+            }
+        </div>
+    </section>
+
+    <mat-divider />
+
+    <section class="cta-section">
+        <mat-card appearance="outlined" class="cta-card">
+            <mat-card-content>
+                <mat-icon>favorite</mat-icon>
+                <h2>Gracias por confiar en nosotros</h2>
+                <p>Tu satisfacción es nuestra prioridad. Responderemos tu consulta a la brevedad posible.</p>
+            </mat-card-content>
+        </mat-card>
+    </section>
+
+</div>

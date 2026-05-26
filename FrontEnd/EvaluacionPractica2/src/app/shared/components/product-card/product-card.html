@@ -1,0 +1,8 @@
+<mat-card class="product-card">
+  <img mat-card-image [src]="product.thumbnail" [alt]="product.title" />
+  <mat-card-content>
+    <h3>{{ product.title }}</h3>
+    <p class="price">{{ product.price | currency: 'USD' : 'symbol' : '1.0-2' }}</p>
+    <span class="category-badge">{{ product.category }}</span>
+  </mat-card-content>
+</mat-card>
