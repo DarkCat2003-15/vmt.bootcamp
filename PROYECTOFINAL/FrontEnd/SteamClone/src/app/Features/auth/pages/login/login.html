@@ -1,0 +1,110 @@
+<section class="login-page">
+  <div class="login-visual" aria-hidden="true">
+    <span class="badge">Cuenta SteamClone</span>
+    <h1>Acceso a tu biblioteca</h1>
+    <p>Entra, crea tu cuenta, compra juegos y administra el catalogo cuando tu rol lo permita.</p>
+  </div>
+
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>{{ appName }}</mat-card-title>
+      <mat-card-subtitle>{{ showSignUp() ? 'Crear cuenta USER' : 'Iniciar sesion' }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (!showSignUp()) {
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" autocomplete="email" />
+            @if (loginForm.controls.email.touched && loginForm.controls.email.hasError('required')) {
+              <mat-error>El email es obligatorio</mat-error>
+            }
+            @if (loginForm.controls.email.touched && loginForm.controls.email.hasError('email')) {
+              <mat-error>Ingresa un email valido</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input
+              matInput
+              type="password"
+              formControlName="password"
+              autocomplete="current-password"
+            />
+            @if (loginForm.controls.password.touched && loginForm.controls.password.hasError('required')) {
+              <mat-error>La contraseña es obligatoria</mat-error>
+            }
+          </mat-form-field>
+
+          @if (errorMessage()) {
+            <p class="error-msg">{{ errorMessage() }}</p>
+          }
+
+          @if (successMessage()) {
+            <p class="success-msg">{{ successMessage() }}</p>
+          }
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="loading()">
+            {{ loading() ? 'Ingresando...' : 'Ingresar' }}
+          </button>
+
+          <p class="auth-switch">
+            No tienes cuenta,
+            <button type="button" (click)="toggleSignUp()">registrate</button>
+          </p>
+        </form>
+      } @else {
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+          <mat-form-field appearance="outline">
+            <mat-label>UserName</mat-label>
+            <input matInput formControlName="username" autocomplete="username" />
+            @if (signUpForm.controls.username.touched && signUpForm.controls.username.hasError('required')) {
+              <mat-error>El UserName es obligatorio</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" autocomplete="email" />
+            @if (signUpForm.controls.email.touched && signUpForm.controls.email.hasError('email')) {
+              <mat-error>Ingresa un email valido</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" autocomplete="new-password" />
+            @if (signUpForm.controls.password.touched && signUpForm.controls.password.hasError('minlength')) {
+              <mat-error>Minimo 8 caracteres</mat-error>
+            }
+          </mat-form-field>
+
+          @if (errorMessage()) {
+            <p class="error-msg">{{ errorMessage() }}</p>
+          }
+
+          @if (successMessage()) {
+            <p class="success-msg">{{ successMessage() }}</p>
+          }
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="signUpLoading()">
+            {{ signUpLoading() ? 'Creando cuenta...' : 'Crear cuenta USER' }}
+          </button>
+
+          <p class="auth-switch">
+            Ya tienes cuenta,
+            <button type="button" (click)="toggleSignUp()">inicia sesion</button>
+          </p>
+        </form>
+      }
+
+      <p class="demo-access">Admin inicial: changeme&#64;userroot.com / changeme</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a mat-button routerLink="/">Volver al sitio publico</a>
+    </mat-card-actions>
+  </mat-card>
+</section>

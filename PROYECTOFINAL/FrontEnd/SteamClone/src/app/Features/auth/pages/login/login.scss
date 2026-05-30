@@ -1,0 +1,143 @@
+.login-page {
+  min-height: 76vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 450px);
+  gap: 28px;
+  align-items: stretch;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0;
+}
+
+.login-visual {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 34px;
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(6, 16, 31, 0.08), rgba(3, 10, 20, 0.9)),
+    url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg')
+      center / cover;
+  box-shadow: 0 24px 80px rgba(10, 18, 30, 0.28);
+}
+
+.badge {
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: #b6f6ff;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 620px;
+  margin: 18px 0 10px;
+  font-size: 3.8rem;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.login-visual p {
+  max-width: 560px;
+  color: #d7f4ff;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.login-card {
+  align-self: center;
+  width: 100%;
+  border: 1px solid rgba(20, 184, 166, 0.14);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+}
+
+mat-card-title {
+  color: #101827;
+  font-size: 1.7rem;
+  font-weight: 900;
+}
+
+form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+button[type='submit'] {
+  min-height: 46px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.error-msg {
+  border-left: 4px solid #e11d48;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #9f1239;
+  background: #fff1f2;
+}
+
+.success-msg {
+  border-left: 4px solid #059669;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #065f46;
+  background: #ecfdf5;
+}
+
+.auth-switch {
+  color: #4b6470;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.auth-switch button {
+  border: 0;
+  padding: 0;
+  color: #0f766e;
+  background: transparent;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.demo-access {
+  margin-top: 16px;
+  border-radius: 8px;
+  padding: 12px;
+  color: #33515f;
+  background: #e8f7fb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+mat-card-actions {
+  padding: 0 16px 16px;
+}
+
+@media (max-width: 880px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    min-height: 360px;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+}

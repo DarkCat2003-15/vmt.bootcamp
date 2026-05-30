@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: #dff8ff;
+  background: #0b1828;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu a[mat-button] {
+  color: #dff8ff;
+}
+
+.active {
+  color: #07101d !important;
+  background: #8cf6d2;
+}
