@@ -4,26 +4,26 @@ export const publicRoutes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home').then((m) => m.Home),
-    title: 'SteamClone | Inicio',
+    title: 'PlayVerse | Inicio',
   },
   {
     path: 'juegos',
     loadComponent: () => import('./pages/products/products').then((m) => m.Products),
-    title: 'SteamClone | Juegos',
+    title: 'PlayVerse | Juegos',
   },
   {
     path: 'quienes-somos',
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
-    title: 'SteamClone | Quienes somos',
+    title: 'PlayVerse | Quienes somos',
   },
   {
     path: 'contactanos',
     loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
-    title: 'SteamClone | Contactanos',
+    title: 'PlayVerse | Contactanos',
   },
   {
     path: 'login',
     loadComponent: () => import('../auth/pages/login/login').then((m) => m.Login),
-    title: 'SteamClone | Login',
+    title: 'PlayVerse | Login',
   },
 ];

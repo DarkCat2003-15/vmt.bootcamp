@@ -3,7 +3,7 @@
     <div class="brand-block">
       @if (authService.currentUser(); as user) {
         <span class="panel-kicker">{{ isUserOnly() ? 'Mi perfil' : 'Panel privado' }}</span>
-        <h1>{{ isUserOnly() ? 'Hola, ' + user.username : 'SteamClone Control' }}</h1>
+        <h1>{{ isUserOnly() ? 'Hola, ' + user.username : 'PlayVerse Control' }}</h1>
         <p>
           {{
             isUserOnly()

@@ -37,7 +37,7 @@ export class Products implements OnInit {
   private readonly storeCommunityService = inject(StoreCommunityService);
   readonly authService = inject(AuthService);
   private readonly router = inject(Router);
-  private readonly cartStorageKey = 'steamclone_cart';
+  private readonly cartStorageKey = 'playverse_cart';
   private readonly fallbackGames: Product[] = [
     {
       id: 1,

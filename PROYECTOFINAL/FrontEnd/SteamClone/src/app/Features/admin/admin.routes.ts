@@ -7,14 +7,14 @@ export const privateRoutes: Routes = [
     canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/admin-dashboard/admin-dashboard').then((m) => m.AdminDashboard),
-    title: 'SteamClone | Mi perfil',
+    title: 'PlayVerse | Mi perfil',
   },
   {
     path: 'admin',
     canActivate: [authGuard],
     loadComponent: () =>
       import('./pages/admin-dashboard/admin-dashboard').then((m) => m.AdminDashboard),
-    title: 'SteamClone | Panel administrativo',
+    title: 'PlayVerse | Panel administrativo',
   },
   {
     path: 'dashboard',

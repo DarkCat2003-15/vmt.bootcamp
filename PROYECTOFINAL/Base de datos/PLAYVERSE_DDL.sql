@@ -1,9 +1,9 @@
 ﻿-- CREAR BASE DE DATOS
-IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'STEAM')
-    CREATE DATABASE STEAM;
+IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = 'PLAYVERSE')
+    CREATE DATABASE PLAYVERSE;
 GO
 
-USE STEAM
+USE PLAYVERSE
 GO
 
 
@@ -35,7 +35,7 @@ GO
 -- TABLA STATUS
 
 CREATE TABLE Status(
-    StatusID INT NOT NULL PRIMARY KEY, -- 👈 sin IDENTITY
+    StatusID INT NOT NULL PRIMARY KEY, 
     Code NVARCHAR(20) NOT NULL,
     ShowName NVARCHAR(20) NOT NULL,
     CreatedAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
@@ -244,7 +244,7 @@ END
 
 
 --ACTUALIZACION 
-USE [STEAM];
+USE [PLAYVERSE];
 GO
 
 SET NOCOUNT ON;
@@ -364,7 +364,7 @@ BEGIN TRY
     BEGIN
         UPDATE dbo.EmailTemplates
         SET Name = 'USER_REGISTER',
-            Subject = 'Bienvenido a Steam Clone',
+            Subject = 'Bienvenido a PlayVerse',
             Body = 'Tu cuenta fue creada correctamente.'
         WHERE Name = 'COLLABORATOR_REGISTER';
     END
@@ -372,12 +372,12 @@ BEGIN TRY
     IF NOT EXISTS (SELECT 1 FROM dbo.EmailTemplates WHERE Name = 'USER_REGISTER')
     BEGIN
         INSERT INTO dbo.EmailTemplates (Name, Subject, Body)
-        VALUES ('USER_REGISTER', 'Bienvenido a Steam Clone', 'Tu cuenta fue creada correctamente.');
+        VALUES ('USER_REGISTER', 'Bienvenido a PlayVerse', 'Tu cuenta fue creada correctamente.');
     END
     ELSE
     BEGIN
         UPDATE dbo.EmailTemplates
-        SET Subject = 'Bienvenido a Steam Clone',
+        SET Subject = 'Bienvenido a PlayVerse',
             Body = 'Tu cuenta fue creada correctamente.'
         WHERE Name = 'USER_REGISTER';
     END
@@ -478,7 +478,7 @@ ORDER BY Name;
 GO
 
 -- ============================================================
---  ROLES Y PERMISOS PARA STEAM
+--  ROLES Y PERMISOS PARA PLAYVERSE
 -- ============================================================
 
 IF OBJECT_ID('dbo.Permissions', 'U') IS NULL
@@ -641,12 +641,12 @@ GO
 
 
 --ACT
-USE [STEAM];
+USE [PLAYVERSE];
 GO
 
-IF DB_NAME() <> 'STEAM'
+IF DB_NAME() <> 'PLAYVERSE'
 BEGIN
-    THROW 50001, 'Debes ejecutar este script dentro de la base STEAM.', 1;
+    THROW 50001, 'Debes ejecutar este script dentro de la base PLAYVERSE.', 1;
 END
 GO
 
@@ -661,7 +661,7 @@ BEGIN TRY
     -------------------------------------------------------------------------
     IF OBJECT_ID('dbo.Users', 'U') IS NULL
     BEGIN
-        THROW 50002, 'La tabla dbo.Users no existe en la base STEAM.', 1;
+        THROW 50002, 'La tabla dbo.Users no existe en la base PLAYVERSE.', 1;
     END
 
     -------------------------------------------------------------------------
@@ -862,7 +862,7 @@ GO
 --  ACTUALIZACION FINAL FRONT/BACKEND - 2026-05-29
 --  Imagen de juegos, compras no duplicadas y root admin.
 -- ============================================================
-USE [STEAM];
+USE [PLAYVERSE];
 GO
 
 SET NOCOUNT ON;
@@ -960,7 +960,7 @@ GO
 
 DECLARE @RootEmail NVARCHAR(150) = 'changeme@userroot.com';
 DECLARE @RootUserName NVARCHAR(100) = 'User Root';
-DECLARE @RootPasswordHash NVARCHAR(255) = 'Xn3eZGvfbaomYgMClmAvh/5LX2MAE2j22tvz22bjHHU=;SteamCloneRootSalt2026';
+DECLARE @RootPasswordHash NVARCHAR(255) = 'agRkCE7bm3ED9YJOttvYuXcOCYkgSFJkClUw05p8a4o=;PlayVerseRootSalt2026';
 DECLARE @RootUserId UNIQUEIDENTIFIER;
 DECLARE @AdminRoleId UNIQUEIDENTIFIER;
 DECLARE @UserRoleId UNIQUEIDENTIFIER;

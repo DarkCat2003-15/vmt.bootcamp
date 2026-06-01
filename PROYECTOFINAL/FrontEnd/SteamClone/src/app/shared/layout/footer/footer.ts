@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { COMPANY_NAME } from '../../../Core/constants/app.constants';
+import { APP_SLOGAN, COMPANY_NAME } from '../../../Core/constants/app.constants';
 
 @Component({
   selector: 'app-footer',
@@ -11,5 +11,6 @@ export class Footer {
   @Input({ required: true }) appName = '';
 
   readonly companyName = COMPANY_NAME;
+  readonly slogan = APP_SLOGAN;
   readonly currentYear = new Date().getFullYear();
 }

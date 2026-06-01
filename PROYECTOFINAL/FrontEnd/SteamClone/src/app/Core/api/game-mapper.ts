@@ -43,7 +43,7 @@ export function gameCardToProduct(game: GameCard): Product {
   return {
     id: game.gameId,
     title: game.title,
-    description: game.description || 'Juego disponible en el catalogo SteamClone.',
+    description: game.description || 'Juego disponible en el catalogo PlayVerse.',
     price: Number(game.finalPrice ?? game.basePrice ?? 0),
     category: game.genres[0] ?? 'General',
     thumbnail: game.imageUrl?.trim() || artworkForTitle(game.title),

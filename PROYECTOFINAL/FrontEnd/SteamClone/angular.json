@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "SteamClone": {
+    "PlayVerse": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -62,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SteamClone:build:production"
+              "buildTarget": "PlayVerse:build:production"
             },
             "development": {
-              "buildTarget": "SteamClone:build:development"
+              "buildTarget": "PlayVerse:build:development"
             }
           },
           "defaultConfiguration": "development"

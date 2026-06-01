@@ -99,7 +99,7 @@ export class Login {
       .subscribe({
         next: () => {
           this.signUpLoading.set(false);
-          this.successMessage.set('Cuenta creada correctamente. Bienvenido a SteamClone.');
+          this.successMessage.set('Cuenta creada correctamente. Bienvenido a PlayVerse.');
           this.goAfterLogin();
         },
         error: (err) => {
