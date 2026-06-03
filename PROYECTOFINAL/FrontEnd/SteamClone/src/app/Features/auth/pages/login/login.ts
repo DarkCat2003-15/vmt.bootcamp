@@ -35,6 +35,9 @@ export class Login {
   readonly errorMessage = signal('');
   readonly successMessage = signal('');
   readonly showSignUp = signal(false);
+  readonly showRecovery = signal(false);
+  readonly recoveryOtpLoading = signal(false);
+  readonly recoveryLoading = signal(false);
 
   readonly loginForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -47,8 +50,33 @@ export class Login {
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]],
   });
 
+  readonly recoveryForm = this.fb.nonNullable.group({
+    email: ['', [Validators.required, Validators.email]],
+    code: ['', Validators.required],
+    newPassword: ['', [Validators.required, Validators.minLength(6)]],
+  });
+
   toggleSignUp(): void {
     this.showSignUp.update((value) => !value);
+    this.showRecovery.set(false);
+    this.errorMessage.set('');
+    this.successMessage.set('');
+  }
+
+  showRecoverPassword(): void {
+    this.showRecovery.set(true);
+    this.showSignUp.set(false);
+    const loginEmail = this.loginForm.controls.email.value.trim();
+    if (loginEmail && !this.recoveryForm.controls.email.value) {
+      this.recoveryForm.patchValue({ email: loginEmail });
+    }
+    this.errorMessage.set('');
+    this.successMessage.set('');
+  }
+
+  showLogin(): void {
+    this.showRecovery.set(false);
+    this.showSignUp.set(false);
     this.errorMessage.set('');
     this.successMessage.set('');
   }
@@ -107,6 +135,56 @@ export class Login {
           this.errorMessage.set(this.resolveError(err, 'No se pudo crear la cuenta.'));
         },
       });
+  }
+
+  sendRecoveryOtp(): void {
+    const emailControl = this.recoveryForm.controls.email;
+
+    if (emailControl.invalid) {
+      emailControl.markAsTouched();
+      return;
+    }
+
+    this.recoveryOtpLoading.set(true);
+    this.errorMessage.set('');
+    this.successMessage.set('');
+
+    this.authService.recoverPasswordSendOtp(emailControl.value.trim()).subscribe({
+      next: () => {
+        this.recoveryOtpLoading.set(false);
+        this.successMessage.set('Codigo OTP enviado. Revisa tu correo y continua aqui.');
+      },
+      error: (err) => {
+        this.recoveryOtpLoading.set(false);
+        this.errorMessage.set(this.resolveError(err, 'No se pudo enviar el codigo OTP.'));
+      },
+    });
+  }
+
+  recoverPassword(): void {
+    if (this.recoveryForm.invalid) {
+      this.recoveryForm.markAllAsTouched();
+      return;
+    }
+
+    const raw = this.recoveryForm.getRawValue();
+
+    this.recoveryLoading.set(true);
+    this.errorMessage.set('');
+    this.successMessage.set('');
+
+    this.authService.recoverPassword(raw.code.trim(), raw.newPassword).subscribe({
+      next: () => {
+        this.recoveryLoading.set(false);
+        this.recoveryForm.reset({ email: '', code: '', newPassword: '' });
+        this.showLogin();
+        this.successMessage.set('Contrasena actualizada. Ya puedes iniciar sesion.');
+      },
+      error: (err) => {
+        this.recoveryLoading.set(false);
+        this.errorMessage.set(this.resolveError(err, 'No se pudo actualizar la contrasena.'));
+      },
+    });
   }
 
   private goAfterLogin(): void {

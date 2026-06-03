@@ -1,9 +1,11 @@
 .game-card {
   height: 100%;
   overflow: hidden;
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.12);
+  color: var(--pv-text);
+  background: linear-gradient(180deg, rgba(13, 27, 18, 0.98), rgba(4, 14, 8, 0.98));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
   transition:
     transform 160ms ease,
     box-shadow 160ms ease;
@@ -11,7 +13,7 @@
 
 .game-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 22px 52px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 22px 58px rgba(84, 248, 121, 0.18);
 }
 
 img {
@@ -24,12 +26,12 @@ mat-card-header {
 }
 
 mat-card-title {
-  color: #101827;
+  color: var(--pv-text);
   font-weight: 900;
 }
 
 mat-card-subtitle {
-  color: #64748b;
+  color: var(--pv-muted);
 }
 
 mat-card-content {
@@ -37,13 +39,13 @@ mat-card-content {
 }
 
 p {
-  color: #546e7a;
+  color: var(--pv-muted);
   line-height: 1.55;
 }
 
 .price {
   margin: 12px 0;
-  color: #047857;
+  color: var(--pv-green-bright);
   font-size: 1.12rem;
   font-weight: 900;
 }

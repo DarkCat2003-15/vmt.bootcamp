@@ -7,7 +7,8 @@
   grid-template-columns: 304px minmax(0, 1fr);
   min-height: calc(100vh - 148px);
   background:
-    linear-gradient(135deg, rgba(4, 15, 31, 0.96), rgba(8, 34, 48, 0.82), rgba(18, 24, 38, 0.94)),
+    radial-gradient(circle at 18% 0%, rgba(84, 248, 121, 0.16), transparent 30%),
+    linear-gradient(135deg, rgba(0, 9, 4, 0.98), rgba(8, 44, 18, 0.84), rgba(0, 9, 4, 0.96)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg')
       top center / cover fixed;
 }
@@ -21,8 +22,8 @@
   gap: 22px;
   padding: 26px 20px;
   color: #f8fbff;
-  background: rgba(5, 12, 24, 0.9);
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 12, 5, 0.92);
+  border-right: 1px solid var(--pv-border);
   backdrop-filter: blur(18px);
 }
 
@@ -36,7 +37,7 @@
 
 .panel-kicker,
 .eyebrow {
-  color: #5eead4;
+  color: var(--pv-green-bright);
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -55,6 +56,7 @@ h1 {
   font-size: 2rem;
   line-height: 1.02;
   letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -94,7 +96,7 @@ h4,
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 11px 12px;
-  color: #dff8ff;
+  color: var(--pv-muted);
   text-align: left;
   background: rgba(255, 255, 255, 0.055);
   cursor: pointer;
@@ -102,8 +104,8 @@ h4,
 
 .section-link:hover,
 .section-link.active {
-  border-color: rgba(94, 234, 212, 0.58);
-  background: linear-gradient(135deg, rgba(20, 184, 166, 0.22), rgba(56, 189, 248, 0.11));
+  border-color: rgba(84, 248, 121, 0.58);
+  background: linear-gradient(135deg, rgba(24, 200, 79, 0.24), rgba(9, 57, 23, 0.28));
 }
 
 .section-link span {
@@ -113,8 +115,8 @@ h4,
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  color: #00131a;
-  background: #5eead4;
+  color: var(--pv-ink);
+  background: var(--pv-green-bright);
   font-weight: 900;
 }
 
@@ -132,10 +134,10 @@ h4,
   display: grid;
   gap: 8px;
   margin-top: auto;
-  border: 1px solid rgba(94, 234, 212, 0.34);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   padding: 14px;
-  background: rgba(8, 145, 178, 0.14);
+  background: rgba(24, 200, 79, 0.12);
 }
 
 .user-box span {
@@ -156,9 +158,9 @@ h4,
 .admin-hero,
 .panel,
 mat-card {
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
-  background: rgba(249, 252, 255, 0.94);
+  background: rgba(244, 255, 246, 0.96);
   box-shadow: 0 24px 70px rgba(1, 8, 20, 0.28);
   backdrop-filter: blur(14px);
 }
@@ -170,7 +172,7 @@ mat-card {
   gap: 18px;
   padding: 30px;
   color: #ffffff;
-  background: linear-gradient(135deg, rgba(4, 14, 29, 0.85), rgba(10, 78, 92, 0.76));
+  background: linear-gradient(135deg, rgba(0, 9, 4, 0.92), rgba(14, 98, 36, 0.78));
 }
 
 .admin-hero h2,
@@ -218,7 +220,7 @@ mat-card {
 
 .state-success {
   color: #e8fff5;
-  background: rgba(4, 120, 87, 0.86);
+  background: rgba(22, 163, 74, 0.9);
 }
 
 .metrics,
@@ -239,8 +241,8 @@ mat-card {
   border-radius: 8px;
   padding: 18px;
   color: #ffffff;
-  background: rgba(6, 13, 25, 0.66);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 12, 5, 0.76);
+  border: 1px solid var(--pv-border);
 }
 
 .metrics span {
@@ -313,7 +315,7 @@ mat-card {
 .value-panel {
   grid-column: 1 / -1;
   color: #f8fbff;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(12, 74, 110, 0.9));
+  background: linear-gradient(135deg, rgba(0, 9, 4, 0.96), rgba(15, 113, 44, 0.86));
 }
 
 .value-panel h3 {
@@ -329,7 +331,7 @@ mat-card {
 .profile-card {
   color: #ffffff;
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(13, 148, 136, 0.72)),
+    linear-gradient(135deg, rgba(0, 9, 4, 0.94), rgba(24, 200, 79, 0.58)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg')
       center / cover;
 }
@@ -383,7 +385,7 @@ mat-card {
 }
 
 .profile-stats strong {
-  color: #5eead4;
+  color: var(--pv-green-bright);
   font-size: 1.55rem;
 }
 
@@ -409,12 +411,12 @@ mat-card {
 }
 
 .role-grid div.enabled {
-  border-color: rgba(20, 184, 166, 0.55);
-  background: linear-gradient(135deg, #e7fff9, #edf8ff);
+  border-color: rgba(24, 200, 79, 0.55);
+  background: linear-gradient(135deg, #eaffef, #f7fff8);
 }
 
 .coverage-list span {
-  border-left: 4px solid #14b8a6;
+  border-left: 4px solid var(--pv-green);
   border-radius: 8px;
   padding: 10px 12px;
   color: #253143;
@@ -498,8 +500,8 @@ mat-form-field {
 }
 
 .segmented button.active {
-  color: #063331;
-  background: #5eead4;
+  color: var(--pv-ink);
+  background: var(--pv-green-bright);
 }
 
 .mini-row,
@@ -575,7 +577,7 @@ mat-form-field {
 }
 
 .row-price strong {
-  color: #064e3b;
+  color: #0a7a32;
   font-size: 1.08rem;
 }
 
@@ -621,7 +623,7 @@ mat-form-field {
   border-radius: 8px;
   padding: 15px;
   color: #ffffff;
-  background: linear-gradient(135deg, #10233a, #0f766e);
+  background: linear-gradient(135deg, #001006, #137432);
 }
 
 .detail-strip strong {
@@ -646,9 +648,9 @@ mat-form-field {
 }
 
 .role-pill {
-  border: 1px solid rgba(20, 184, 166, 0.45);
-  color: #04332f;
-  background: #ccfbf1;
+  border: 1px solid rgba(24, 200, 79, 0.45);
+  color: var(--pv-ink);
+  background: #d9ffe0;
 }
 
 .empty-box {
@@ -682,10 +684,10 @@ mat-form-field {
   grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
   width: min(1060px, 100%);
   max-height: min(720px, calc(100vh - 36px));
-  border: 1px solid rgba(94, 234, 212, 0.3);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   color: #eef7fb;
-  background: #07111f;
+  background: var(--pv-bg-deep);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
 }
 
@@ -757,8 +759,8 @@ mat-form-field {
 }
 
 .offer-card {
-  border-color: rgba(94, 234, 212, 0.42);
-  background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(59, 130, 246, 0.12));
+  border-color: rgba(84, 248, 121, 0.42);
+  background: linear-gradient(135deg, rgba(24, 200, 79, 0.22), rgba(8, 44, 18, 0.52));
 }
 
 @media (max-width: 1180px) {

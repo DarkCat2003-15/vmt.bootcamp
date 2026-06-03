@@ -19,10 +19,21 @@
   padding: 34px;
   color: #ffffff;
   background:
-    linear-gradient(180deg, rgba(6, 16, 31, 0.08), rgba(3, 10, 20, 0.9)),
+    radial-gradient(circle at 22% 16%, rgba(84, 248, 121, 0.18), transparent 32%),
+    linear-gradient(180deg, rgba(0, 16, 6, 0.14), rgba(0, 9, 4, 0.94)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg')
       center / cover;
-  box-shadow: 0 24px 80px rgba(10, 18, 30, 0.28);
+  box-shadow: var(--pv-shadow);
+}
+
+.login-logo {
+  width: min(220px, 66vw);
+  aspect-ratio: 16 / 10;
+  margin-bottom: auto;
+  border: 1px solid rgba(84, 248, 121, 0.32);
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 34px rgba(84, 248, 121, 0.24);
 }
 
 .badge {
@@ -30,7 +41,7 @@
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 999px;
   padding: 7px 12px;
-  color: #b6f6ff;
+  color: var(--pv-green-soft);
   background: rgba(0, 0, 0, 0.3);
   font-size: 0.82rem;
   font-weight: 900;
@@ -43,6 +54,7 @@ h1 {
   font-size: 3.8rem;
   line-height: 0.96;
   letter-spacing: 0;
+  text-shadow: 0 0 26px rgba(84, 248, 121, 0.34);
 }
 
 p {
@@ -51,7 +63,7 @@ p {
 
 .login-visual p {
   max-width: 560px;
-  color: #d7f4ff;
+  color: var(--pv-muted);
   font-size: 1.05rem;
   line-height: 1.7;
 }
@@ -59,14 +71,16 @@ p {
 .login-card {
   align-self: center;
   width: 100%;
-  border: 1px solid rgba(20, 184, 166, 0.14);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   padding: 8px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
+  color: var(--pv-text);
+  background: linear-gradient(180deg, rgba(13, 27, 18, 0.98), rgba(5, 18, 10, 0.98));
+  box-shadow: var(--pv-shadow);
 }
 
 mat-card-title {
-  color: #101827;
+  color: var(--pv-text);
   font-size: 1.7rem;
   font-weight: 900;
 }
@@ -77,10 +91,48 @@ form {
   margin-top: 20px;
 }
 
+.form-hint {
+  margin-top: -4px;
+  color: var(--pv-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.otp-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.otp-row button {
+  min-height: 56px;
+  border-color: var(--pv-border);
+  border-radius: 8px;
+  color: var(--pv-green-bright);
+  white-space: nowrap;
+}
+
 button[type='submit'] {
   min-height: 46px;
   border-radius: 8px;
   font-weight: 900;
+}
+
+.forgot-link {
+  justify-self: end;
+  border: 0;
+  margin-top: -10px;
+  padding: 0;
+  color: var(--pv-green-bright);
+  background: transparent;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.forgot-link:hover,
+.auth-switch button:hover {
+  text-decoration: underline;
 }
 
 .error-msg {
@@ -100,7 +152,7 @@ button[type='submit'] {
 }
 
 .auth-switch {
-  color: #4b6470;
+  color: var(--pv-muted);
   text-align: center;
   line-height: 1.5;
 }
@@ -108,7 +160,7 @@ button[type='submit'] {
 .auth-switch button {
   border: 0;
   padding: 0;
-  color: #0f766e;
+  color: var(--pv-green-bright);
   background: transparent;
   font-weight: 900;
   cursor: pointer;
@@ -118,8 +170,8 @@ button[type='submit'] {
   margin-top: 16px;
   border-radius: 8px;
   padding: 12px;
-  color: #33515f;
-  background: #e8f7fb;
+  color: var(--pv-ink);
+  background: var(--pv-green-soft);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -139,5 +191,16 @@ mat-card-actions {
 
   h1 {
     font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .otp-row {
+    grid-template-columns: 1fr;
+  }
+
+  .otp-row button,
+  .forgot-link {
+    width: 100%;
   }
 }

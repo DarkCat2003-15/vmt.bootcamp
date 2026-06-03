@@ -5,7 +5,8 @@
   padding: 44px max(18px, calc((100% - 1120px) / 2));
   color: #ffffff;
   background:
-    linear-gradient(180deg, rgba(6, 16, 28, 0.2), rgba(6, 16, 28, 0.88)),
+    radial-gradient(circle at 18% 12%, rgba(84, 248, 121, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(0, 16, 6, 0.2), rgba(0, 9, 4, 0.92)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/292030/header.jpg')
       center / cover;
 }
@@ -17,7 +18,7 @@
 }
 
 .eyebrow {
-  color: #8cf6d2;
+  color: var(--pv-green-bright);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -35,12 +36,13 @@ h1 {
   font-size: 3.3rem;
   line-height: 1;
   letter-spacing: 0;
+  text-shadow: 0 0 22px rgba(84, 248, 121, 0.3);
 }
 
 .contact-hero p {
   max-width: 620px;
   margin-top: 10px;
-  color: #d8eff8;
+  color: var(--pv-muted);
   font-size: 1.08rem;
   line-height: 1.7;
 }
@@ -52,13 +54,14 @@ h1 {
 }
 
 mat-card {
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
-  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--pv-shadow);
 }
 
 .contact-card {
   color: #effbff;
-  background: #091827;
+  background: linear-gradient(180deg, rgba(10, 36, 18, 0.98), rgba(4, 16, 8, 0.98));
 }
 
 .contact-card mat-card-title,
@@ -69,8 +72,8 @@ mat-card {
 .avatar {
   display: grid;
   place-items: center;
-  color: #062d38;
-  background: #8cf6d2;
+  color: var(--pv-ink);
+  background: var(--pv-green-bright);
   font-size: 0.78rem;
   font-weight: 900;
 }
@@ -87,7 +90,7 @@ dl div {
 }
 
 dt {
-  color: #8cf6d2;
+  color: var(--pv-green-bright);
   font-size: 0.8rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -112,11 +115,11 @@ button[type='submit'] {
 
 .message {
   margin-top: 16px;
-  border-left: 4px solid #10b981;
+  border-left: 4px solid var(--pv-green);
   border-radius: 8px;
   padding: 12px;
-  color: #064e3b;
-  background: #dffdf0;
+  color: var(--pv-ink);
+  background: #dfffe7;
   font-weight: 800;
 }
 

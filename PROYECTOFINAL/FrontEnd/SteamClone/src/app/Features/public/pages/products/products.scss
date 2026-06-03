@@ -5,13 +5,14 @@
   padding: 44px max(18px, calc((100% - 1120px) / 2));
   color: #ffffff;
   background:
-    linear-gradient(180deg, rgba(6, 16, 28, 0.2), rgba(6, 16, 28, 0.88)),
+    radial-gradient(circle at 20% 14%, rgba(84, 248, 121, 0.18), transparent 32%),
+    linear-gradient(180deg, rgba(0, 16, 6, 0.3), rgba(0, 9, 4, 0.94)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg')
       center / cover;
 }
 
 .eyebrow {
-  color: #8cf6d2;
+  color: var(--pv-green-bright);
   font-size: 0.82rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -28,11 +29,12 @@ h1 {
   font-size: 3.4rem;
   line-height: 1;
   letter-spacing: 0;
+  text-shadow: 0 0 22px rgba(84, 248, 121, 0.34);
 }
 
 .catalog-hero p {
   margin-top: 10px;
-  color: #d8eff8;
+  color: var(--pv-muted);
   font-size: 1.08rem;
 }
 
@@ -59,8 +61,8 @@ h1 {
 .api-note {
   border-radius: 999px;
   padding: 8px 12px;
-  color: #0f3f4f;
-  background: #dff7fb;
+  color: var(--pv-ink);
+  background: var(--pv-green-soft);
   font-size: 0.9rem;
   font-weight: 800;
 }
@@ -72,20 +74,20 @@ h1 {
 }
 
 .success-note {
-  color: #023427;
-  background: #bdfbe7;
+  color: var(--pv-ink);
+  background: #c9ffd4;
 }
 
 .cart-panel {
   display: grid;
   gap: 16px;
   margin-bottom: 22px;
-  border: 1px solid rgba(94, 234, 212, 0.34);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   padding: 18px;
   color: #eef7fb;
   background:
-    linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(12, 74, 110, 0.72)),
+    linear-gradient(135deg, rgba(0, 9, 4, 0.94), rgba(11, 80, 28, 0.72)),
     url('https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg')
       center / cover;
 }
@@ -132,7 +134,7 @@ h1 {
 }
 
 .cart-total strong {
-  color: #5eead4;
+  color: var(--pv-green-bright);
   font-size: 1.2rem;
 }
 
@@ -167,10 +169,10 @@ h1 {
   grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
   width: min(1080px, 100%);
   max-height: min(720px, calc(100vh - 36px));
-  border: 1px solid rgba(140, 246, 210, 0.24);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   color: #eef7fb;
-  background: #07111f;
+  background: var(--pv-bg-deep);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
 }
 
@@ -252,8 +254,8 @@ h1 {
 }
 
 .offer-strip {
-  border-color: rgba(94, 234, 212, 0.42);
-  background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(59, 130, 246, 0.12));
+  border-color: rgba(84, 248, 121, 0.42);
+  background: linear-gradient(135deg, rgba(24, 200, 79, 0.22), rgba(8, 44, 18, 0.52));
 }
 
 .detail-actions {
@@ -267,10 +269,10 @@ h1 {
   grid-template-columns: minmax(220px, 1fr) auto auto;
   gap: 12px;
   align-items: center;
-  border: 1px solid rgba(94, 234, 212, 0.34);
+  border: 1px solid var(--pv-border);
   border-radius: 8px;
   padding: 12px;
-  background: rgba(94, 234, 212, 0.08);
+  background: rgba(84, 248, 121, 0.08);
 }
 
 .detail-checkout mat-form-field {
@@ -290,7 +292,7 @@ h1 {
 }
 
 .detail-checkout strong {
-  color: #5eead4;
+  color: var(--pv-green-bright);
   font-size: 1.18rem;
 }
 

@@ -363,15 +363,6 @@ export class AdminDashboard implements OnInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  readonly recoverSendForm = this.fb.nonNullable.group({
-    email: ['', [Validators.required, Validators.email]],
-  });
-
-  readonly recoverUseForm = this.fb.nonNullable.group({
-    code: ['', Validators.required],
-    newPassword: ['', [Validators.required, Validators.minLength(6)]],
-  });
-
   ngOnInit(): void {
     this.patchAccountForm();
     this.ensureVisibleSection();
@@ -1103,31 +1094,6 @@ export class AdminDashboard implements OnInit {
           username: '',
           password: '',
         }),
-    );
-  }
-
-  recoverPasswordSendOtp(): void {
-    if (this.recoverSendForm.invalid) {
-      this.recoverSendForm.markAllAsTouched();
-      return;
-    }
-
-    this.runMutation(
-      this.authService.recoverPasswordSendOtp(this.recoverSendForm.controls.email.value.trim()),
-      'Codigo OTP enviado.',
-    );
-  }
-
-  recoverPassword(): void {
-    if (this.recoverUseForm.invalid) {
-      this.recoverUseForm.markAllAsTouched();
-      return;
-    }
-
-    const raw = this.recoverUseForm.getRawValue();
-
-    this.runMutation(this.authService.recoverPassword(raw.code.trim(), raw.newPassword), 'Contrasena recuperada.', () =>
-      this.recoverUseForm.reset({ code: '', newPassword: '' }),
     );
   }
 

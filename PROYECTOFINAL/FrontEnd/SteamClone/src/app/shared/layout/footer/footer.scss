@@ -1,10 +1,21 @@
 .footer {
   margin-top: 0;
-  padding: 22px;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 26px 22px;
   text-align: center;
-  color: #b9cad6;
-  background: #07101d;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--pv-muted);
+  background: rgba(0, 10, 4, 0.95);
+  border-top: 1px solid var(--pv-border);
+}
+
+img {
+  width: 86px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 24px rgba(84, 248, 121, 0.18);
 }
 
 p {
